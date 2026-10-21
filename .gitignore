@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.cache/
+.venv/
+__pycache__/
+.env
+reasonframe.config.json
+.reasonframe/
+workspaces/*
+!workspaces/.gitkeep
+*.log
+progress.md
+/progress.md
+.agents

@@ -1,0 +1,2042 @@
+{
+  "schemaVersion": 1,
+  "title": "四棱锥中的四点共球",
+  "subtitle": "高三数学 · 立体几何 · 15 分综合题",
+  "width": 1920,
+  "height": 1080,
+  "fps": 24,
+  "chapters": [
+    "面面垂直",
+    "球心定位",
+    "异面直线夹角"
+  ],
+  "scenes": [
+    {
+      "id": "overview",
+      "chapter": 0,
+      "title": "先看结构，再找突破口",
+      "stage": "overview",
+      "note": "底面是直角梯形；PA 是四棱锥的高。",
+      "blocks": [
+        {
+          "label": "第一问",
+          "text": "证明两个侧面互相垂直",
+          "beat": 0
+        },
+        {
+          "label": "第二问 · i",
+          "text": "证明球心位于底面",
+          "beat": 1
+        },
+        {
+          "label": "第二问 · ii",
+          "text": "求异面直线夹角的余弦",
+          "beat": 1
+        }
+      ],
+      "beats": [
+        {
+          "say": "这道高三立体几何题，先证明面面垂直。",
+          "caption": "先证明面面垂直。"
+        },
+        {
+          "say": "再定位四点共球的球心，最后求异面直线夹角。我们把推理和空间图形一起看。",
+          "caption": "再定位球心，求异面直线夹角。"
+        }
+      ],
+      "cues": [
+        {
+          "beat": 0,
+          "anchor": "面面垂直",
+          "objects": [
+            "plane:PAB",
+            "plane:PAD"
+          ],
+          "label": "两个侧面"
+        },
+        {
+          "beat": 1,
+          "anchor": "四点共球",
+          "objects": [
+            "point:P",
+            "point:B",
+            "point:C",
+            "point:D"
+          ],
+          "label": "P、B、C、D 四点"
+        },
+        {
+          "beat": 1,
+          "anchor": "空间图形",
+          "objects": [
+            "plane:ABCD",
+            "line:PA"
+          ],
+          "label": "空间结构"
+        }
+      ],
+      "reveals": [
+        {
+          "beat": 0,
+          "anchor": "先证明"
+        },
+        {
+          "beat": 1,
+          "anchor": "再定位"
+        },
+        {
+          "beat": 1,
+          "anchor": "最后求"
+        }
+      ],
+      "claimIds": [
+        "planes_perpendicular",
+        "independent_center",
+        "line_cosine"
+      ]
+    },
+    {
+      "id": "givens",
+      "chapter": 0,
+      "title": "把题设还原为空间关系",
+      "stage": "givens",
+      "note": "第二问的长度条件，将用于构造等距点。",
+      "blocks": [
+        {
+          "label": "位置关系",
+          "math": "PA\\perp\\text{平面 }ABCD",
+          "beat": 0
+        },
+        {
+          "math": "BC\\parallel AD,\\quad AB\\perp AD",
+          "beat": 0
+        },
+        {
+          "label": "第二问的长度",
+          "math": "PA=AB=\\sqrt2,\\quad BC=2",
+          "beat": 1
+        },
+        {
+          "math": "AD=1+\\sqrt3",
+          "beat": 1
+        },
+        {
+          "text": "P、B、C、D 在同一球面上。",
+          "beat": 1,
+          "compact": true
+        }
+      ],
+      "beats": [
+        {
+          "say": "底面是直角梯形，B C 平行 A D，A B 垂直 A D。P A 垂直整个底面。",
+          "caption": "直角梯形作底面，PA 垂直底面。"
+        },
+        {
+          "say": "第二问中，P A 和 A B 都等于根号二，B C 等于二，A D 等于一加根号三。",
+          "caption": "PA＝AB＝√2，BC＝2，AD＝1＋√3。"
+        }
+      ],
+      "cues": [
+        {
+          "beat": 0,
+          "anchor": "底面是直角梯形",
+          "objects": [
+            "plane:ABCD"
+          ]
+        },
+        {
+          "beat": 0,
+          "anchor": "B C 平行 A D",
+          "objects": [
+            "line:BC",
+            "line:AD"
+          ],
+          "label": "BC ∥ AD"
+        },
+        {
+          "beat": 0,
+          "anchor": "A B 垂直 A D",
+          "objects": [
+            "line:AB",
+            "line:AD"
+          ],
+          "label": "AB ⟂ AD"
+        },
+        {
+          "beat": 0,
+          "anchor": "P A 垂直整个底面",
+          "objects": [
+            "line:PA",
+            "plane:ABCD"
+          ],
+          "label": "PA ⟂ 底面"
+        },
+        {
+          "beat": 1,
+          "anchor": "P A 和 A B",
+          "objects": [
+            "line:PA",
+            "line:AB"
+          ],
+          "label": "PA = AB = √2"
+        },
+        {
+          "beat": 1,
+          "anchor": "B C 等于二",
+          "objects": [
+            "line:BC"
+          ],
+          "label": "BC = 2"
+        },
+        {
+          "beat": 1,
+          "anchor": "A D 等于一加根号三",
+          "objects": [
+            "line:AD"
+          ],
+          "label": "AD = 1 + √3"
+        }
+      ],
+      "reveals": [
+        {
+          "beat": 0,
+          "anchor": "P A 垂直整个底面"
+        },
+        {
+          "beat": 0,
+          "anchor": "B C 平行 A D"
+        },
+        {
+          "beat": 1,
+          "anchor": "P A 和 A B"
+        },
+        {
+          "beat": 1,
+          "anchor": "A D 等于"
+        },
+        {
+          "beat": 1,
+          "anchor": "第二问中"
+        }
+      ],
+      "claimIds": [
+        "pa_ab",
+        "pa_ad",
+        "bc_parallel_ad",
+        "ab_ad",
+        "length_PA",
+        "length_AB",
+        "length_BC",
+        "length_AD"
+      ]
+    },
+    {
+      "id": "perpendicular",
+      "chapter": 0,
+      "title": "面面垂直，先找线面垂直",
+      "stage": "perpendicular",
+      "note": "AB 是平面 PAB 内的一条直线，也是平面 PAD 的垂线。",
+      "blocks": [
+        {
+          "label": "由线面垂直",
+          "math": "PA\\perp AB",
+          "beat": 0
+        },
+        {
+          "label": "两条相交直线",
+          "math": "AB\\perp AD,\\quad PA\\cap AD=A",
+          "beat": 1
+        },
+        {
+          "math": "AB\\perp\\text{平面 }PAD",
+          "beat": 1,
+          "accent": true
+        },
+        {
+          "label": "又因为 AB 在平面 PAB 内",
+          "math": "\\text{平面 }PAB\\perp\\text{平面 }PAD",
+          "beat": 2,
+          "accent": true
+        }
+      ],
+      "beats": [
+        {
+          "say": "第一问。由 P A 垂直底面，得到 P A 垂直 A B。",
+          "caption": "PA 垂直底面，所以 PA ⟂ AB。"
+        },
+        {
+          "say": "再结合 A B 垂直 A D，而且 P A 与 A D 相交于 A，便有 A B 垂直平面 P A D。",
+          "caption": "AB 垂直平面 PAD 内的两条相交直线。"
+        },
+        {
+          "say": "A B 又在平面 P A B 内，所以这两个平面互相垂直。第一问完成。",
+          "caption": "因此，平面 PAB ⟂ 平面 PAD。"
+        }
+      ],
+      "cues": [
+        {
+          "beat": 0,
+          "anchor": "P A 垂直底面",
+          "objects": [
+            "line:PA",
+            "plane:ABCD"
+          ]
+        },
+        {
+          "beat": 0,
+          "anchor": "得到 P A 垂直 A B",
+          "objects": [
+            "line:PA",
+            "line:AB"
+          ],
+          "label": "PA ⟂ AB"
+        },
+        {
+          "beat": 1,
+          "anchor": "A B 垂直 A D",
+          "objects": [
+            "line:AB",
+            "line:AD"
+          ],
+          "label": "AB ⟂ AD"
+        },
+        {
+          "beat": 1,
+          "anchor": "P A 与 A D 相交于 A",
+          "objects": [
+            "line:PA",
+            "line:AD",
+            "point:A"
+          ],
+          "label": "PA 与 AD 相交于 A"
+        },
+        {
+          "beat": 1,
+          "anchor": "便有 A B 垂直平面 P A D",
+          "objects": [
+            "line:AB",
+            "plane:PAD"
+          ],
+          "label": "AB ⟂ 平面 PAD"
+        },
+        {
+          "beat": 2,
+          "anchor": "A B 又在平面 P A B 内",
+          "objects": [
+            "line:AB",
+            "plane:PAB"
+          ],
+          "label": "AB 在平面 PAB 内"
+        },
+        {
+          "beat": 2,
+          "anchor": "这两个平面互相垂直",
+          "objects": [
+            "plane:PAB",
+            "plane:PAD"
+          ],
+          "label": "平面 PAB ⟂ 平面 PAD"
+        }
+      ],
+      "reveals": [
+        {
+          "beat": 0,
+          "anchor": "得到"
+        },
+        {
+          "beat": 1,
+          "anchor": "再结合"
+        },
+        {
+          "beat": 1,
+          "anchor": "便有"
+        },
+        {
+          "beat": 2,
+          "anchor": "这两个平面"
+        }
+      ],
+      "claimIds": [
+        "planes_perpendicular",
+        "pa_ab",
+        "ab_ad"
+      ]
+    },
+    {
+      "id": "candidate",
+      "chapter": 1,
+      "title": "构造候选点，再验证四点等距",
+      "stage": "candidate",
+      "note": "M 为 BC 中点；此时 Q 是辅助点，还没有认定它是球心。",
+      "blocks": [
+        {
+          "label": "先对准 BC 中点 M，在 AD 上取 Q",
+          "math": "AQ=BM=\\frac{BC}{2}=1",
+          "beat": 0,
+          "accent": true
+        },
+        {
+          "label": "需要验证",
+          "math": "QP=QB=QC=QD",
+          "beat": 1
+        },
+        {
+          "text": "四点等距成立，才能确认球心。",
+          "beat": 1,
+          "compact": true
+        }
+      ],
+      "beats": [
+        {
+          "say": "第二问，先考虑到 B、C 等距。从 B C 中点 M 向 A D 作垂线，交点记为 Q。由矩形 A B M Q，A Q 等于 B M，恰好为一。",
+          "caption": "由矩形 ABMQ，取 AQ＝BM＝BC／2＝1。"
+        },
+        {
+          "say": "我们验证 Q 到 P、B、C、D 四点等距。验证完成，才能确认它是球心。",
+          "caption": "目标：验证 QP＝QB＝QC＝QD。"
+        }
+      ],
+      "cues": [
+        {
+          "beat": 0,
+          "anchor": "B、C 等距",
+          "objects": [
+            "point:B",
+            "point:C"
+          ],
+          "label": "先考虑到 B、C 等距"
+        },
+        {
+          "beat": 0,
+          "anchor": "B C 中点 M",
+          "objects": [
+            "line:BC",
+            "point:M"
+          ],
+          "label": "取 BC 中点 M"
+        },
+        {
+          "beat": 0,
+          "anchor": "向 A D 作垂线",
+          "objects": [
+            "line:MQ",
+            "line:AD"
+          ],
+          "label": "由 M 向 AD 作垂线"
+        },
+        {
+          "beat": 0,
+          "anchor": "交点记为 Q",
+          "objects": [
+            "point:Q"
+          ],
+          "label": "候选点 Q"
+        },
+        {
+          "beat": 0,
+          "anchor": "矩形 A B M Q",
+          "objects": [
+            "face:ABMQ"
+          ]
+        },
+        {
+          "beat": 0,
+          "anchor": "A Q 等于 B M",
+          "objects": [
+            "line:AQ",
+            "line:BM"
+          ],
+          "label": "AQ = BM"
+        },
+        {
+          "beat": 0,
+          "anchor": "恰好为一",
+          "objects": [
+            "line:AQ",
+            "line:BM"
+          ],
+          "label": "AQ = BM = 1"
+        },
+        {
+          "beat": 1,
+          "anchor": "Q 到 P、B、C、D 四点等距",
+          "objects": [
+            "line:QP",
+            "line:QB",
+            "line:QC",
+            "line:QD"
+          ],
+          "label": "目标：验证四点等距"
+        },
+        {
+          "beat": 1,
+          "anchor": "确认它是球心",
+          "objects": [
+            "point:Q"
+          ],
+          "label": "Q 仍是候选点"
+        }
+      ],
+      "reveals": [
+        {
+          "beat": 0,
+          "anchor": "矩形"
+        },
+        {
+          "beat": 1,
+          "anchor": "我们验证"
+        },
+        {
+          "beat": 1,
+          "anchor": "验证完成"
+        }
+      ],
+      "claimIds": [
+        "aq_one",
+        "q_between",
+        "midpoint",
+        "mq_perp"
+      ]
+    },
+    {
+      "id": "equal-pb",
+      "chapter": 1,
+      "title": "先算 QP 与 QB：两次勾股定理",
+      "stage": "equal-pb",
+      "note": "PA ⟂ AQ，AB ⟂ AQ；两组三角形都在 A 处直角。",
+      "blocks": [
+        {
+          "label": "直角三角形 PAQ",
+          "math": "QP^2=AQ^2+AP^2",
+          "beat": 0
+        },
+        {
+          "math": "QP^2=1+2=3",
+          "beat": 0,
+          "accent": true
+        },
+        {
+          "label": "直角三角形 BAQ",
+          "math": "QB^2=AQ^2+AB^2=3",
+          "beat": 1
+        },
+        {
+          "math": "QP=QB=\\sqrt3",
+          "beat": 1,
+          "accent": true
+        }
+      ],
+      "beats": [
+        {
+          "say": "P A 与 A Q 垂直。由勾股定理，Q P 的平方等于一加二，也就是三。",
+          "caption": "QP²＝AQ²＋AP²＝1＋2＝3。"
+        },
+        {
+          "say": "A B 也与 A Q 垂直，同理，Q B 的平方等于三。因此 Q P 和 Q B 都等于根号三。",
+          "caption": "同理 QB²＝3，所以 QP＝QB＝√3。"
+        }
+      ],
+      "cues": [
+        {
+          "beat": 0,
+          "anchor": "P A 与 A Q 垂直",
+          "objects": [
+            "line:PA",
+            "line:AQ"
+          ],
+          "label": "PA ⟂ AQ"
+        },
+        {
+          "beat": 0,
+          "anchor": "勾股定理",
+          "objects": [
+            "face:PAQ"
+          ]
+        },
+        {
+          "beat": 0,
+          "anchor": "Q P 的平方",
+          "objects": [
+            "line:QP"
+          ],
+          "label": "求 QP"
+        },
+        {
+          "beat": 1,
+          "anchor": "A B 也与 A Q 垂直",
+          "objects": [
+            "line:AB",
+            "line:AQ"
+          ],
+          "label": "AB ⟂ AQ"
+        },
+        {
+          "beat": 1,
+          "anchor": "Q B 的平方",
+          "objects": [
+            "face:BAQ",
+            "line:QB"
+          ],
+          "label": "求 QB"
+        },
+        {
+          "beat": 1,
+          "anchor": "Q P 和 Q B",
+          "objects": [
+            "line:QP",
+            "line:QB"
+          ],
+          "label": "QP = QB = √3"
+        }
+      ],
+      "reveals": [
+        {
+          "beat": 0,
+          "anchor": "勾股定理"
+        },
+        {
+          "beat": 0,
+          "anchor": "也就是三"
+        },
+        {
+          "beat": 1,
+          "anchor": "Q B 的平方"
+        },
+        {
+          "beat": 1,
+          "anchor": "因此"
+        }
+      ],
+      "claimIds": [
+        "radius_P",
+        "radius_B"
+      ]
+    },
+    {
+      "id": "equal-c",
+      "chapter": 1,
+      "title": "再算 QC：把梯形中的长度补出来",
+      "stage": "equal-c",
+      "note": "过 C 作 CH ⟂ AD，垂足为 H；ABCH 为矩形。",
+      "blocks": [
+        {
+          "label": "由矩形 ABCH",
+          "math": "AH=BC=2,\\quad CH=AB=\\sqrt2",
+          "beat": 0,
+          "small": true
+        },
+        {
+          "label": "Q、H 均在 AD 上",
+          "math": "QH=AH-AQ=1",
+          "beat": 1
+        },
+        {
+          "label": "直角三角形 CQH",
+          "math": "QC^2=QH^2+CH^2=3",
+          "beat": 2
+        },
+        {
+          "math": "QC=\\sqrt3",
+          "beat": 2,
+          "accent": true
+        }
+      ],
+      "beats": [
+        {
+          "say": "过 C 作 A D 的垂线，垂足为 H。四边形 A B C H 是矩形，所以 A H 等于二，C H 等于根号二。",
+          "caption": "补出矩形 ABCH：AH＝2，CH＝√2。"
+        },
+        {
+          "say": "A Q 等于一，因此 Q H 也等于一。",
+          "caption": "QH＝AH－AQ＝1。"
+        },
+        {
+          "say": "在直角三角形 C Q H 中，Q C 的平方等于一加二，仍然是三。",
+          "caption": "QC²＝QH²＋CH²＝3。"
+        }
+      ],
+      "cues": [
+        {
+          "beat": 0,
+          "anchor": "过 C 作 A D 的垂线",
+          "objects": [
+            "line:AD",
+            "line:CH",
+            "point:H"
+          ],
+          "label": "作 CH ⟂ AD"
+        },
+        {
+          "beat": 0,
+          "anchor": "四边形 A B C H 是矩形",
+          "objects": [
+            "face:ABCH"
+          ]
+        },
+        {
+          "beat": 0,
+          "anchor": "A H 等于二",
+          "objects": [
+            "line:AH"
+          ],
+          "label": "AH = 2"
+        },
+        {
+          "beat": 0,
+          "anchor": "C H 等于根号二",
+          "objects": [
+            "line:CH"
+          ],
+          "label": "CH = √2"
+        },
+        {
+          "beat": 1,
+          "anchor": "A Q 等于一",
+          "objects": [
+            "line:AQ"
+          ],
+          "label": "AQ = 1"
+        },
+        {
+          "beat": 1,
+          "anchor": "Q H 也等于一",
+          "objects": [
+            "line:QH"
+          ],
+          "label": "QH = AH − AQ = 1"
+        },
+        {
+          "beat": 2,
+          "anchor": "直角三角形 C Q H",
+          "objects": [
+            "face:CQH"
+          ]
+        },
+        {
+          "beat": 2,
+          "anchor": "Q C 的平方",
+          "objects": [
+            "line:QC"
+          ],
+          "label": "QC² = 3"
+        }
+      ],
+      "reveals": [
+        {
+          "beat": 0,
+          "anchor": "所以"
+        },
+        {
+          "beat": 1,
+          "anchor": "因此"
+        },
+        {
+          "beat": 2,
+          "anchor": "Q C 的平方"
+        },
+        {
+          "beat": 2,
+          "anchor": "仍然是三"
+        }
+      ],
+      "claimIds": [
+        "rectangle_ch",
+        "qh_one",
+        "radius_C"
+      ]
+    },
+    {
+      "id": "equal-d",
+      "chapter": 1,
+      "title": "最后一个距离，直接在线段上相减",
+      "stage": "equal-d",
+      "note": "至此，Q 到 P、B、C、D 四点的距离已经全部算出。",
+      "blocks": [
+        {
+          "label": "A、Q、D 共线，Q 在线段 AD 内",
+          "math": "QD=AD-AQ",
+          "beat": 0
+        },
+        {
+          "math": "QD=(1+\\sqrt3)-1=\\sqrt3",
+          "beat": 0
+        },
+        {
+          "label": "汇总四个距离",
+          "math": "QP=QB=QC=QD=\\sqrt3",
+          "beat": 1,
+          "accent": true,
+          "small": true
+        }
+      ],
+      "beats": [
+        {
+          "say": "Q 在线段 A D 上。Q D 等于 A D 减去 A Q，得到根号三。",
+          "caption": "QD＝AD－AQ＝√3。"
+        },
+        {
+          "say": "现在，Q 到 P、B、C、D 四点的距离，全部等于根号三。",
+          "caption": "QP＝QB＝QC＝QD＝√3。"
+        }
+      ],
+      "cues": [
+        {
+          "beat": 0,
+          "anchor": "Q 在线段 A D 上",
+          "objects": [
+            "point:Q",
+            "line:AD"
+          ]
+        },
+        {
+          "beat": 0,
+          "anchor": "Q D 等于 A D 减去 A Q",
+          "objects": [
+            "line:QD"
+          ],
+          "label": "QD = AD − AQ"
+        },
+        {
+          "beat": 0,
+          "anchor": "得到根号三",
+          "objects": [
+            "line:QD"
+          ],
+          "label": "QD = √3"
+        },
+        {
+          "beat": 1,
+          "anchor": "Q 到 P、B、C、D 四点",
+          "objects": [
+            "line:QP",
+            "line:QB",
+            "line:QC",
+            "line:QD"
+          ],
+          "label": "QP = QB = QC = QD = √3"
+        }
+      ],
+      "reveals": [
+        {
+          "beat": 0,
+          "anchor": "Q D 等于"
+        },
+        {
+          "beat": 0,
+          "anchor": "得到根号三"
+        },
+        {
+          "beat": 1,
+          "anchor": "全部等于"
+        }
+      ],
+      "claimIds": [
+        "radius_D"
+      ]
+    },
+    {
+      "id": "sphere",
+      "chapter": 1,
+      "title": "四点等距，确认球心就在底面",
+      "stage": "sphere",
+      "note": "球心落在 AD 上；球面与底面所在平面的交线为大圆。",
+      "blocks": [
+        {
+          "label": "P、B、C、D 四点不共面",
+          "text": "四个不共面的点确定唯一的球。",
+          "beat": 0,
+          "compact": true
+        },
+        {
+          "label": "因此辅助点 Q 就是球心 O",
+          "math": "O=Q,\\quad AO=1,\\quad R=\\sqrt3",
+          "beat": 1,
+          "accent": true,
+          "small": true
+        },
+        {
+          "math": "O\\in AD\\subset\\text{平面 }ABCD",
+          "beat": 1
+        }
+      ],
+      "beats": [
+        {
+          "say": "这四个点不共面，确定唯一的球。因此，等距点 Q 就是题目中的球心 O。",
+          "caption": "四点确定唯一的球，所以 Q 就是 O。"
+        },
+        {
+          "say": "A O 等于一，球半径是根号三。O 在 A D 上，自然也在底面内。",
+          "caption": "AO＝1，R＝√3，O 在平面 ABCD 上。"
+        }
+      ],
+      "cues": [
+        {
+          "beat": 0,
+          "anchor": "这四个点不共面",
+          "objects": [
+            "point:P",
+            "point:B",
+            "point:C",
+            "point:D"
+          ]
+        },
+        {
+          "beat": 0,
+          "anchor": "唯一的球",
+          "objects": [
+            "sphere"
+          ]
+        },
+        {
+          "beat": 0,
+          "anchor": "等距点 Q",
+          "objects": [
+            "point:Q"
+          ],
+          "label": "等距点 Q"
+        },
+        {
+          "beat": 0,
+          "anchor": "球心 O",
+          "objects": [
+            "point:O"
+          ],
+          "label": "Q 就是球心 O"
+        },
+        {
+          "beat": 1,
+          "anchor": "A O 等于一",
+          "objects": [
+            "line:AO",
+            "point:O"
+          ],
+          "label": "AO = 1"
+        },
+        {
+          "beat": 1,
+          "anchor": "球半径是根号三",
+          "objects": [
+            "line:OP",
+            "sphere"
+          ],
+          "label": "R = √3"
+        },
+        {
+          "beat": 1,
+          "anchor": "O 在 A D 上",
+          "objects": [
+            "point:O",
+            "line:AD"
+          ],
+          "label": "O 在 AD 上"
+        },
+        {
+          "beat": 1,
+          "anchor": "在底面内",
+          "objects": [
+            "point:O",
+            "plane:ABCD"
+          ],
+          "label": "O 在底面内"
+        }
+      ],
+      "reveals": [
+        {
+          "beat": 0,
+          "anchor": "这四个点不共面"
+        },
+        {
+          "beat": 1,
+          "anchor": "A O 等于一"
+        },
+        {
+          "beat": 1,
+          "anchor": "在底面内"
+        }
+      ],
+      "claimIds": [
+        "noncoplanar",
+        "independent_center",
+        "center_in_base",
+        "q_is_o"
+      ]
+    },
+    {
+      "id": "coordinates",
+      "chapter": 2,
+      "title": "沿三条互相垂直的棱建立坐标系",
+      "stage": "coordinates",
+      "note": "x 轴沿 AD，y 轴沿 AB，z 轴沿 AP，原点为 A。",
+      "blocks": [
+        {
+          "label": "以 A 为原点",
+          "math": "A(0,0,0)",
+          "beat": 0
+        },
+        {
+          "label": "由 BC＝2、AB＝√2",
+          "math": "C(2,\\sqrt2,0)",
+          "beat": 1,
+          "accent": true
+        },
+        {
+          "math": "P(0,0,\\sqrt2),\\quad O(1,0,0)",
+          "beat": 1,
+          "small": true
+        }
+      ],
+      "beats": [
+        {
+          "say": "最后一问。以 A 为原点，A D、A B、A P 的方向，分别作为 x、y、z 轴的正方向。",
+          "caption": "以 A 为原点，沿 AD、AB、AP 建系。"
+        },
+        {
+          "say": "于是 C 的坐标为二、根号二、零；P 为零、零、根号二；O 为一、零、零。",
+          "caption": "读出 C、P、O 的坐标。"
+        }
+      ],
+      "cues": [
+        {
+          "beat": 0,
+          "anchor": "以 A 为原点",
+          "objects": [
+            "point:A"
+          ]
+        },
+        {
+          "beat": 0,
+          "anchor": "A D、A B、A P 的方向",
+          "objects": [
+            "line:AD",
+            "line:AB",
+            "line:PA"
+          ]
+        },
+        {
+          "beat": 0,
+          "anchor": "分别作为 x、y、z 轴",
+          "objects": [
+            "axis:x",
+            "axis:y",
+            "axis:z"
+          ],
+          "label": "沿三条垂直棱建立坐标轴"
+        },
+        {
+          "beat": 1,
+          "anchor": "C 的坐标",
+          "objects": [
+            "point:C"
+          ],
+          "label": "C(2, √2, 0)"
+        },
+        {
+          "beat": 1,
+          "anchor": "P 为零",
+          "objects": [
+            "point:P"
+          ],
+          "label": "P(0, 0, √2)"
+        },
+        {
+          "beat": 1,
+          "anchor": "O 为一",
+          "objects": [
+            "point:O"
+          ],
+          "label": "O(1, 0, 0)"
+        }
+      ],
+      "reveals": [
+        {
+          "beat": 0,
+          "anchor": "以 A 为原点"
+        },
+        {
+          "beat": 1,
+          "anchor": "C 的坐标"
+        },
+        {
+          "beat": 1,
+          "anchor": "P 为零"
+        }
+      ],
+      "claimIds": [
+        "length_PA",
+        "length_BC"
+      ]
+    },
+    {
+      "id": "vectors",
+      "chapter": 2,
+      "title": "取方向向量，计算数量积与模长",
+      "stage": "vectors",
+      "note": "AC 与 OP 是两条直线的方向向量，允许选择任意方向。",
+      "blocks": [
+        {
+          "label": "两个方向向量",
+          "math": "\\vec u=\\overrightarrow{AC}=(2,\\sqrt2,0)",
+          "beat": 0,
+          "small": true
+        },
+        {
+          "math": "\\vec v=\\overrightarrow{OP}=(-1,0,\\sqrt2)",
+          "beat": 0,
+          "small": true
+        },
+        {
+          "label": "数量积与模长",
+          "math": "\\vec u\\cdot\\vec v=-2",
+          "beat": 1
+        },
+        {
+          "math": "|\\vec u|=\\sqrt6,\\quad |\\vec v|=\\sqrt3",
+          "beat": 1
+        }
+      ],
+      "beats": [
+        {
+          "say": "取 A C 的方向向量为二、根号二、零，O P 的方向向量为负一、零、根号二。",
+          "caption": "取方向向量 AC 与 OP。"
+        },
+        {
+          "say": "数量积为负二。两个向量的模长，分别是根号六和根号三。",
+          "caption": "数量积为 −2，模长分别为 √6 与 √3。"
+        }
+      ],
+      "cues": [
+        {
+          "beat": 0,
+          "anchor": "A C 的方向向量",
+          "objects": [
+            "line:AC"
+          ],
+          "label": "方向向量 AC"
+        },
+        {
+          "beat": 0,
+          "anchor": "O P 的方向向量",
+          "objects": [
+            "line:OP"
+          ],
+          "label": "方向向量 OP"
+        },
+        {
+          "beat": 1,
+          "anchor": "数量积为负二",
+          "objects": [
+            "line:AC",
+            "line:OP"
+          ],
+          "label": "AC · OP = −2"
+        },
+        {
+          "beat": 1,
+          "anchor": "两个向量的模长",
+          "objects": [
+            "line:AC",
+            "line:OP"
+          ],
+          "label": "|AC| = √6，|OP| = √3"
+        }
+      ],
+      "reveals": [
+        {
+          "beat": 0,
+          "anchor": "A C 的方向向量"
+        },
+        {
+          "beat": 0,
+          "anchor": "O P 的方向向量"
+        },
+        {
+          "beat": 1,
+          "anchor": "数量积"
+        },
+        {
+          "beat": 1,
+          "anchor": "两个向量的模长"
+        }
+      ],
+      "claimIds": [
+        "vector_dot",
+        "vector_ac",
+        "vector_op"
+      ]
+    },
+    {
+      "id": "angle",
+      "chapter": 2,
+      "title": "直线夹角取锐角，数量积要取绝对值",
+      "stage": "angle",
+      "note": "把 PO 平移至过 A 的平行线，标出的 θ 为两直线所成的角。",
+      "blocks": [
+        {
+          "label": "直线所成角的范围",
+          "math": "0^\\circ\\leq\\theta\\leq90^\\circ",
+          "beat": 0
+        },
+        {
+          "label": "方向向量可以反向",
+          "math": "\\cos\\theta=\\frac{|\\vec u\\cdot\\vec v|}{|\\vec u||\\vec v|}=\\frac{|-2|}{\\sqrt6\\sqrt3}",
+          "beat": 1
+        },
+        {
+          "math": "\\boxed{\\cos\\theta=\\frac{\\sqrt2}{3}}",
+          "beat": 2,
+          "accent": true,
+          "answer": true
+        }
+      ],
+      "beats": [
+        {
+          "say": "将 P O 平移到过 A 的平行线上。两条直线所成的角，取零到九十度。",
+          "caption": "平移直线 PO，在 A 处标出直线夹角 θ。"
+        },
+        {
+          "say": "因此，计算余弦时，要对数量积取绝对值。用二除以根号六与根号三的乘积。",
+          "caption": "直线夹角取锐角，数量积要取绝对值。"
+        },
+        {
+          "say": "化简得到，根号二除以三。",
+          "caption": "最终答案：cos θ＝√2／3。"
+        }
+      ],
+      "cues": [
+        {
+          "beat": 0,
+          "anchor": "P O 平移",
+          "objects": [
+            "line:OP",
+            "line:translatedPO"
+          ],
+          "label": "把 PO 平移到过 A 的平行线"
+        },
+        {
+          "beat": 0,
+          "anchor": "取零到九十度",
+          "objects": [
+            "line:AC",
+            "line:translatedPO",
+            "angle"
+          ],
+          "label": "0° ≤ θ ≤ 90°"
+        },
+        {
+          "beat": 1,
+          "anchor": "数量积取绝对值",
+          "objects": [
+            "line:AC",
+            "line:OP",
+            "angle"
+          ],
+          "label": "直线夹角：数量积取绝对值"
+        },
+        {
+          "beat": 2,
+          "anchor": "根号二除以三",
+          "objects": [
+            "line:AC",
+            "line:translatedPO",
+            "angle"
+          ],
+          "label": "cos θ = √2 / 3"
+        }
+      ],
+      "reveals": [
+        {
+          "beat": 0,
+          "anchor": "取零到九十度"
+        },
+        {
+          "beat": 1,
+          "anchor": "数量积取绝对值"
+        },
+        {
+          "beat": 2,
+          "anchor": "根号二除以三"
+        }
+      ],
+      "claimIds": [
+        "line_cosine"
+      ]
+    },
+    {
+      "id": "recap",
+      "chapter": 2,
+      "title": "把三段推理串成一条解题路线",
+      "stage": "recap",
+      "note": "找垂线 → 构造等距点 → 建系求角。",
+      "blocks": [
+        {
+          "label": "第一问",
+          "text": "线面垂直，推出面面垂直。",
+          "beat": 0,
+          "compact": true
+        },
+        {
+          "label": "第二问 · i",
+          "math": "AO=1,\\quad O\\in\\text{平面 }ABCD",
+          "beat": 1,
+          "small": true
+        },
+        {
+          "label": "第二问 · ii",
+          "math": "\\boxed{\\cos\\theta=\\frac{\\sqrt2}{3}}",
+          "beat": 1,
+          "accent": true,
+          "answer": true
+        }
+      ],
+      "beats": [
+        {
+          "say": "回顾方法。面面垂直先找线面垂直。四点共球，通过构造等距点定位球心。",
+          "caption": "面面垂直找垂线，四点共球找等距点。"
+        },
+        {
+          "say": "异面直线夹角，再用空间向量计算。注意数量积的绝对值，答案是根号二除以三。",
+          "caption": "建系求角时注意绝对值，答案为 √2／3。"
+        }
+      ],
+      "cues": [
+        {
+          "beat": 0,
+          "anchor": "面面垂直",
+          "objects": [
+            "plane:PAB",
+            "plane:PAD"
+          ],
+          "label": "线面垂直 → 面面垂直"
+        },
+        {
+          "beat": 0,
+          "anchor": "四点共球",
+          "objects": [
+            "sphere",
+            "point:P",
+            "point:B",
+            "point:C",
+            "point:D"
+          ]
+        },
+        {
+          "beat": 0,
+          "anchor": "构造等距点定位球心",
+          "objects": [
+            "point:O",
+            "line:OP"
+          ],
+          "label": "构造等距点 → 球心"
+        },
+        {
+          "beat": 1,
+          "anchor": "异面直线夹角",
+          "objects": [
+            "line:AC",
+            "line:OP"
+          ],
+          "label": "空间向量 → 直线夹角"
+        },
+        {
+          "beat": 1,
+          "anchor": "绝对值",
+          "objects": [
+            "line:AC",
+            "line:OP"
+          ],
+          "label": "数量积取绝对值"
+        },
+        {
+          "beat": 1,
+          "anchor": "根号二除以三",
+          "objects": [
+            "line:AC",
+            "line:OP"
+          ],
+          "label": "cos θ = √2 / 3"
+        }
+      ],
+      "reveals": [
+        {
+          "beat": 0,
+          "anchor": "面面垂直"
+        },
+        {
+          "beat": 0,
+          "anchor": "定位球心"
+        },
+        {
+          "beat": 1,
+          "anchor": "答案是"
+        }
+      ],
+      "claimIds": [
+        "planes_perpendicular",
+        "center_in_base",
+        "line_cosine"
+      ]
+    }
+  ],
+  "expectedAnswer": "平面 PAB ⟂ 平面 PAD；球心 O 位于 AD 上，AO=1，R=√3；异面直线 AC 与 PO 所成角的余弦为 √2/3。",
+  "assumptions": [],
+  "model": {
+    "A": [
+      0,
+      0,
+      0
+    ],
+    "B": [
+      0,
+      1.4142135623730951,
+      0
+    ],
+    "C": [
+      2,
+      1.4142135623730951,
+      0
+    ],
+    "D": [
+      2.732050807568877,
+      0,
+      0
+    ],
+    "P": [
+      0,
+      0,
+      1.4142135623730951
+    ],
+    "Q": [
+      1,
+      0,
+      0
+    ],
+    "O": [
+      1,
+      0,
+      0
+    ],
+    "H": [
+      2,
+      0,
+      0
+    ],
+    "M": [
+      1,
+      1.4142135623730951,
+      0
+    ],
+    "radius": 1.7320508075688772
+  },
+  "entities": {
+    "plane:ABCD": {
+      "label": "底面 ABCD",
+      "color": "#58c4dd",
+      "vertices": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    "plane:PAB": {
+      "label": "平面 PAB",
+      "color": "#58c4dd",
+      "vertices": [
+        "P",
+        "A",
+        "B"
+      ]
+    },
+    "plane:PAD": {
+      "label": "平面 PAD",
+      "color": "#c77dff",
+      "vertices": [
+        "P",
+        "A",
+        "D"
+      ]
+    },
+    "face:ABMQ": {
+      "label": "矩形 ABMQ",
+      "color": "#58c4dd",
+      "vertices": [
+        "A",
+        "B",
+        "M",
+        "Q"
+      ]
+    },
+    "face:PAQ": {
+      "label": "直角三角形 PAQ",
+      "color": "#c77dff",
+      "vertices": [
+        "P",
+        "A",
+        "Q"
+      ]
+    },
+    "face:BAQ": {
+      "label": "直角三角形 BAQ",
+      "color": "#58c4dd",
+      "vertices": [
+        "B",
+        "A",
+        "Q"
+      ]
+    },
+    "face:ABCH": {
+      "label": "矩形 ABCH",
+      "color": "#58c4dd",
+      "vertices": [
+        "A",
+        "B",
+        "C",
+        "H"
+      ]
+    },
+    "face:CQH": {
+      "label": "直角三角形 CQH",
+      "color": "#83c167",
+      "vertices": [
+        "C",
+        "Q",
+        "H"
+      ]
+    },
+    "line:PA": {
+      "label": "PA",
+      "color": "#c77dff",
+      "vertices": [
+        "P",
+        "A"
+      ]
+    },
+    "line:AB": {
+      "label": "AB",
+      "color": "#58c4dd",
+      "vertices": [
+        "A",
+        "B"
+      ]
+    },
+    "line:AD": {
+      "label": "AD",
+      "color": "#ffff00",
+      "vertices": [
+        "A",
+        "D"
+      ]
+    },
+    "line:BC": {
+      "label": "BC",
+      "color": "#ffff00",
+      "vertices": [
+        "B",
+        "C"
+      ]
+    },
+    "line:CD": {
+      "label": "CD",
+      "color": "#ffffff",
+      "vertices": [
+        "C",
+        "D"
+      ]
+    },
+    "line:PB": {
+      "label": "PB",
+      "color": "#ffffff",
+      "vertices": [
+        "P",
+        "B"
+      ]
+    },
+    "line:PC": {
+      "label": "PC",
+      "color": "#ffffff",
+      "vertices": [
+        "P",
+        "C"
+      ]
+    },
+    "line:PD": {
+      "label": "PD",
+      "color": "#ffffff",
+      "vertices": [
+        "P",
+        "D"
+      ]
+    },
+    "line:AQ": {
+      "label": "AQ",
+      "color": "#ffff00",
+      "vertices": [
+        "A",
+        "Q"
+      ]
+    },
+    "line:BM": {
+      "label": "BM",
+      "color": "#ffff00",
+      "vertices": [
+        "B",
+        "M"
+      ]
+    },
+    "line:MC": {
+      "label": "MC",
+      "color": "#ffff00",
+      "vertices": [
+        "M",
+        "C"
+      ]
+    },
+    "line:MQ": {
+      "label": "MQ",
+      "color": "#58c4dd",
+      "vertices": [
+        "M",
+        "Q"
+      ]
+    },
+    "line:QP": {
+      "label": "QP",
+      "color": "#83c167",
+      "vertices": [
+        "Q",
+        "P"
+      ]
+    },
+    "line:QB": {
+      "label": "QB",
+      "color": "#83c167",
+      "vertices": [
+        "Q",
+        "B"
+      ]
+    },
+    "line:QC": {
+      "label": "QC",
+      "color": "#83c167",
+      "vertices": [
+        "Q",
+        "C"
+      ]
+    },
+    "line:QD": {
+      "label": "QD",
+      "color": "#83c167",
+      "vertices": [
+        "Q",
+        "D"
+      ]
+    },
+    "line:CH": {
+      "label": "CH",
+      "color": "#58c4dd",
+      "vertices": [
+        "C",
+        "H"
+      ]
+    },
+    "line:AH": {
+      "label": "AH",
+      "color": "#ffff00",
+      "vertices": [
+        "A",
+        "H"
+      ]
+    },
+    "line:QH": {
+      "label": "QH",
+      "color": "#ffff00",
+      "vertices": [
+        "Q",
+        "H"
+      ]
+    },
+    "line:AO": {
+      "label": "AO",
+      "color": "#ffff00",
+      "vertices": [
+        "A",
+        "O"
+      ]
+    },
+    "line:OP": {
+      "label": "OP",
+      "color": "#83c167",
+      "vertices": [
+        "O",
+        "P"
+      ]
+    },
+    "line:AC": {
+      "label": "AC",
+      "color": "#ffff00",
+      "vertices": [
+        "A",
+        "C"
+      ]
+    },
+    "point:A": {
+      "label": "A",
+      "color": "#ffffff",
+      "vertices": [
+        "A"
+      ]
+    },
+    "point:B": {
+      "label": "B",
+      "color": "#ffffff",
+      "vertices": [
+        "B"
+      ]
+    },
+    "point:C": {
+      "label": "C",
+      "color": "#ffffff",
+      "vertices": [
+        "C"
+      ]
+    },
+    "point:D": {
+      "label": "D",
+      "color": "#ffffff",
+      "vertices": [
+        "D"
+      ]
+    },
+    "point:P": {
+      "label": "P",
+      "color": "#ffffff",
+      "vertices": [
+        "P"
+      ]
+    },
+    "point:Q": {
+      "label": "Q",
+      "color": "#ffff00",
+      "vertices": [
+        "Q"
+      ]
+    },
+    "point:O": {
+      "label": "O",
+      "color": "#ffff00",
+      "vertices": [
+        "O"
+      ]
+    },
+    "point:H": {
+      "label": "H",
+      "color": "#ffffff",
+      "vertices": [
+        "H"
+      ]
+    },
+    "point:M": {
+      "label": "M",
+      "color": "#ffffff",
+      "vertices": [
+        "M"
+      ]
+    },
+    "sphere": {
+      "label": "四点共球",
+      "color": "#83c167"
+    },
+    "axis:x": {
+      "label": "x 轴",
+      "color": "#ffff00"
+    },
+    "axis:y": {
+      "label": "y 轴",
+      "color": "#58c4dd"
+    },
+    "axis:z": {
+      "label": "z 轴",
+      "color": "#c77dff"
+    },
+    "line:translatedPO": {
+      "label": "PO 的平行线",
+      "color": "#83c167"
+    },
+    "angle": {
+      "label": "直线夹角 θ",
+      "color": "#ffff00"
+    }
+  },
+  "claims": [
+    {
+      "id": "pa_ab",
+      "description": "PA 垂直底面方向 AB",
+      "left": "dot(subtract(P,A),subtract(B,A))",
+      "right": "0",
+      "kind": "given",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 1e-10
+    },
+    {
+      "id": "pa_ad",
+      "description": "PA 垂直底面方向 AD",
+      "left": "dot(subtract(P,A),subtract(D,A))",
+      "right": "0",
+      "kind": "given",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 1e-10
+    },
+    {
+      "id": "bc_parallel_ad",
+      "description": "BC 与 AD 平行",
+      "left": "norm(cross(subtract(C,B),subtract(D,A)))",
+      "right": "0",
+      "kind": "given",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 1e-10
+    },
+    {
+      "id": "ab_ad",
+      "description": "AB 垂直 AD",
+      "left": "dot(subtract(B,A),subtract(D,A))",
+      "right": "0",
+      "kind": "given",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 1e-10
+    },
+    {
+      "id": "length_PA",
+      "description": "题设长度 PA",
+      "left": "norm(subtract(P,A))",
+      "right": "sqrt(2)",
+      "kind": "given",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "length_AB",
+      "description": "题设长度 AB",
+      "left": "norm(subtract(A,B))",
+      "right": "sqrt(2)",
+      "kind": "given",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "length_BC",
+      "description": "题设长度 BC",
+      "left": "norm(subtract(B,C))",
+      "right": "2",
+      "kind": "given",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "length_AD",
+      "description": "题设长度 AD",
+      "left": "norm(subtract(A,D))",
+      "right": "1+sqrt(3)",
+      "kind": "given",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "planes_perpendicular",
+      "description": "PAB 与 PAD 的法向量垂直",
+      "left": "dot(cross(subtract(P,A),subtract(B,A)),cross(subtract(P,A),subtract(D,A)))",
+      "right": "0",
+      "kind": "answer",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 1e-10
+    },
+    {
+      "id": "aq_one",
+      "description": "辅助点 AQ 等于一",
+      "left": "norm(subtract(Q,A))",
+      "right": "1",
+      "kind": "derivation",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "q_between",
+      "description": "Q 严格位于 A、D 之间",
+      "left": "norm(subtract(Q,A))+norm(subtract(D,Q))",
+      "right": "norm(subtract(D,A))",
+      "kind": "derivation",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "midpoint",
+      "description": "M 是 BC 的中点",
+      "left": "norm(subtract(M,divide(add(B,C),2)))",
+      "right": "0",
+      "kind": "derivation",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 1e-10
+    },
+    {
+      "id": "mq_perp",
+      "description": "MQ 垂直 AD",
+      "left": "dot(subtract(M,Q),subtract(D,A))",
+      "right": "0",
+      "kind": "derivation",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 1e-10
+    },
+    {
+      "id": "rectangle_ch",
+      "description": "ABCH 对边相等且平行",
+      "left": "norm(subtract(subtract(C,H),subtract(B,A)))",
+      "right": "0",
+      "kind": "derivation",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 1e-10
+    },
+    {
+      "id": "qh_one",
+      "description": "QH 等于一",
+      "left": "norm(subtract(H,Q))",
+      "right": "1",
+      "kind": "derivation",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "radius_P",
+      "description": "QP 的平方等于三",
+      "left": "dot(subtract(P,Q),subtract(P,Q))",
+      "right": "3",
+      "kind": "derivation",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "radius_B",
+      "description": "QB 的平方等于三",
+      "left": "dot(subtract(B,Q),subtract(B,Q))",
+      "right": "3",
+      "kind": "derivation",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "radius_C",
+      "description": "QC 的平方等于三",
+      "left": "dot(subtract(C,Q),subtract(C,Q))",
+      "right": "3",
+      "kind": "derivation",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "radius_D",
+      "description": "QD 的平方等于三",
+      "left": "dot(subtract(D,Q),subtract(D,Q))",
+      "right": "3",
+      "kind": "derivation",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "noncoplanar",
+      "description": "PBCD 不共面",
+      "left": "abs(dot(subtract(P,B),cross(subtract(C,B),subtract(D,B))))",
+      "right": "0",
+      "kind": "derivation",
+      "relation": "gt",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 1e-10
+    },
+    {
+      "id": "independent_center",
+      "description": "由三条垂直平分方程独立解出球心，与模型 O 比较",
+      "left": "norm(subtract(flatten(lusolve([multiply(2,subtract(C,B)),multiply(2,subtract(D,B)),multiply(2,subtract(P,B))],[dot(C,C)-dot(B,B),dot(D,D)-dot(B,B),dot(P,P)-dot(B,B)])),O))",
+      "right": "0",
+      "kind": "answer",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 1e-10
+    },
+    {
+      "id": "center_in_base",
+      "description": "O 位于底面 ABC 内",
+      "left": "dot(subtract(O,A),cross(subtract(B,A),subtract(C,A)))",
+      "right": "0",
+      "kind": "answer",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 1e-10
+    },
+    {
+      "id": "q_is_o",
+      "description": "辅助点 Q 与球心 O 相同",
+      "left": "norm(subtract(Q,O))",
+      "right": "0",
+      "kind": "derivation",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 1e-10
+    },
+    {
+      "id": "vector_dot",
+      "description": "AC 与 OP 数量积为负二",
+      "left": "dot(subtract(C,A),subtract(P,O))",
+      "right": "-2",
+      "kind": "derivation",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "vector_ac",
+      "description": "AC 模为根号六",
+      "left": "norm(subtract(C,A))",
+      "right": "sqrt(6)",
+      "kind": "derivation",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "vector_op",
+      "description": "OP 模为根号三",
+      "left": "norm(subtract(P,O))",
+      "right": "sqrt(3)",
+      "kind": "derivation",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "line_cosine",
+      "description": "异面直线夹角余弦为根号二除以三",
+      "left": "abs(dot(subtract(C,A),subtract(P,O)))/(norm(subtract(C,A))*norm(subtract(P,O)))",
+      "right": "sqrt(2)/3",
+      "kind": "answer",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    }
+  ]
+}

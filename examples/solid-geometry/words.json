@@ -1,0 +1,4507 @@
+{
+  "schemaVersion": 1,
+  "timeUnit": "seconds",
+  "scriptSha256": "105463a644f3151e35fb1d7990c457d84fa5e6f1831e428e7a95107033a74438",
+  "words": [
+    {
+      "index": 0,
+      "text": "这",
+      "start": 0.1,
+      "end": 0.275,
+      "charStart": 0,
+      "charEnd": 1,
+      "display": "这"
+    },
+    {
+      "index": 1,
+      "text": "道",
+      "start": 0.275,
+      "end": 0.45,
+      "charStart": 1,
+      "charEnd": 2,
+      "display": "道"
+    },
+    {
+      "index": 2,
+      "text": "高三",
+      "start": 0.475,
+      "end": 0.875,
+      "charStart": 2,
+      "charEnd": 4,
+      "display": "高三"
+    },
+    {
+      "index": 3,
+      "text": "立体几何",
+      "start": 0.8875,
+      "end": 1.6,
+      "charStart": 4,
+      "charEnd": 8,
+      "display": "立体几何"
+    },
+    {
+      "index": 4,
+      "text": "题",
+      "start": 1.6,
+      "end": 1.9375,
+      "charStart": 8,
+      "charEnd": 9,
+      "display": "题，"
+    },
+    {
+      "index": 5,
+      "text": "先",
+      "start": 2.175,
+      "end": 2.375,
+      "charStart": 9,
+      "charEnd": 10,
+      "display": "先"
+    },
+    {
+      "index": 6,
+      "text": "证明",
+      "start": 2.3875,
+      "end": 2.7625,
+      "charStart": 10,
+      "charEnd": 12,
+      "display": "证明"
+    },
+    {
+      "index": 7,
+      "text": "面面",
+      "start": 2.7875,
+      "end": 3.1125,
+      "charStart": 12,
+      "charEnd": 14,
+      "display": "面面"
+    },
+    {
+      "index": 8,
+      "text": "垂直",
+      "start": 3.125,
+      "end": 3.6875,
+      "charStart": 14,
+      "charEnd": 16,
+      "display": "垂直。"
+    },
+    {
+      "index": 9,
+      "text": "再",
+      "start": 4.2625,
+      "end": 4.4375,
+      "charStart": 16,
+      "charEnd": 17,
+      "display": "再"
+    },
+    {
+      "index": 10,
+      "text": "定位",
+      "start": 4.4375,
+      "end": 4.775,
+      "charStart": 17,
+      "charEnd": 19,
+      "display": "定位"
+    },
+    {
+      "index": 11,
+      "text": "四",
+      "start": 4.8,
+      "end": 4.9875,
+      "charStart": 19,
+      "charEnd": 20,
+      "display": "四"
+    },
+    {
+      "index": 12,
+      "text": "点",
+      "start": 4.9875,
+      "end": 5.175,
+      "charStart": 20,
+      "charEnd": 21,
+      "display": "点"
+    },
+    {
+      "index": 13,
+      "text": "共球",
+      "start": 5.1875,
+      "end": 5.5375,
+      "charStart": 21,
+      "charEnd": 23,
+      "display": "共球"
+    },
+    {
+      "index": 14,
+      "text": "的",
+      "start": 5.5375,
+      "end": 5.625,
+      "charStart": 23,
+      "charEnd": 24,
+      "display": "的"
+    },
+    {
+      "index": 15,
+      "text": "球心",
+      "start": 5.6375,
+      "end": 6.15,
+      "charStart": 24,
+      "charEnd": 26,
+      "display": "球心，"
+    },
+    {
+      "index": 16,
+      "text": "最后",
+      "start": 6.475,
+      "end": 6.8,
+      "charStart": 26,
+      "charEnd": 28,
+      "display": "最后"
+    },
+    {
+      "index": 17,
+      "text": "求",
+      "start": 6.8125,
+      "end": 7.0125,
+      "charStart": 28,
+      "charEnd": 29,
+      "display": "求"
+    },
+    {
+      "index": 18,
+      "text": "异面",
+      "start": 7.0125,
+      "end": 7.5,
+      "charStart": 29,
+      "charEnd": 31,
+      "display": "异面"
+    },
+    {
+      "index": 19,
+      "text": "直线",
+      "start": 7.6,
+      "end": 8.0,
+      "charStart": 31,
+      "charEnd": 33,
+      "display": "直线"
+    },
+    {
+      "index": 20,
+      "text": "夹角",
+      "start": 8.0125,
+      "end": 8.5375,
+      "charStart": 33,
+      "charEnd": 35,
+      "display": "夹角。"
+    },
+    {
+      "index": 21,
+      "text": "我们",
+      "start": 9.1125,
+      "end": 9.3375,
+      "charStart": 35,
+      "charEnd": 37,
+      "display": "我们"
+    },
+    {
+      "index": 22,
+      "text": "把",
+      "start": 9.35,
+      "end": 9.4875,
+      "charStart": 37,
+      "charEnd": 38,
+      "display": "把"
+    },
+    {
+      "index": 23,
+      "text": "推理",
+      "start": 9.5,
+      "end": 10.0,
+      "charStart": 38,
+      "charEnd": 40,
+      "display": "推理"
+    },
+    {
+      "index": 24,
+      "text": "和",
+      "start": 10.025,
+      "end": 10.1625,
+      "charStart": 40,
+      "charEnd": 41,
+      "display": "和"
+    },
+    {
+      "index": 25,
+      "text": "空间",
+      "start": 10.175,
+      "end": 10.5625,
+      "charStart": 41,
+      "charEnd": 43,
+      "display": "空间"
+    },
+    {
+      "index": 26,
+      "text": "图形",
+      "start": 10.575,
+      "end": 10.9375,
+      "charStart": 43,
+      "charEnd": 45,
+      "display": "图形"
+    },
+    {
+      "index": 27,
+      "text": "一起",
+      "start": 10.9625,
+      "end": 11.325,
+      "charStart": 45,
+      "charEnd": 47,
+      "display": "一起"
+    },
+    {
+      "index": 28,
+      "text": "看",
+      "start": 11.325,
+      "end": 11.625,
+      "charStart": 47,
+      "charEnd": 48,
+      "display": "看。"
+    },
+    {
+      "index": 29,
+      "text": "底面",
+      "start": 12.1875,
+      "end": 12.5375,
+      "charStart": 48,
+      "charEnd": 50,
+      "display": "底面"
+    },
+    {
+      "index": 30,
+      "text": "是",
+      "start": 12.5625,
+      "end": 12.7,
+      "charStart": 50,
+      "charEnd": 51,
+      "display": "是"
+    },
+    {
+      "index": 31,
+      "text": "直角",
+      "start": 12.7125,
+      "end": 13.0625,
+      "charStart": 51,
+      "charEnd": 53,
+      "display": "直角"
+    },
+    {
+      "index": 32,
+      "text": "梯形",
+      "start": 13.075,
+      "end": 13.6,
+      "charStart": 53,
+      "charEnd": 55,
+      "display": "梯形，"
+    },
+    {
+      "index": 33,
+      "text": "B",
+      "start": 13.8625,
+      "end": 14.0625,
+      "charStart": 55,
+      "charEnd": 56,
+      "display": "B"
+    },
+    {
+      "index": 34,
+      "text": "C",
+      "start": 14.0625,
+      "end": 14.2875,
+      "charStart": 56,
+      "charEnd": 57,
+      "display": "C"
+    },
+    {
+      "index": 35,
+      "text": "平行",
+      "start": 14.3,
+      "end": 14.8125,
+      "charStart": 57,
+      "charEnd": 59,
+      "display": "平行"
+    },
+    {
+      "index": 36,
+      "text": "A",
+      "start": 14.9125,
+      "end": 15.1125,
+      "charStart": 59,
+      "charEnd": 60,
+      "display": "A"
+    },
+    {
+      "index": 37,
+      "text": "D",
+      "start": 15.1125,
+      "end": 15.3875,
+      "charStart": 60,
+      "charEnd": 61,
+      "display": "D，"
+    },
+    {
+      "index": 38,
+      "text": "A",
+      "start": 15.6625,
+      "end": 15.8375,
+      "charStart": 61,
+      "charEnd": 62,
+      "display": "A"
+    },
+    {
+      "index": 39,
+      "text": "B",
+      "start": 15.8375,
+      "end": 16.025,
+      "charStart": 62,
+      "charEnd": 63,
+      "display": "B"
+    },
+    {
+      "index": 40,
+      "text": "垂直",
+      "start": 16.0375,
+      "end": 16.55,
+      "charStart": 63,
+      "charEnd": 65,
+      "display": "垂直"
+    },
+    {
+      "index": 41,
+      "text": "A",
+      "start": 16.65,
+      "end": 16.85,
+      "charStart": 65,
+      "charEnd": 66,
+      "display": "A"
+    },
+    {
+      "index": 42,
+      "text": "D",
+      "start": 16.85,
+      "end": 17.125,
+      "charStart": 66,
+      "charEnd": 67,
+      "display": "D。"
+    },
+    {
+      "index": 43,
+      "text": "P",
+      "start": 17.6875,
+      "end": 17.975,
+      "charStart": 67,
+      "charEnd": 68,
+      "display": "P"
+    },
+    {
+      "index": 44,
+      "text": "A",
+      "start": 17.975,
+      "end": 18.2125,
+      "charStart": 68,
+      "charEnd": 69,
+      "display": "A"
+    },
+    {
+      "index": 45,
+      "text": "垂直",
+      "start": 18.225,
+      "end": 18.6875,
+      "charStart": 69,
+      "charEnd": 71,
+      "display": "垂直"
+    },
+    {
+      "index": 46,
+      "text": "整个",
+      "start": 18.7125,
+      "end": 19.05,
+      "charStart": 71,
+      "charEnd": 73,
+      "display": "整个"
+    },
+    {
+      "index": 47,
+      "text": "底面",
+      "start": 19.0625,
+      "end": 19.575,
+      "charStart": 73,
+      "charEnd": 75,
+      "display": "底面。"
+    },
+    {
+      "index": 48,
+      "text": "第二",
+      "start": 20.15,
+      "end": 20.4375,
+      "charStart": 75,
+      "charEnd": 77,
+      "display": "第二"
+    },
+    {
+      "index": 49,
+      "text": "问",
+      "start": 20.4375,
+      "end": 20.625,
+      "charStart": 77,
+      "charEnd": 78,
+      "display": "问"
+    },
+    {
+      "index": 50,
+      "text": "中",
+      "start": 20.625,
+      "end": 20.8875,
+      "charStart": 78,
+      "charEnd": 79,
+      "display": "中，"
+    },
+    {
+      "index": 51,
+      "text": "P",
+      "start": 21.175,
+      "end": 21.4375,
+      "charStart": 79,
+      "charEnd": 80,
+      "display": "P"
+    },
+    {
+      "index": 52,
+      "text": "A",
+      "start": 21.4375,
+      "end": 21.625,
+      "charStart": 80,
+      "charEnd": 81,
+      "display": "A"
+    },
+    {
+      "index": 53,
+      "text": "和",
+      "start": 21.6375,
+      "end": 21.8625,
+      "charStart": 81,
+      "charEnd": 82,
+      "display": "和"
+    },
+    {
+      "index": 54,
+      "text": "A",
+      "start": 21.8625,
+      "end": 22.0625,
+      "charStart": 82,
+      "charEnd": 83,
+      "display": "A"
+    },
+    {
+      "index": 55,
+      "text": "B",
+      "start": 22.0625,
+      "end": 22.3625,
+      "charStart": 83,
+      "charEnd": 84,
+      "display": "B"
+    },
+    {
+      "index": 56,
+      "text": "都",
+      "start": 22.475,
+      "end": 22.625,
+      "charStart": 84,
+      "charEnd": 85,
+      "display": "都"
+    },
+    {
+      "index": 57,
+      "text": "等于",
+      "start": 22.6375,
+      "end": 22.9125,
+      "charStart": 85,
+      "charEnd": 87,
+      "display": "等于"
+    },
+    {
+      "index": 58,
+      "text": "根号",
+      "start": 22.9375,
+      "end": 23.275,
+      "charStart": 87,
+      "charEnd": 89,
+      "display": "根号"
+    },
+    {
+      "index": 59,
+      "text": "二",
+      "start": 23.275,
+      "end": 23.475,
+      "charStart": 89,
+      "charEnd": 90,
+      "display": "二，"
+    },
+    {
+      "index": 60,
+      "text": "B",
+      "start": 23.8125,
+      "end": 24.0,
+      "charStart": 90,
+      "charEnd": 91,
+      "display": "B"
+    },
+    {
+      "index": 61,
+      "text": "C",
+      "start": 24.0,
+      "end": 24.2625,
+      "charStart": 91,
+      "charEnd": 92,
+      "display": "C"
+    },
+    {
+      "index": 62,
+      "text": "等于",
+      "start": 24.275,
+      "end": 24.55,
+      "charStart": 92,
+      "charEnd": 94,
+      "display": "等于"
+    },
+    {
+      "index": 63,
+      "text": "二",
+      "start": 24.5625,
+      "end": 24.8125,
+      "charStart": 94,
+      "charEnd": 95,
+      "display": "二，"
+    },
+    {
+      "index": 64,
+      "text": "A",
+      "start": 25.1375,
+      "end": 25.3125,
+      "charStart": 95,
+      "charEnd": 96,
+      "display": "A"
+    },
+    {
+      "index": 65,
+      "text": "D",
+      "start": 25.3125,
+      "end": 25.5,
+      "charStart": 96,
+      "charEnd": 97,
+      "display": "D"
+    },
+    {
+      "index": 66,
+      "text": "等于",
+      "start": 25.5125,
+      "end": 25.95,
+      "charStart": 97,
+      "charEnd": 99,
+      "display": "等于"
+    },
+    {
+      "index": 67,
+      "text": "一",
+      "start": 26.05,
+      "end": 26.225,
+      "charStart": 99,
+      "charEnd": 100,
+      "display": "一"
+    },
+    {
+      "index": 68,
+      "text": "加",
+      "start": 26.225,
+      "end": 26.4125,
+      "charStart": 100,
+      "charEnd": 101,
+      "display": "加"
+    },
+    {
+      "index": 69,
+      "text": "根号三",
+      "start": 26.4125,
+      "end": 27.075,
+      "charStart": 101,
+      "charEnd": 104,
+      "display": "根号三。"
+    },
+    {
+      "index": 70,
+      "text": "第一",
+      "start": 27.65,
+      "end": 28.025,
+      "charStart": 104,
+      "charEnd": 106,
+      "display": "第一"
+    },
+    {
+      "index": 71,
+      "text": "问",
+      "start": 28.025,
+      "end": 28.325,
+      "charStart": 106,
+      "charEnd": 107,
+      "display": "问。"
+    },
+    {
+      "index": 72,
+      "text": "由",
+      "start": 28.8875,
+      "end": 29.1375,
+      "charStart": 107,
+      "charEnd": 108,
+      "display": "由"
+    },
+    {
+      "index": 73,
+      "text": "P",
+      "start": 29.1625,
+      "end": 29.4,
+      "charStart": 108,
+      "charEnd": 109,
+      "display": "P"
+    },
+    {
+      "index": 74,
+      "text": "A",
+      "start": 29.4,
+      "end": 29.6,
+      "charStart": 109,
+      "charEnd": 110,
+      "display": "A"
+    },
+    {
+      "index": 75,
+      "text": "垂直",
+      "start": 29.6125,
+      "end": 29.9875,
+      "charStart": 110,
+      "charEnd": 112,
+      "display": "垂直"
+    },
+    {
+      "index": 76,
+      "text": "底面",
+      "start": 30.0,
+      "end": 30.4625,
+      "charStart": 112,
+      "charEnd": 114,
+      "display": "底面，"
+    },
+    {
+      "index": 77,
+      "text": "得到",
+      "start": 30.725,
+      "end": 31.1875,
+      "charStart": 114,
+      "charEnd": 116,
+      "display": "得到"
+    },
+    {
+      "index": 78,
+      "text": "P",
+      "start": 31.2875,
+      "end": 31.55,
+      "charStart": 116,
+      "charEnd": 117,
+      "display": "P"
+    },
+    {
+      "index": 79,
+      "text": "A",
+      "start": 31.55,
+      "end": 31.725,
+      "charStart": 117,
+      "charEnd": 118,
+      "display": "A"
+    },
+    {
+      "index": 80,
+      "text": "垂直",
+      "start": 31.7375,
+      "end": 32.25,
+      "charStart": 118,
+      "charEnd": 120,
+      "display": "垂直"
+    },
+    {
+      "index": 81,
+      "text": "A",
+      "start": 32.35,
+      "end": 32.55,
+      "charStart": 120,
+      "charEnd": 121,
+      "display": "A"
+    },
+    {
+      "index": 82,
+      "text": "B",
+      "start": 32.55,
+      "end": 32.825,
+      "charStart": 121,
+      "charEnd": 122,
+      "display": "B。"
+    },
+    {
+      "index": 83,
+      "text": "再",
+      "start": 33.3875,
+      "end": 33.5625,
+      "charStart": 122,
+      "charEnd": 123,
+      "display": "再"
+    },
+    {
+      "index": 84,
+      "text": "结合",
+      "start": 33.575,
+      "end": 34.0875,
+      "charStart": 123,
+      "charEnd": 125,
+      "display": "结合"
+    },
+    {
+      "index": 85,
+      "text": "A",
+      "start": 34.1875,
+      "end": 34.3625,
+      "charStart": 125,
+      "charEnd": 126,
+      "display": "A"
+    },
+    {
+      "index": 86,
+      "text": "B",
+      "start": 34.3625,
+      "end": 34.55,
+      "charStart": 126,
+      "charEnd": 127,
+      "display": "B"
+    },
+    {
+      "index": 87,
+      "text": "垂直",
+      "start": 34.5625,
+      "end": 34.95,
+      "charStart": 127,
+      "charEnd": 129,
+      "display": "垂直"
+    },
+    {
+      "index": 88,
+      "text": "A",
+      "start": 34.9625,
+      "end": 35.1375,
+      "charStart": 129,
+      "charEnd": 130,
+      "display": "A"
+    },
+    {
+      "index": 89,
+      "text": "D",
+      "start": 35.1375,
+      "end": 35.4125,
+      "charStart": 130,
+      "charEnd": 131,
+      "display": "D，"
+    },
+    {
+      "index": 90,
+      "text": "而且",
+      "start": 35.775,
+      "end": 36.2875,
+      "charStart": 131,
+      "charEnd": 133,
+      "display": "而且"
+    },
+    {
+      "index": 91,
+      "text": "P",
+      "start": 36.3875,
+      "end": 36.65,
+      "charStart": 133,
+      "charEnd": 134,
+      "display": "P"
+    },
+    {
+      "index": 92,
+      "text": "A",
+      "start": 36.65,
+      "end": 36.85,
+      "charStart": 134,
+      "charEnd": 135,
+      "display": "A"
+    },
+    {
+      "index": 93,
+      "text": "与",
+      "start": 36.8625,
+      "end": 37.05,
+      "charStart": 135,
+      "charEnd": 136,
+      "display": "与"
+    },
+    {
+      "index": 94,
+      "text": "A",
+      "start": 37.05,
+      "end": 37.2375,
+      "charStart": 136,
+      "charEnd": 137,
+      "display": "A"
+    },
+    {
+      "index": 95,
+      "text": "D",
+      "start": 37.2375,
+      "end": 37.5125,
+      "charStart": 137,
+      "charEnd": 138,
+      "display": "D"
+    },
+    {
+      "index": 96,
+      "text": "相交于",
+      "start": 37.6,
+      "end": 38.2125,
+      "charStart": 138,
+      "charEnd": 141,
+      "display": "相交于"
+    },
+    {
+      "index": 97,
+      "text": "A",
+      "start": 38.2125,
+      "end": 38.45,
+      "charStart": 141,
+      "charEnd": 142,
+      "display": "A，"
+    },
+    {
+      "index": 98,
+      "text": "便",
+      "start": 38.75,
+      "end": 38.9625,
+      "charStart": 142,
+      "charEnd": 143,
+      "display": "便"
+    },
+    {
+      "index": 99,
+      "text": "有",
+      "start": 38.9625,
+      "end": 39.2125,
+      "charStart": 143,
+      "charEnd": 144,
+      "display": "有"
+    },
+    {
+      "index": 100,
+      "text": "A",
+      "start": 39.3125,
+      "end": 39.4875,
+      "charStart": 144,
+      "charEnd": 145,
+      "display": "A"
+    },
+    {
+      "index": 101,
+      "text": "B",
+      "start": 39.4875,
+      "end": 39.675,
+      "charStart": 145,
+      "charEnd": 146,
+      "display": "B"
+    },
+    {
+      "index": 102,
+      "text": "垂直",
+      "start": 39.6875,
+      "end": 40.0125,
+      "charStart": 146,
+      "charEnd": 148,
+      "display": "垂直"
+    },
+    {
+      "index": 103,
+      "text": "平面",
+      "start": 40.025,
+      "end": 40.5,
+      "charStart": 148,
+      "charEnd": 150,
+      "display": "平面"
+    },
+    {
+      "index": 104,
+      "text": "P",
+      "start": 40.5875,
+      "end": 40.8375,
+      "charStart": 150,
+      "charEnd": 151,
+      "display": "P"
+    },
+    {
+      "index": 105,
+      "text": "A",
+      "start": 40.8375,
+      "end": 41.0125,
+      "charStart": 151,
+      "charEnd": 152,
+      "display": "A"
+    },
+    {
+      "index": 106,
+      "text": "D",
+      "start": 41.0125,
+      "end": 41.2875,
+      "charStart": 152,
+      "charEnd": 153,
+      "display": "D。"
+    },
+    {
+      "index": 107,
+      "text": "A",
+      "start": 41.85,
+      "end": 42.075,
+      "charStart": 153,
+      "charEnd": 154,
+      "display": "A"
+    },
+    {
+      "index": 108,
+      "text": "B",
+      "start": 42.075,
+      "end": 42.375,
+      "charStart": 154,
+      "charEnd": 155,
+      "display": "B"
+    },
+    {
+      "index": 109,
+      "text": "又",
+      "start": 42.3875,
+      "end": 42.55,
+      "charStart": 155,
+      "charEnd": 156,
+      "display": "又"
+    },
+    {
+      "index": 110,
+      "text": "在",
+      "start": 42.55,
+      "end": 42.6875,
+      "charStart": 156,
+      "charEnd": 157,
+      "display": "在"
+    },
+    {
+      "index": 111,
+      "text": "平面",
+      "start": 42.7,
+      "end": 43.1375,
+      "charStart": 157,
+      "charEnd": 159,
+      "display": "平面"
+    },
+    {
+      "index": 112,
+      "text": "P",
+      "start": 43.1625,
+      "end": 43.3875,
+      "charStart": 159,
+      "charEnd": 160,
+      "display": "P"
+    },
+    {
+      "index": 113,
+      "text": "A",
+      "start": 43.3875,
+      "end": 43.5625,
+      "charStart": 160,
+      "charEnd": 161,
+      "display": "A"
+    },
+    {
+      "index": 114,
+      "text": "B",
+      "start": 43.575,
+      "end": 43.7875,
+      "charStart": 161,
+      "charEnd": 162,
+      "display": "B"
+    },
+    {
+      "index": 115,
+      "text": "内",
+      "start": 43.7875,
+      "end": 44.0625,
+      "charStart": 162,
+      "charEnd": 163,
+      "display": "内，"
+    },
+    {
+      "index": 116,
+      "text": "所以",
+      "start": 44.3875,
+      "end": 44.75,
+      "charStart": 163,
+      "charEnd": 165,
+      "display": "所以"
+    },
+    {
+      "index": 117,
+      "text": "这",
+      "start": 44.775,
+      "end": 44.9,
+      "charStart": 165,
+      "charEnd": 166,
+      "display": "这"
+    },
+    {
+      "index": 118,
+      "text": "两",
+      "start": 44.9,
+      "end": 45.05,
+      "charStart": 166,
+      "charEnd": 167,
+      "display": "两"
+    },
+    {
+      "index": 119,
+      "text": "个",
+      "start": 45.05,
+      "end": 45.1125,
+      "charStart": 167,
+      "charEnd": 168,
+      "display": "个"
+    },
+    {
+      "index": 120,
+      "text": "平面",
+      "start": 45.125,
+      "end": 45.55,
+      "charStart": 168,
+      "charEnd": 170,
+      "display": "平面"
+    },
+    {
+      "index": 121,
+      "text": "互相",
+      "start": 45.575,
+      "end": 45.9375,
+      "charStart": 170,
+      "charEnd": 172,
+      "display": "互相"
+    },
+    {
+      "index": 122,
+      "text": "垂直",
+      "start": 45.95,
+      "end": 46.5,
+      "charStart": 172,
+      "charEnd": 174,
+      "display": "垂直。"
+    },
+    {
+      "index": 123,
+      "text": "第一",
+      "start": 47.075,
+      "end": 47.3875,
+      "charStart": 174,
+      "charEnd": 176,
+      "display": "第一"
+    },
+    {
+      "index": 124,
+      "text": "问",
+      "start": 47.3875,
+      "end": 47.55,
+      "charStart": 176,
+      "charEnd": 177,
+      "display": "问"
+    },
+    {
+      "index": 125,
+      "text": "完成",
+      "start": 47.5625,
+      "end": 48.0875,
+      "charStart": 177,
+      "charEnd": 179,
+      "display": "完成。"
+    },
+    {
+      "index": 126,
+      "text": "第二",
+      "start": 48.6625,
+      "end": 48.975,
+      "charStart": 179,
+      "charEnd": 181,
+      "display": "第二"
+    },
+    {
+      "index": 127,
+      "text": "问",
+      "start": 48.975,
+      "end": 49.2375,
+      "charStart": 181,
+      "charEnd": 182,
+      "display": "问，"
+    },
+    {
+      "index": 128,
+      "text": "先",
+      "start": 49.5125,
+      "end": 49.7125,
+      "charStart": 182,
+      "charEnd": 183,
+      "display": "先"
+    },
+    {
+      "index": 129,
+      "text": "考虑",
+      "start": 49.725,
+      "end": 50.0375,
+      "charStart": 183,
+      "charEnd": 185,
+      "display": "考虑"
+    },
+    {
+      "index": 130,
+      "text": "到",
+      "start": 50.0375,
+      "end": 50.2375,
+      "charStart": 185,
+      "charEnd": 186,
+      "display": "到"
+    },
+    {
+      "index": 131,
+      "text": "B",
+      "start": 50.2625,
+      "end": 50.5125,
+      "charStart": 186,
+      "charEnd": 187,
+      "display": "B、"
+    },
+    {
+      "index": 132,
+      "text": "C",
+      "start": 50.75,
+      "end": 50.9875,
+      "charStart": 187,
+      "charEnd": 188,
+      "display": "C"
+    },
+    {
+      "index": 133,
+      "text": "等距",
+      "start": 51.0,
+      "end": 51.4875,
+      "charStart": 188,
+      "charEnd": 190,
+      "display": "等距。"
+    },
+    {
+      "index": 134,
+      "text": "从",
+      "start": 52.05,
+      "end": 52.3375,
+      "charStart": 190,
+      "charEnd": 191,
+      "display": "从"
+    },
+    {
+      "index": 135,
+      "text": "B",
+      "start": 52.3625,
+      "end": 52.5125,
+      "charStart": 191,
+      "charEnd": 192,
+      "display": "B"
+    },
+    {
+      "index": 136,
+      "text": "C",
+      "start": 52.5125,
+      "end": 52.7125,
+      "charStart": 192,
+      "charEnd": 193,
+      "display": "C"
+    },
+    {
+      "index": 137,
+      "text": "中点",
+      "start": 52.725,
+      "end": 53.25,
+      "charStart": 193,
+      "charEnd": 195,
+      "display": "中点"
+    },
+    {
+      "index": 138,
+      "text": "M",
+      "start": 53.35,
+      "end": 53.625,
+      "charStart": 195,
+      "charEnd": 196,
+      "display": "M"
+    },
+    {
+      "index": 139,
+      "text": "向",
+      "start": 53.625,
+      "end": 53.9125,
+      "charStart": 196,
+      "charEnd": 197,
+      "display": "向"
+    },
+    {
+      "index": 140,
+      "text": "A",
+      "start": 53.925,
+      "end": 54.0875,
+      "charStart": 197,
+      "charEnd": 198,
+      "display": "A"
+    },
+    {
+      "index": 141,
+      "text": "D",
+      "start": 54.0875,
+      "end": 54.25,
+      "charStart": 198,
+      "charEnd": 199,
+      "display": "D"
+    },
+    {
+      "index": 142,
+      "text": "作",
+      "start": 54.25,
+      "end": 54.3875,
+      "charStart": 199,
+      "charEnd": 200,
+      "display": "作"
+    },
+    {
+      "index": 143,
+      "text": "垂线",
+      "start": 54.4,
+      "end": 54.9375,
+      "charStart": 200,
+      "charEnd": 202,
+      "display": "垂线，"
+    },
+    {
+      "index": 144,
+      "text": "交点",
+      "start": 55.175,
+      "end": 55.55,
+      "charStart": 202,
+      "charEnd": 204,
+      "display": "交点"
+    },
+    {
+      "index": 145,
+      "text": "记为",
+      "start": 55.5625,
+      "end": 55.875,
+      "charStart": 204,
+      "charEnd": 206,
+      "display": "记为"
+    },
+    {
+      "index": 146,
+      "text": "Q",
+      "start": 55.875,
+      "end": 56.225,
+      "charStart": 206,
+      "charEnd": 207,
+      "display": "Q。"
+    },
+    {
+      "index": 147,
+      "text": "由",
+      "start": 56.7875,
+      "end": 56.9625,
+      "charStart": 207,
+      "charEnd": 208,
+      "display": "由"
+    },
+    {
+      "index": 148,
+      "text": "矩形",
+      "start": 56.975,
+      "end": 57.4875,
+      "charStart": 208,
+      "charEnd": 210,
+      "display": "矩形"
+    },
+    {
+      "index": 149,
+      "text": "A",
+      "start": 57.5875,
+      "end": 57.775,
+      "charStart": 210,
+      "charEnd": 211,
+      "display": "A"
+    },
+    {
+      "index": 150,
+      "text": "B",
+      "start": 57.775,
+      "end": 57.975,
+      "charStart": 211,
+      "charEnd": 212,
+      "display": "B"
+    },
+    {
+      "index": 151,
+      "text": "M",
+      "start": 57.9875,
+      "end": 58.1875,
+      "charStart": 212,
+      "charEnd": 213,
+      "display": "M"
+    },
+    {
+      "index": 152,
+      "text": "Q",
+      "start": 58.2,
+      "end": 58.55,
+      "charStart": 213,
+      "charEnd": 214,
+      "display": "Q，"
+    },
+    {
+      "index": 153,
+      "text": "A",
+      "start": 58.8125,
+      "end": 58.9625,
+      "charStart": 214,
+      "charEnd": 215,
+      "display": "A"
+    },
+    {
+      "index": 154,
+      "text": "Q",
+      "start": 58.975,
+      "end": 59.2625,
+      "charStart": 215,
+      "charEnd": 216,
+      "display": "Q"
+    },
+    {
+      "index": 155,
+      "text": "等于",
+      "start": 59.275,
+      "end": 59.5375,
+      "charStart": 216,
+      "charEnd": 218,
+      "display": "等于"
+    },
+    {
+      "index": 156,
+      "text": "B",
+      "start": 59.55,
+      "end": 59.7375,
+      "charStart": 218,
+      "charEnd": 219,
+      "display": "B"
+    },
+    {
+      "index": 157,
+      "text": "M",
+      "start": 59.7375,
+      "end": 60.0375,
+      "charStart": 219,
+      "charEnd": 220,
+      "display": "M，"
+    },
+    {
+      "index": 158,
+      "text": "恰好为一",
+      "start": 60.2625,
+      "end": 61.075,
+      "charStart": 220,
+      "charEnd": 224,
+      "display": "恰好为一。"
+    },
+    {
+      "index": 159,
+      "text": "我们",
+      "start": 61.65,
+      "end": 61.875,
+      "charStart": 224,
+      "charEnd": 226,
+      "display": "我们"
+    },
+    {
+      "index": 160,
+      "text": "验证",
+      "start": 61.8875,
+      "end": 62.3125,
+      "charStart": 226,
+      "charEnd": 228,
+      "display": "验证"
+    },
+    {
+      "index": 161,
+      "text": "Q",
+      "start": 62.3125,
+      "end": 62.5375,
+      "charStart": 228,
+      "charEnd": 229,
+      "display": "Q"
+    },
+    {
+      "index": 162,
+      "text": "到",
+      "start": 62.55,
+      "end": 62.75,
+      "charStart": 229,
+      "charEnd": 230,
+      "display": "到"
+    },
+    {
+      "index": 163,
+      "text": "P",
+      "start": 62.75,
+      "end": 63.0625,
+      "charStart": 230,
+      "charEnd": 231,
+      "display": "P、"
+    },
+    {
+      "index": 164,
+      "text": "B",
+      "start": 63.325,
+      "end": 63.6,
+      "charStart": 231,
+      "charEnd": 232,
+      "display": "B、"
+    },
+    {
+      "index": 165,
+      "text": "C",
+      "start": 63.875,
+      "end": 64.2125,
+      "charStart": 232,
+      "charEnd": 233,
+      "display": "C、"
+    },
+    {
+      "index": 166,
+      "text": "D",
+      "start": 64.4375,
+      "end": 64.5875,
+      "charStart": 233,
+      "charEnd": 234,
+      "display": "D"
+    },
+    {
+      "index": 167,
+      "text": "四",
+      "start": 64.6,
+      "end": 64.825,
+      "charStart": 234,
+      "charEnd": 235,
+      "display": "四"
+    },
+    {
+      "index": 168,
+      "text": "点",
+      "start": 64.825,
+      "end": 65.025,
+      "charStart": 235,
+      "charEnd": 236,
+      "display": "点"
+    },
+    {
+      "index": 169,
+      "text": "等距",
+      "start": 65.0375,
+      "end": 65.5,
+      "charStart": 236,
+      "charEnd": 238,
+      "display": "等距。"
+    },
+    {
+      "index": 170,
+      "text": "验证",
+      "start": 66.0625,
+      "end": 66.45,
+      "charStart": 238,
+      "charEnd": 240,
+      "display": "验证"
+    },
+    {
+      "index": 171,
+      "text": "完成",
+      "start": 66.4625,
+      "end": 67.0375,
+      "charStart": 240,
+      "charEnd": 242,
+      "display": "完成，"
+    },
+    {
+      "index": 172,
+      "text": "才能",
+      "start": 67.275,
+      "end": 67.5625,
+      "charStart": 242,
+      "charEnd": 244,
+      "display": "才能"
+    },
+    {
+      "index": 173,
+      "text": "确认",
+      "start": 67.575,
+      "end": 68.1,
+      "charStart": 244,
+      "charEnd": 246,
+      "display": "确认"
+    },
+    {
+      "index": 174,
+      "text": "它",
+      "start": 68.2,
+      "end": 68.3625,
+      "charStart": 246,
+      "charEnd": 247,
+      "display": "它"
+    },
+    {
+      "index": 175,
+      "text": "是",
+      "start": 68.3625,
+      "end": 68.4875,
+      "charStart": 247,
+      "charEnd": 248,
+      "display": "是"
+    },
+    {
+      "index": 176,
+      "text": "球心",
+      "start": 68.5,
+      "end": 69.0625,
+      "charStart": 248,
+      "charEnd": 250,
+      "display": "球心。"
+    },
+    {
+      "index": 177,
+      "text": "P",
+      "start": 69.6375,
+      "end": 69.9125,
+      "charStart": 250,
+      "charEnd": 251,
+      "display": "P"
+    },
+    {
+      "index": 178,
+      "text": "A",
+      "start": 69.9125,
+      "end": 70.175,
+      "charStart": 251,
+      "charEnd": 252,
+      "display": "A"
+    },
+    {
+      "index": 179,
+      "text": "与",
+      "start": 70.1875,
+      "end": 70.4,
+      "charStart": 252,
+      "charEnd": 253,
+      "display": "与"
+    },
+    {
+      "index": 180,
+      "text": "A",
+      "start": 70.4,
+      "end": 70.5375,
+      "charStart": 253,
+      "charEnd": 254,
+      "display": "A"
+    },
+    {
+      "index": 181,
+      "text": "Q",
+      "start": 70.55,
+      "end": 70.8,
+      "charStart": 254,
+      "charEnd": 255,
+      "display": "Q"
+    },
+    {
+      "index": 182,
+      "text": "垂直",
+      "start": 70.8125,
+      "end": 71.375,
+      "charStart": 255,
+      "charEnd": 257,
+      "display": "垂直。"
+    },
+    {
+      "index": 183,
+      "text": "由",
+      "start": 71.95,
+      "end": 72.175,
+      "charStart": 257,
+      "charEnd": 258,
+      "display": "由"
+    },
+    {
+      "index": 184,
+      "text": "勾股定理",
+      "start": 72.2,
+      "end": 73.0,
+      "charStart": 258,
+      "charEnd": 262,
+      "display": "勾股定理，"
+    },
+    {
+      "index": 185,
+      "text": "Q",
+      "start": 73.2875,
+      "end": 73.5375,
+      "charStart": 262,
+      "charEnd": 263,
+      "display": "Q"
+    },
+    {
+      "index": 186,
+      "text": "P",
+      "start": 73.5375,
+      "end": 73.725,
+      "charStart": 263,
+      "charEnd": 264,
+      "display": "P"
+    },
+    {
+      "index": 187,
+      "text": "的",
+      "start": 73.725,
+      "end": 73.8,
+      "charStart": 264,
+      "charEnd": 265,
+      "display": "的"
+    },
+    {
+      "index": 188,
+      "text": "平方",
+      "start": 73.8125,
+      "end": 74.3625,
+      "charStart": 265,
+      "charEnd": 267,
+      "display": "平方"
+    },
+    {
+      "index": 189,
+      "text": "等于",
+      "start": 74.4625,
+      "end": 74.775,
+      "charStart": 267,
+      "charEnd": 269,
+      "display": "等于"
+    },
+    {
+      "index": 190,
+      "text": "一",
+      "start": 74.8,
+      "end": 74.95,
+      "charStart": 269,
+      "charEnd": 270,
+      "display": "一"
+    },
+    {
+      "index": 191,
+      "text": "加",
+      "start": 74.9625,
+      "end": 75.15,
+      "charStart": 270,
+      "charEnd": 271,
+      "display": "加"
+    },
+    {
+      "index": 192,
+      "text": "二",
+      "start": 75.15,
+      "end": 75.3875,
+      "charStart": 271,
+      "charEnd": 272,
+      "display": "二，"
+    },
+    {
+      "index": 193,
+      "text": "也",
+      "start": 75.6375,
+      "end": 75.7875,
+      "charStart": 272,
+      "charEnd": 273,
+      "display": "也"
+    },
+    {
+      "index": 194,
+      "text": "就",
+      "start": 75.7875,
+      "end": 75.925,
+      "charStart": 273,
+      "charEnd": 274,
+      "display": "就"
+    },
+    {
+      "index": 195,
+      "text": "是",
+      "start": 75.925,
+      "end": 76.0375,
+      "charStart": 274,
+      "charEnd": 275,
+      "display": "是"
+    },
+    {
+      "index": 196,
+      "text": "三",
+      "start": 76.05,
+      "end": 76.3625,
+      "charStart": 275,
+      "charEnd": 276,
+      "display": "三。"
+    },
+    {
+      "index": 197,
+      "text": "A",
+      "start": 76.9375,
+      "end": 77.175,
+      "charStart": 276,
+      "charEnd": 277,
+      "display": "A"
+    },
+    {
+      "index": 198,
+      "text": "B",
+      "start": 77.175,
+      "end": 77.4625,
+      "charStart": 277,
+      "charEnd": 278,
+      "display": "B"
+    },
+    {
+      "index": 199,
+      "text": "也",
+      "start": 77.475,
+      "end": 77.6625,
+      "charStart": 278,
+      "charEnd": 279,
+      "display": "也"
+    },
+    {
+      "index": 200,
+      "text": "与",
+      "start": 77.6625,
+      "end": 77.875,
+      "charStart": 279,
+      "charEnd": 280,
+      "display": "与"
+    },
+    {
+      "index": 201,
+      "text": "A",
+      "start": 77.9,
+      "end": 78.025,
+      "charStart": 280,
+      "charEnd": 281,
+      "display": "A"
+    },
+    {
+      "index": 202,
+      "text": "Q",
+      "start": 78.0375,
+      "end": 78.2625,
+      "charStart": 281,
+      "charEnd": 282,
+      "display": "Q"
+    },
+    {
+      "index": 203,
+      "text": "垂直",
+      "start": 78.275,
+      "end": 78.825,
+      "charStart": 282,
+      "charEnd": 284,
+      "display": "垂直，"
+    },
+    {
+      "index": 204,
+      "text": "同理",
+      "start": 79.0125,
+      "end": 79.5125,
+      "charStart": 284,
+      "charEnd": 286,
+      "display": "同理，"
+    },
+    {
+      "index": 205,
+      "text": "Q",
+      "start": 79.775,
+      "end": 80.025,
+      "charStart": 286,
+      "charEnd": 287,
+      "display": "Q"
+    },
+    {
+      "index": 206,
+      "text": "B",
+      "start": 80.025,
+      "end": 80.175,
+      "charStart": 287,
+      "charEnd": 288,
+      "display": "B"
+    },
+    {
+      "index": 207,
+      "text": "的",
+      "start": 80.175,
+      "end": 80.25,
+      "charStart": 288,
+      "charEnd": 289,
+      "display": "的"
+    },
+    {
+      "index": 208,
+      "text": "平方",
+      "start": 80.2625,
+      "end": 80.7125,
+      "charStart": 289,
+      "charEnd": 291,
+      "display": "平方"
+    },
+    {
+      "index": 209,
+      "text": "等于",
+      "start": 80.7375,
+      "end": 80.9875,
+      "charStart": 291,
+      "charEnd": 293,
+      "display": "等于"
+    },
+    {
+      "index": 210,
+      "text": "三",
+      "start": 80.9875,
+      "end": 81.3375,
+      "charStart": 293,
+      "charEnd": 294,
+      "display": "三。"
+    },
+    {
+      "index": 211,
+      "text": "因此",
+      "start": 81.9,
+      "end": 82.4375,
+      "charStart": 294,
+      "charEnd": 296,
+      "display": "因此"
+    },
+    {
+      "index": 212,
+      "text": "Q",
+      "start": 82.5375,
+      "end": 82.7875,
+      "charStart": 296,
+      "charEnd": 297,
+      "display": "Q"
+    },
+    {
+      "index": 213,
+      "text": "P",
+      "start": 82.7875,
+      "end": 83.0,
+      "charStart": 297,
+      "charEnd": 298,
+      "display": "P"
+    },
+    {
+      "index": 214,
+      "text": "和",
+      "start": 83.0125,
+      "end": 83.1625,
+      "charStart": 298,
+      "charEnd": 299,
+      "display": "和"
+    },
+    {
+      "index": 215,
+      "text": "Q",
+      "start": 83.175,
+      "end": 83.425,
+      "charStart": 299,
+      "charEnd": 300,
+      "display": "Q"
+    },
+    {
+      "index": 216,
+      "text": "B",
+      "start": 83.425,
+      "end": 83.7,
+      "charStart": 300,
+      "charEnd": 301,
+      "display": "B"
+    },
+    {
+      "index": 217,
+      "text": "都",
+      "start": 83.8125,
+      "end": 83.975,
+      "charStart": 301,
+      "charEnd": 302,
+      "display": "都"
+    },
+    {
+      "index": 218,
+      "text": "等于",
+      "start": 83.9875,
+      "end": 84.25,
+      "charStart": 302,
+      "charEnd": 304,
+      "display": "等于"
+    },
+    {
+      "index": 219,
+      "text": "根号三",
+      "start": 84.275,
+      "end": 84.9,
+      "charStart": 304,
+      "charEnd": 307,
+      "display": "根号三。"
+    },
+    {
+      "index": 220,
+      "text": "过",
+      "start": 85.475,
+      "end": 85.675,
+      "charStart": 307,
+      "charEnd": 308,
+      "display": "过"
+    },
+    {
+      "index": 221,
+      "text": "C",
+      "start": 85.675,
+      "end": 85.9375,
+      "charStart": 308,
+      "charEnd": 309,
+      "display": "C"
+    },
+    {
+      "index": 222,
+      "text": "作",
+      "start": 85.9375,
+      "end": 86.1875,
+      "charStart": 309,
+      "charEnd": 310,
+      "display": "作"
+    },
+    {
+      "index": 223,
+      "text": "A",
+      "start": 86.2,
+      "end": 86.3625,
+      "charStart": 310,
+      "charEnd": 311,
+      "display": "A"
+    },
+    {
+      "index": 224,
+      "text": "D",
+      "start": 86.3625,
+      "end": 86.525,
+      "charStart": 311,
+      "charEnd": 312,
+      "display": "D"
+    },
+    {
+      "index": 225,
+      "text": "的",
+      "start": 86.525,
+      "end": 86.6125,
+      "charStart": 312,
+      "charEnd": 313,
+      "display": "的"
+    },
+    {
+      "index": 226,
+      "text": "垂线",
+      "start": 86.625,
+      "end": 87.15,
+      "charStart": 313,
+      "charEnd": 315,
+      "display": "垂线，"
+    },
+    {
+      "index": 227,
+      "text": "垂足",
+      "start": 87.375,
+      "end": 87.8,
+      "charStart": 315,
+      "charEnd": 317,
+      "display": "垂足"
+    },
+    {
+      "index": 228,
+      "text": "为",
+      "start": 87.8125,
+      "end": 88.0375,
+      "charStart": 317,
+      "charEnd": 318,
+      "display": "为"
+    },
+    {
+      "index": 229,
+      "text": "H",
+      "start": 88.0375,
+      "end": 88.4625,
+      "charStart": 318,
+      "charEnd": 319,
+      "display": "H。"
+    },
+    {
+      "index": 230,
+      "text": "四边形",
+      "start": 89.0375,
+      "end": 89.8125,
+      "charStart": 319,
+      "charEnd": 322,
+      "display": "四边形"
+    },
+    {
+      "index": 231,
+      "text": "A",
+      "start": 89.9125,
+      "end": 90.1,
+      "charStart": 322,
+      "charEnd": 323,
+      "display": "A"
+    },
+    {
+      "index": 232,
+      "text": "B",
+      "start": 90.1,
+      "end": 90.2875,
+      "charStart": 323,
+      "charEnd": 324,
+      "display": "B"
+    },
+    {
+      "index": 233,
+      "text": "C",
+      "start": 90.3,
+      "end": 90.5875,
+      "charStart": 324,
+      "charEnd": 325,
+      "display": "C"
+    },
+    {
+      "index": 234,
+      "text": "H",
+      "start": 90.5875,
+      "end": 90.875,
+      "charStart": 325,
+      "charEnd": 326,
+      "display": "H"
+    },
+    {
+      "index": 235,
+      "text": "是",
+      "start": 90.8875,
+      "end": 91.0375,
+      "charStart": 326,
+      "charEnd": 327,
+      "display": "是"
+    },
+    {
+      "index": 236,
+      "text": "矩形",
+      "start": 91.05,
+      "end": 91.575,
+      "charStart": 327,
+      "charEnd": 329,
+      "display": "矩形，"
+    },
+    {
+      "index": 237,
+      "text": "所以",
+      "start": 91.85,
+      "end": 92.3125,
+      "charStart": 329,
+      "charEnd": 331,
+      "display": "所以"
+    },
+    {
+      "index": 238,
+      "text": "A",
+      "start": 92.4125,
+      "end": 92.65,
+      "charStart": 331,
+      "charEnd": 332,
+      "display": "A"
+    },
+    {
+      "index": 239,
+      "text": "H",
+      "start": 92.6625,
+      "end": 92.9125,
+      "charStart": 332,
+      "charEnd": 333,
+      "display": "H"
+    },
+    {
+      "index": 240,
+      "text": "等于",
+      "start": 92.925,
+      "end": 93.2,
+      "charStart": 333,
+      "charEnd": 335,
+      "display": "等于"
+    },
+    {
+      "index": 241,
+      "text": "二",
+      "start": 93.2125,
+      "end": 93.45,
+      "charStart": 335,
+      "charEnd": 336,
+      "display": "二，"
+    },
+    {
+      "index": 242,
+      "text": "C",
+      "start": 93.75,
+      "end": 94.05,
+      "charStart": 336,
+      "charEnd": 337,
+      "display": "C"
+    },
+    {
+      "index": 243,
+      "text": "H",
+      "start": 94.05,
+      "end": 94.325,
+      "charStart": 337,
+      "charEnd": 338,
+      "display": "H"
+    },
+    {
+      "index": 244,
+      "text": "等于",
+      "start": 94.3375,
+      "end": 94.6125,
+      "charStart": 338,
+      "charEnd": 340,
+      "display": "等于"
+    },
+    {
+      "index": 245,
+      "text": "根号",
+      "start": 94.6375,
+      "end": 94.975,
+      "charStart": 340,
+      "charEnd": 342,
+      "display": "根号"
+    },
+    {
+      "index": 246,
+      "text": "二",
+      "start": 94.975,
+      "end": 95.2125,
+      "charStart": 342,
+      "charEnd": 343,
+      "display": "二。"
+    },
+    {
+      "index": 247,
+      "text": "A",
+      "start": 95.775,
+      "end": 95.9375,
+      "charStart": 343,
+      "charEnd": 344,
+      "display": "A"
+    },
+    {
+      "index": 248,
+      "text": "Q",
+      "start": 95.95,
+      "end": 96.2,
+      "charStart": 344,
+      "charEnd": 345,
+      "display": "Q"
+    },
+    {
+      "index": 249,
+      "text": "等于",
+      "start": 96.2125,
+      "end": 96.525,
+      "charStart": 345,
+      "charEnd": 347,
+      "display": "等于"
+    },
+    {
+      "index": 250,
+      "text": "一",
+      "start": 96.5375,
+      "end": 96.7875,
+      "charStart": 347,
+      "charEnd": 348,
+      "display": "一，"
+    },
+    {
+      "index": 251,
+      "text": "因此",
+      "start": 97.05,
+      "end": 97.55,
+      "charStart": 348,
+      "charEnd": 350,
+      "display": "因此"
+    },
+    {
+      "index": 252,
+      "text": "Q",
+      "start": 97.65,
+      "end": 97.9,
+      "charStart": 350,
+      "charEnd": 351,
+      "display": "Q"
+    },
+    {
+      "index": 253,
+      "text": "H",
+      "start": 97.9125,
+      "end": 98.2125,
+      "charStart": 351,
+      "charEnd": 352,
+      "display": "H"
+    },
+    {
+      "index": 254,
+      "text": "也",
+      "start": 98.225,
+      "end": 98.3875,
+      "charStart": 352,
+      "charEnd": 353,
+      "display": "也"
+    },
+    {
+      "index": 255,
+      "text": "等于",
+      "start": 98.4,
+      "end": 98.7,
+      "charStart": 353,
+      "charEnd": 355,
+      "display": "等于"
+    },
+    {
+      "index": 256,
+      "text": "一",
+      "start": 98.7125,
+      "end": 98.9625,
+      "charStart": 355,
+      "charEnd": 356,
+      "display": "一。"
+    },
+    {
+      "index": 257,
+      "text": "在",
+      "start": 99.5375,
+      "end": 99.775,
+      "charStart": 356,
+      "charEnd": 357,
+      "display": "在"
+    },
+    {
+      "index": 258,
+      "text": "直角三角形",
+      "start": 99.8,
+      "end": 100.7875,
+      "charStart": 357,
+      "charEnd": 362,
+      "display": "直角三角形"
+    },
+    {
+      "index": 259,
+      "text": "C",
+      "start": 100.8125,
+      "end": 101.0375,
+      "charStart": 362,
+      "charEnd": 363,
+      "display": "C"
+    },
+    {
+      "index": 260,
+      "text": "Q",
+      "start": 101.0375,
+      "end": 101.275,
+      "charStart": 363,
+      "charEnd": 364,
+      "display": "Q"
+    },
+    {
+      "index": 261,
+      "text": "H",
+      "start": 101.2875,
+      "end": 101.5625,
+      "charStart": 364,
+      "charEnd": 365,
+      "display": "H"
+    },
+    {
+      "index": 262,
+      "text": "中",
+      "start": 101.5625,
+      "end": 101.8625,
+      "charStart": 365,
+      "charEnd": 366,
+      "display": "中，"
+    },
+    {
+      "index": 263,
+      "text": "Q",
+      "start": 102.1375,
+      "end": 102.3875,
+      "charStart": 366,
+      "charEnd": 367,
+      "display": "Q"
+    },
+    {
+      "index": 264,
+      "text": "C",
+      "start": 102.3875,
+      "end": 102.5875,
+      "charStart": 367,
+      "charEnd": 368,
+      "display": "C"
+    },
+    {
+      "index": 265,
+      "text": "的",
+      "start": 102.5875,
+      "end": 102.6625,
+      "charStart": 368,
+      "charEnd": 369,
+      "display": "的"
+    },
+    {
+      "index": 266,
+      "text": "平方",
+      "start": 102.675,
+      "end": 103.2125,
+      "charStart": 369,
+      "charEnd": 371,
+      "display": "平方"
+    },
+    {
+      "index": 267,
+      "text": "等于",
+      "start": 103.3125,
+      "end": 103.6125,
+      "charStart": 371,
+      "charEnd": 373,
+      "display": "等于"
+    },
+    {
+      "index": 268,
+      "text": "一",
+      "start": 103.6375,
+      "end": 103.7875,
+      "charStart": 373,
+      "charEnd": 374,
+      "display": "一"
+    },
+    {
+      "index": 269,
+      "text": "加",
+      "start": 103.8,
+      "end": 103.9875,
+      "charStart": 374,
+      "charEnd": 375,
+      "display": "加"
+    },
+    {
+      "index": 270,
+      "text": "二",
+      "start": 103.9875,
+      "end": 104.2125,
+      "charStart": 375,
+      "charEnd": 376,
+      "display": "二，"
+    },
+    {
+      "index": 271,
+      "text": "仍然",
+      "start": 104.475,
+      "end": 104.8375,
+      "charStart": 376,
+      "charEnd": 378,
+      "display": "仍然"
+    },
+    {
+      "index": 272,
+      "text": "是",
+      "start": 104.85,
+      "end": 105.0,
+      "charStart": 378,
+      "charEnd": 379,
+      "display": "是"
+    },
+    {
+      "index": 273,
+      "text": "三",
+      "start": 105.0,
+      "end": 105.3125,
+      "charStart": 379,
+      "charEnd": 380,
+      "display": "三。"
+    },
+    {
+      "index": 274,
+      "text": "Q",
+      "start": 105.875,
+      "end": 106.225,
+      "charStart": 380,
+      "charEnd": 381,
+      "display": "Q"
+    },
+    {
+      "index": 275,
+      "text": "在线段",
+      "start": 106.225,
+      "end": 106.8625,
+      "charStart": 381,
+      "charEnd": 384,
+      "display": "在线段"
+    },
+    {
+      "index": 276,
+      "text": "A",
+      "start": 106.8875,
+      "end": 107.0375,
+      "charStart": 384,
+      "charEnd": 385,
+      "display": "A"
+    },
+    {
+      "index": 277,
+      "text": "D",
+      "start": 107.0375,
+      "end": 107.2375,
+      "charStart": 385,
+      "charEnd": 386,
+      "display": "D"
+    },
+    {
+      "index": 278,
+      "text": "上",
+      "start": 107.2375,
+      "end": 107.5625,
+      "charStart": 386,
+      "charEnd": 387,
+      "display": "上。"
+    },
+    {
+      "index": 279,
+      "text": "Q",
+      "start": 108.125,
+      "end": 108.375,
+      "charStart": 387,
+      "charEnd": 388,
+      "display": "Q"
+    },
+    {
+      "index": 280,
+      "text": "D",
+      "start": 108.375,
+      "end": 108.5375,
+      "charStart": 388,
+      "charEnd": 389,
+      "display": "D"
+    },
+    {
+      "index": 281,
+      "text": "等于",
+      "start": 108.55,
+      "end": 108.9875,
+      "charStart": 389,
+      "charEnd": 391,
+      "display": "等于"
+    },
+    {
+      "index": 282,
+      "text": "A",
+      "start": 109.0875,
+      "end": 109.275,
+      "charStart": 391,
+      "charEnd": 392,
+      "display": "A"
+    },
+    {
+      "index": 283,
+      "text": "D",
+      "start": 109.275,
+      "end": 109.45,
+      "charStart": 392,
+      "charEnd": 393,
+      "display": "D"
+    },
+    {
+      "index": 284,
+      "text": "减去",
+      "start": 109.4625,
+      "end": 109.9625,
+      "charStart": 393,
+      "charEnd": 395,
+      "display": "减去"
+    },
+    {
+      "index": 285,
+      "text": "A",
+      "start": 110.05,
+      "end": 110.2,
+      "charStart": 395,
+      "charEnd": 396,
+      "display": "A"
+    },
+    {
+      "index": 286,
+      "text": "Q",
+      "start": 110.2125,
+      "end": 110.55,
+      "charStart": 396,
+      "charEnd": 397,
+      "display": "Q，"
+    },
+    {
+      "index": 287,
+      "text": "得到",
+      "start": 110.775,
+      "end": 111.1,
+      "charStart": 397,
+      "charEnd": 399,
+      "display": "得到"
+    },
+    {
+      "index": 288,
+      "text": "根号三",
+      "start": 111.125,
+      "end": 111.75,
+      "charStart": 399,
+      "charEnd": 402,
+      "display": "根号三。"
+    },
+    {
+      "index": 289,
+      "text": "现在",
+      "start": 112.325,
+      "end": 112.8125,
+      "charStart": 402,
+      "charEnd": 404,
+      "display": "现在，"
+    },
+    {
+      "index": 290,
+      "text": "Q",
+      "start": 113.1125,
+      "end": 113.3625,
+      "charStart": 404,
+      "charEnd": 405,
+      "display": "Q"
+    },
+    {
+      "index": 291,
+      "text": "到",
+      "start": 113.3625,
+      "end": 113.65,
+      "charStart": 405,
+      "charEnd": 406,
+      "display": "到"
+    },
+    {
+      "index": 292,
+      "text": "P",
+      "start": 113.75,
+      "end": 114.075,
+      "charStart": 406,
+      "charEnd": 407,
+      "display": "P、"
+    },
+    {
+      "index": 293,
+      "text": "B",
+      "start": 114.3,
+      "end": 114.575,
+      "charStart": 407,
+      "charEnd": 408,
+      "display": "B、"
+    },
+    {
+      "index": 294,
+      "text": "C",
+      "start": 114.825,
+      "end": 115.175,
+      "charStart": 408,
+      "charEnd": 409,
+      "display": "C、"
+    },
+    {
+      "index": 295,
+      "text": "D",
+      "start": 115.3625,
+      "end": 115.5125,
+      "charStart": 409,
+      "charEnd": 410,
+      "display": "D"
+    },
+    {
+      "index": 296,
+      "text": "四",
+      "start": 115.525,
+      "end": 115.7375,
+      "charStart": 410,
+      "charEnd": 411,
+      "display": "四"
+    },
+    {
+      "index": 297,
+      "text": "点",
+      "start": 115.7375,
+      "end": 115.9,
+      "charStart": 411,
+      "charEnd": 412,
+      "display": "点"
+    },
+    {
+      "index": 298,
+      "text": "的",
+      "start": 115.9,
+      "end": 115.975,
+      "charStart": 412,
+      "charEnd": 413,
+      "display": "的"
+    },
+    {
+      "index": 299,
+      "text": "距离",
+      "start": 115.9875,
+      "end": 116.45,
+      "charStart": 413,
+      "charEnd": 415,
+      "display": "距离，"
+    },
+    {
+      "index": 300,
+      "text": "全部",
+      "start": 116.65,
+      "end": 117.0375,
+      "charStart": 415,
+      "charEnd": 417,
+      "display": "全部"
+    },
+    {
+      "index": 301,
+      "text": "等于",
+      "start": 117.05,
+      "end": 117.325,
+      "charStart": 417,
+      "charEnd": 419,
+      "display": "等于"
+    },
+    {
+      "index": 302,
+      "text": "根号三",
+      "start": 117.35,
+      "end": 117.9625,
+      "charStart": 419,
+      "charEnd": 422,
+      "display": "根号三。"
+    },
+    {
+      "index": 303,
+      "text": "这",
+      "start": 118.5375,
+      "end": 118.7,
+      "charStart": 422,
+      "charEnd": 423,
+      "display": "这"
+    },
+    {
+      "index": 304,
+      "text": "四",
+      "start": 118.7125,
+      "end": 118.9,
+      "charStart": 423,
+      "charEnd": 424,
+      "display": "四"
+    },
+    {
+      "index": 305,
+      "text": "个",
+      "start": 118.9,
+      "end": 118.9875,
+      "charStart": 424,
+      "charEnd": 425,
+      "display": "个"
+    },
+    {
+      "index": 306,
+      "text": "点不共面",
+      "start": 119.0,
+      "end": 119.7875,
+      "charStart": 425,
+      "charEnd": 429,
+      "display": "点不共面，"
+    },
+    {
+      "index": 307,
+      "text": "确定",
+      "start": 120.025,
+      "end": 120.4125,
+      "charStart": 429,
+      "charEnd": 431,
+      "display": "确定"
+    },
+    {
+      "index": 308,
+      "text": "唯一",
+      "start": 120.4375,
+      "end": 120.8125,
+      "charStart": 431,
+      "charEnd": 433,
+      "display": "唯一"
+    },
+    {
+      "index": 309,
+      "text": "的",
+      "start": 120.8125,
+      "end": 120.925,
+      "charStart": 433,
+      "charEnd": 434,
+      "display": "的"
+    },
+    {
+      "index": 310,
+      "text": "球",
+      "start": 120.925,
+      "end": 121.275,
+      "charStart": 434,
+      "charEnd": 435,
+      "display": "球。"
+    },
+    {
+      "index": 311,
+      "text": "因此",
+      "start": 121.8375,
+      "end": 122.375,
+      "charStart": 435,
+      "charEnd": 437,
+      "display": "因此，"
+    },
+    {
+      "index": 312,
+      "text": "等距",
+      "start": 122.675,
+      "end": 123.025,
+      "charStart": 437,
+      "charEnd": 439,
+      "display": "等距"
+    },
+    {
+      "index": 313,
+      "text": "点",
+      "start": 123.0375,
+      "end": 123.2375,
+      "charStart": 439,
+      "charEnd": 440,
+      "display": "点"
+    },
+    {
+      "index": 314,
+      "text": "Q",
+      "start": 123.2375,
+      "end": 123.6125,
+      "charStart": 440,
+      "charEnd": 441,
+      "display": "Q"
+    },
+    {
+      "index": 315,
+      "text": "就",
+      "start": 123.725,
+      "end": 123.9,
+      "charStart": 441,
+      "charEnd": 442,
+      "display": "就"
+    },
+    {
+      "index": 316,
+      "text": "是",
+      "start": 123.9,
+      "end": 124.0125,
+      "charStart": 442,
+      "charEnd": 443,
+      "display": "是"
+    },
+    {
+      "index": 317,
+      "text": "题目",
+      "start": 124.025,
+      "end": 124.3625,
+      "charStart": 443,
+      "charEnd": 445,
+      "display": "题目"
+    },
+    {
+      "index": 318,
+      "text": "中",
+      "start": 124.3625,
+      "end": 124.5125,
+      "charStart": 445,
+      "charEnd": 446,
+      "display": "中"
+    },
+    {
+      "index": 319,
+      "text": "的",
+      "start": 124.5125,
+      "end": 124.5875,
+      "charStart": 446,
+      "charEnd": 447,
+      "display": "的"
+    },
+    {
+      "index": 320,
+      "text": "球心",
+      "start": 124.6,
+      "end": 125.05,
+      "charStart": 447,
+      "charEnd": 449,
+      "display": "球心"
+    },
+    {
+      "index": 321,
+      "text": "O",
+      "start": 125.05,
+      "end": 125.2875,
+      "charStart": 449,
+      "charEnd": 450,
+      "display": "O。"
+    },
+    {
+      "index": 322,
+      "text": "A",
+      "start": 125.85,
+      "end": 126.1,
+      "charStart": 450,
+      "charEnd": 451,
+      "display": "A"
+    },
+    {
+      "index": 323,
+      "text": "O",
+      "start": 126.1,
+      "end": 126.2875,
+      "charStart": 451,
+      "charEnd": 452,
+      "display": "O"
+    },
+    {
+      "index": 324,
+      "text": "等于",
+      "start": 126.3,
+      "end": 126.6125,
+      "charStart": 452,
+      "charEnd": 454,
+      "display": "等于"
+    },
+    {
+      "index": 325,
+      "text": "一",
+      "start": 126.625,
+      "end": 126.8625,
+      "charStart": 454,
+      "charEnd": 455,
+      "display": "一，"
+    },
+    {
+      "index": 326,
+      "text": "球",
+      "start": 127.125,
+      "end": 127.325,
+      "charStart": 455,
+      "charEnd": 456,
+      "display": "球"
+    },
+    {
+      "index": 327,
+      "text": "半径",
+      "start": 127.3375,
+      "end": 127.75,
+      "charStart": 456,
+      "charEnd": 458,
+      "display": "半径"
+    },
+    {
+      "index": 328,
+      "text": "是",
+      "start": 127.775,
+      "end": 127.9,
+      "charStart": 458,
+      "charEnd": 459,
+      "display": "是"
+    },
+    {
+      "index": 329,
+      "text": "根号三",
+      "start": 127.9125,
+      "end": 128.5625,
+      "charStart": 459,
+      "charEnd": 462,
+      "display": "根号三。"
+    },
+    {
+      "index": 330,
+      "text": "O",
+      "start": 129.1375,
+      "end": 129.3375,
+      "charStart": 462,
+      "charEnd": 463,
+      "display": "O"
+    },
+    {
+      "index": 331,
+      "text": "在",
+      "start": 129.3375,
+      "end": 129.5375,
+      "charStart": 463,
+      "charEnd": 464,
+      "display": "在"
+    },
+    {
+      "index": 332,
+      "text": "A",
+      "start": 129.55,
+      "end": 129.7,
+      "charStart": 464,
+      "charEnd": 465,
+      "display": "A"
+    },
+    {
+      "index": 333,
+      "text": "D",
+      "start": 129.7,
+      "end": 129.9125,
+      "charStart": 465,
+      "charEnd": 466,
+      "display": "D"
+    },
+    {
+      "index": 334,
+      "text": "上",
+      "start": 129.9125,
+      "end": 130.2125,
+      "charStart": 466,
+      "charEnd": 467,
+      "display": "上，"
+    },
+    {
+      "index": 335,
+      "text": "自然",
+      "start": 130.45,
+      "end": 130.8125,
+      "charStart": 467,
+      "charEnd": 469,
+      "display": "自然"
+    },
+    {
+      "index": 336,
+      "text": "也",
+      "start": 130.825,
+      "end": 130.95,
+      "charStart": 469,
+      "charEnd": 470,
+      "display": "也"
+    },
+    {
+      "index": 337,
+      "text": "在",
+      "start": 130.95,
+      "end": 131.1125,
+      "charStart": 470,
+      "charEnd": 471,
+      "display": "在"
+    },
+    {
+      "index": 338,
+      "text": "底面",
+      "start": 131.125,
+      "end": 131.525,
+      "charStart": 471,
+      "charEnd": 473,
+      "display": "底面"
+    },
+    {
+      "index": 339,
+      "text": "内",
+      "start": 131.525,
+      "end": 131.775,
+      "charStart": 473,
+      "charEnd": 474,
+      "display": "内。"
+    },
+    {
+      "index": 340,
+      "text": "最后",
+      "start": 132.3375,
+      "end": 132.7625,
+      "charStart": 474,
+      "charEnd": 476,
+      "display": "最后"
+    },
+    {
+      "index": 341,
+      "text": "一",
+      "start": 132.775,
+      "end": 132.925,
+      "charStart": 476,
+      "charEnd": 477,
+      "display": "一"
+    },
+    {
+      "index": 342,
+      "text": "问",
+      "start": 132.925,
+      "end": 133.1875,
+      "charStart": 477,
+      "charEnd": 478,
+      "display": "问。"
+    },
+    {
+      "index": 343,
+      "text": "以",
+      "start": 133.75,
+      "end": 133.975,
+      "charStart": 478,
+      "charEnd": 479,
+      "display": "以"
+    },
+    {
+      "index": 344,
+      "text": "A",
+      "start": 133.975,
+      "end": 134.1375,
+      "charStart": 479,
+      "charEnd": 480,
+      "display": "A"
+    },
+    {
+      "index": 345,
+      "text": "为",
+      "start": 134.1375,
+      "end": 134.3,
+      "charStart": 480,
+      "charEnd": 481,
+      "display": "为"
+    },
+    {
+      "index": 346,
+      "text": "原点",
+      "start": 134.3125,
+      "end": 134.8375,
+      "charStart": 481,
+      "charEnd": 483,
+      "display": "原点，"
+    },
+    {
+      "index": 347,
+      "text": "A",
+      "start": 135.1125,
+      "end": 135.3125,
+      "charStart": 483,
+      "charEnd": 484,
+      "display": "A"
+    },
+    {
+      "index": 348,
+      "text": "D",
+      "start": 135.3125,
+      "end": 135.6,
+      "charStart": 484,
+      "charEnd": 485,
+      "display": "D、"
+    },
+    {
+      "index": 349,
+      "text": "A",
+      "start": 135.8375,
+      "end": 136.05,
+      "charStart": 485,
+      "charEnd": 486,
+      "display": "A"
+    },
+    {
+      "index": 350,
+      "text": "B",
+      "start": 136.05,
+      "end": 136.35,
+      "charStart": 486,
+      "charEnd": 487,
+      "display": "B、"
+    },
+    {
+      "index": 351,
+      "text": "A",
+      "start": 136.5625,
+      "end": 136.7375,
+      "charStart": 487,
+      "charEnd": 488,
+      "display": "A"
+    },
+    {
+      "index": 352,
+      "text": "P",
+      "start": 136.7375,
+      "end": 136.95,
+      "charStart": 488,
+      "charEnd": 489,
+      "display": "P"
+    },
+    {
+      "index": 353,
+      "text": "的",
+      "start": 136.95,
+      "end": 137.0375,
+      "charStart": 489,
+      "charEnd": 490,
+      "display": "的"
+    },
+    {
+      "index": 354,
+      "text": "方向",
+      "start": 137.05,
+      "end": 137.5375,
+      "charStart": 490,
+      "charEnd": 492,
+      "display": "方向，"
+    },
+    {
+      "index": 355,
+      "text": "分别",
+      "start": 137.8375,
+      "end": 138.1625,
+      "charStart": 492,
+      "charEnd": 494,
+      "display": "分别"
+    },
+    {
+      "index": 356,
+      "text": "作为",
+      "start": 138.175,
+      "end": 138.6125,
+      "charStart": 494,
+      "charEnd": 496,
+      "display": "作为"
+    },
+    {
+      "index": 357,
+      "text": "x",
+      "start": 138.6375,
+      "end": 139.0375,
+      "charStart": 496,
+      "charEnd": 497,
+      "display": "x、"
+    },
+    {
+      "index": 358,
+      "text": "y",
+      "start": 139.225,
+      "end": 139.4875,
+      "charStart": 497,
+      "charEnd": 498,
+      "display": "y、"
+    },
+    {
+      "index": 359,
+      "text": "z",
+      "start": 139.7,
+      "end": 139.95,
+      "charStart": 498,
+      "charEnd": 499,
+      "display": "z"
+    },
+    {
+      "index": 360,
+      "text": "轴",
+      "start": 139.95,
+      "end": 140.125,
+      "charStart": 499,
+      "charEnd": 500,
+      "display": "轴"
+    },
+    {
+      "index": 361,
+      "text": "的",
+      "start": 140.125,
+      "end": 140.2125,
+      "charStart": 500,
+      "charEnd": 501,
+      "display": "的"
+    },
+    {
+      "index": 362,
+      "text": "正",
+      "start": 140.2375,
+      "end": 140.425,
+      "charStart": 501,
+      "charEnd": 502,
+      "display": "正"
+    },
+    {
+      "index": 363,
+      "text": "方向",
+      "start": 140.425,
+      "end": 140.9,
+      "charStart": 502,
+      "charEnd": 504,
+      "display": "方向。"
+    },
+    {
+      "index": 364,
+      "text": "于是",
+      "start": 141.4625,
+      "end": 141.975,
+      "charStart": 504,
+      "charEnd": 506,
+      "display": "于是"
+    },
+    {
+      "index": 365,
+      "text": "C",
+      "start": 142.0625,
+      "end": 142.275,
+      "charStart": 506,
+      "charEnd": 507,
+      "display": "C"
+    },
+    {
+      "index": 366,
+      "text": "的",
+      "start": 142.275,
+      "end": 142.3625,
+      "charStart": 507,
+      "charEnd": 508,
+      "display": "的"
+    },
+    {
+      "index": 367,
+      "text": "坐标",
+      "start": 142.375,
+      "end": 142.7125,
+      "charStart": 508,
+      "charEnd": 510,
+      "display": "坐标"
+    },
+    {
+      "index": 368,
+      "text": "为",
+      "start": 142.725,
+      "end": 142.925,
+      "charStart": 510,
+      "charEnd": 511,
+      "display": "为"
+    },
+    {
+      "index": 369,
+      "text": "二",
+      "start": 142.925,
+      "end": 143.15,
+      "charStart": 511,
+      "charEnd": 512,
+      "display": "二、"
+    },
+    {
+      "index": 370,
+      "text": "根号",
+      "start": 143.3875,
+      "end": 143.8,
+      "charStart": 512,
+      "charEnd": 514,
+      "display": "根号"
+    },
+    {
+      "index": 371,
+      "text": "二",
+      "start": 143.8,
+      "end": 144.0125,
+      "charStart": 514,
+      "charEnd": 515,
+      "display": "二、"
+    },
+    {
+      "index": 372,
+      "text": "零",
+      "start": 144.3375,
+      "end": 144.6125,
+      "charStart": 515,
+      "charEnd": 516,
+      "display": "零；"
+    },
+    {
+      "index": 373,
+      "text": "P",
+      "start": 144.975,
+      "end": 145.2,
+      "charStart": 516,
+      "charEnd": 517,
+      "display": "P"
+    },
+    {
+      "index": 374,
+      "text": "为",
+      "start": 145.2125,
+      "end": 145.4125,
+      "charStart": 517,
+      "charEnd": 518,
+      "display": "为"
+    },
+    {
+      "index": 375,
+      "text": "零",
+      "start": 145.4125,
+      "end": 145.725,
+      "charStart": 518,
+      "charEnd": 519,
+      "display": "零、"
+    },
+    {
+      "index": 376,
+      "text": "零",
+      "start": 145.975,
+      "end": 146.275,
+      "charStart": 519,
+      "charEnd": 520,
+      "display": "零、"
+    },
+    {
+      "index": 377,
+      "text": "根号",
+      "start": 146.45,
+      "end": 146.8375,
+      "charStart": 520,
+      "charEnd": 522,
+      "display": "根号"
+    },
+    {
+      "index": 378,
+      "text": "二",
+      "start": 146.8375,
+      "end": 147.05,
+      "charStart": 522,
+      "charEnd": 523,
+      "display": "二；"
+    },
+    {
+      "index": 379,
+      "text": "O",
+      "start": 147.4125,
+      "end": 147.6,
+      "charStart": 523,
+      "charEnd": 524,
+      "display": "O"
+    },
+    {
+      "index": 380,
+      "text": "为",
+      "start": 147.6,
+      "end": 147.7875,
+      "charStart": 524,
+      "charEnd": 525,
+      "display": "为"
+    },
+    {
+      "index": 381,
+      "text": "一",
+      "start": 147.8,
+      "end": 148.05,
+      "charStart": 525,
+      "charEnd": 526,
+      "display": "一、"
+    },
+    {
+      "index": 382,
+      "text": "零",
+      "start": 148.3125,
+      "end": 148.5875,
+      "charStart": 526,
+      "charEnd": 527,
+      "display": "零、"
+    },
+    {
+      "index": 383,
+      "text": "零",
+      "start": 148.825,
+      "end": 149.125,
+      "charStart": 527,
+      "charEnd": 528,
+      "display": "零。"
+    },
+    {
+      "index": 384,
+      "text": "取",
+      "start": 149.6875,
+      "end": 150.0,
+      "charStart": 528,
+      "charEnd": 529,
+      "display": "取"
+    },
+    {
+      "index": 385,
+      "text": "A",
+      "start": 150.0,
+      "end": 150.175,
+      "charStart": 529,
+      "charEnd": 530,
+      "display": "A"
+    },
+    {
+      "index": 386,
+      "text": "C",
+      "start": 150.175,
+      "end": 150.4,
+      "charStart": 530,
+      "charEnd": 531,
+      "display": "C"
+    },
+    {
+      "index": 387,
+      "text": "的",
+      "start": 150.4,
+      "end": 150.4875,
+      "charStart": 531,
+      "charEnd": 532,
+      "display": "的"
+    },
+    {
+      "index": 388,
+      "text": "方向",
+      "start": 150.5,
+      "end": 150.8875,
+      "charStart": 532,
+      "charEnd": 534,
+      "display": "方向"
+    },
+    {
+      "index": 389,
+      "text": "向量",
+      "start": 150.8875,
+      "end": 151.2375,
+      "charStart": 534,
+      "charEnd": 536,
+      "display": "向量"
+    },
+    {
+      "index": 390,
+      "text": "为",
+      "start": 151.25,
+      "end": 151.4375,
+      "charStart": 536,
+      "charEnd": 537,
+      "display": "为"
+    },
+    {
+      "index": 391,
+      "text": "二",
+      "start": 151.4375,
+      "end": 151.675,
+      "charStart": 537,
+      "charEnd": 538,
+      "display": "二、"
+    },
+    {
+      "index": 392,
+      "text": "根号",
+      "start": 151.9125,
+      "end": 152.3125,
+      "charStart": 538,
+      "charEnd": 540,
+      "display": "根号"
+    },
+    {
+      "index": 393,
+      "text": "二",
+      "start": 152.325,
+      "end": 152.5625,
+      "charStart": 540,
+      "charEnd": 541,
+      "display": "二、"
+    },
+    {
+      "index": 394,
+      "text": "零",
+      "start": 152.875,
+      "end": 153.175,
+      "charStart": 541,
+      "charEnd": 542,
+      "display": "零，"
+    },
+    {
+      "index": 395,
+      "text": "O",
+      "start": 153.525,
+      "end": 153.725,
+      "charStart": 542,
+      "charEnd": 543,
+      "display": "O"
+    },
+    {
+      "index": 396,
+      "text": "P",
+      "start": 153.725,
+      "end": 153.9,
+      "charStart": 543,
+      "charEnd": 544,
+      "display": "P"
+    },
+    {
+      "index": 397,
+      "text": "的",
+      "start": 153.9,
+      "end": 153.9875,
+      "charStart": 544,
+      "charEnd": 545,
+      "display": "的"
+    },
+    {
+      "index": 398,
+      "text": "方向",
+      "start": 154.0,
+      "end": 154.35,
+      "charStart": 545,
+      "charEnd": 547,
+      "display": "方向"
+    },
+    {
+      "index": 399,
+      "text": "向量",
+      "start": 154.35,
+      "end": 154.8375,
+      "charStart": 547,
+      "charEnd": 549,
+      "display": "向量"
+    },
+    {
+      "index": 400,
+      "text": "为",
+      "start": 154.9375,
+      "end": 155.125,
+      "charStart": 549,
+      "charEnd": 550,
+      "display": "为"
+    },
+    {
+      "index": 401,
+      "text": "负一",
+      "start": 155.1375,
+      "end": 155.6375,
+      "charStart": 550,
+      "charEnd": 552,
+      "display": "负一、"
+    },
+    {
+      "index": 402,
+      "text": "零",
+      "start": 155.9,
+      "end": 156.2,
+      "charStart": 552,
+      "charEnd": 553,
+      "display": "零、"
+    },
+    {
+      "index": 403,
+      "text": "根号",
+      "start": 156.3875,
+      "end": 156.75,
+      "charStart": 553,
+      "charEnd": 555,
+      "display": "根号"
+    },
+    {
+      "index": 404,
+      "text": "二",
+      "start": 156.75,
+      "end": 156.9875,
+      "charStart": 555,
+      "charEnd": 556,
+      "display": "二。"
+    },
+    {
+      "index": 405,
+      "text": "数量",
+      "start": 157.55,
+      "end": 158.05,
+      "charStart": 556,
+      "charEnd": 558,
+      "display": "数量"
+    },
+    {
+      "index": 406,
+      "text": "积",
+      "start": 158.0625,
+      "end": 158.225,
+      "charStart": 558,
+      "charEnd": 559,
+      "display": "积"
+    },
+    {
+      "index": 407,
+      "text": "为",
+      "start": 158.225,
+      "end": 158.3875,
+      "charStart": 559,
+      "charEnd": 560,
+      "display": "为"
+    },
+    {
+      "index": 408,
+      "text": "负二",
+      "start": 158.4,
+      "end": 158.875,
+      "charStart": 560,
+      "charEnd": 562,
+      "display": "负二。"
+    },
+    {
+      "index": 409,
+      "text": "两",
+      "start": 159.45,
+      "end": 159.675,
+      "charStart": 562,
+      "charEnd": 563,
+      "display": "两"
+    },
+    {
+      "index": 410,
+      "text": "个",
+      "start": 159.675,
+      "end": 159.75,
+      "charStart": 563,
+      "charEnd": 564,
+      "display": "个"
+    },
+    {
+      "index": 411,
+      "text": "向量",
+      "start": 159.775,
+      "end": 160.125,
+      "charStart": 564,
+      "charEnd": 566,
+      "display": "向量"
+    },
+    {
+      "index": 412,
+      "text": "的",
+      "start": 160.125,
+      "end": 160.2,
+      "charStart": 566,
+      "charEnd": 567,
+      "display": "的"
+    },
+    {
+      "index": 413,
+      "text": "模长",
+      "start": 160.2125,
+      "end": 160.7625,
+      "charStart": 567,
+      "charEnd": 569,
+      "display": "模长，"
+    },
+    {
+      "index": 414,
+      "text": "分别",
+      "start": 161.0125,
+      "end": 161.3375,
+      "charStart": 569,
+      "charEnd": 571,
+      "display": "分别"
+    },
+    {
+      "index": 415,
+      "text": "是",
+      "start": 161.3375,
+      "end": 161.5,
+      "charStart": 571,
+      "charEnd": 572,
+      "display": "是"
+    },
+    {
+      "index": 416,
+      "text": "根号",
+      "start": 161.525,
+      "end": 161.9125,
+      "charStart": 572,
+      "charEnd": 574,
+      "display": "根号"
+    },
+    {
+      "index": 417,
+      "text": "六",
+      "start": 161.925,
+      "end": 162.1625,
+      "charStart": 574,
+      "charEnd": 575,
+      "display": "六"
+    },
+    {
+      "index": 418,
+      "text": "和",
+      "start": 162.1625,
+      "end": 162.3125,
+      "charStart": 575,
+      "charEnd": 576,
+      "display": "和"
+    },
+    {
+      "index": 419,
+      "text": "根号三",
+      "start": 162.325,
+      "end": 162.9875,
+      "charStart": 576,
+      "charEnd": 579,
+      "display": "根号三。"
+    },
+    {
+      "index": 420,
+      "text": "将",
+      "start": 163.5625,
+      "end": 163.825,
+      "charStart": 579,
+      "charEnd": 580,
+      "display": "将"
+    },
+    {
+      "index": 421,
+      "text": "P",
+      "start": 163.85,
+      "end": 164.0625,
+      "charStart": 580,
+      "charEnd": 581,
+      "display": "P"
+    },
+    {
+      "index": 422,
+      "text": "O",
+      "start": 164.0625,
+      "end": 164.2875,
+      "charStart": 581,
+      "charEnd": 582,
+      "display": "O"
+    },
+    {
+      "index": 423,
+      "text": "平移",
+      "start": 164.3,
+      "end": 164.625,
+      "charStart": 582,
+      "charEnd": 584,
+      "display": "平移"
+    },
+    {
+      "index": 424,
+      "text": "到",
+      "start": 164.625,
+      "end": 164.825,
+      "charStart": 584,
+      "charEnd": 585,
+      "display": "到"
+    },
+    {
+      "index": 425,
+      "text": "过",
+      "start": 164.825,
+      "end": 165.025,
+      "charStart": 585,
+      "charEnd": 586,
+      "display": "过"
+    },
+    {
+      "index": 426,
+      "text": "A",
+      "start": 165.0375,
+      "end": 165.1875,
+      "charStart": 586,
+      "charEnd": 587,
+      "display": "A"
+    },
+    {
+      "index": 427,
+      "text": "的",
+      "start": 165.1875,
+      "end": 165.275,
+      "charStart": 587,
+      "charEnd": 588,
+      "display": "的"
+    },
+    {
+      "index": 428,
+      "text": "平行线",
+      "start": 165.3,
+      "end": 165.8875,
+      "charStart": 588,
+      "charEnd": 591,
+      "display": "平行线"
+    },
+    {
+      "index": 429,
+      "text": "上",
+      "start": 165.8875,
+      "end": 166.1875,
+      "charStart": 591,
+      "charEnd": 592,
+      "display": "上。"
+    },
+    {
+      "index": 430,
+      "text": "两条",
+      "start": 166.75,
+      "end": 167.1625,
+      "charStart": 592,
+      "charEnd": 594,
+      "display": "两条"
+    },
+    {
+      "index": 431,
+      "text": "直线",
+      "start": 167.175,
+      "end": 167.55,
+      "charStart": 594,
+      "charEnd": 596,
+      "display": "直线"
+    },
+    {
+      "index": 432,
+      "text": "所",
+      "start": 167.575,
+      "end": 167.725,
+      "charStart": 596,
+      "charEnd": 597,
+      "display": "所"
+    },
+    {
+      "index": 433,
+      "text": "成",
+      "start": 167.725,
+      "end": 167.9,
+      "charStart": 597,
+      "charEnd": 598,
+      "display": "成"
+    },
+    {
+      "index": 434,
+      "text": "的",
+      "start": 167.9,
+      "end": 168.0125,
+      "charStart": 598,
+      "charEnd": 599,
+      "display": "的"
+    },
+    {
+      "index": 435,
+      "text": "角",
+      "start": 168.0125,
+      "end": 168.3375,
+      "charStart": 599,
+      "charEnd": 600,
+      "display": "角，"
+    },
+    {
+      "index": 436,
+      "text": "取",
+      "start": 168.55,
+      "end": 168.7375,
+      "charStart": 600,
+      "charEnd": 601,
+      "display": "取"
+    },
+    {
+      "index": 437,
+      "text": "零",
+      "start": 168.75,
+      "end": 168.9375,
+      "charStart": 601,
+      "charEnd": 602,
+      "display": "零"
+    },
+    {
+      "index": 438,
+      "text": "到",
+      "start": 168.9375,
+      "end": 169.0875,
+      "charStart": 602,
+      "charEnd": 603,
+      "display": "到"
+    },
+    {
+      "index": 439,
+      "text": "九十",
+      "start": 169.1,
+      "end": 169.5,
+      "charStart": 603,
+      "charEnd": 605,
+      "display": "九十"
+    },
+    {
+      "index": 440,
+      "text": "度",
+      "start": 169.5,
+      "end": 169.7625,
+      "charStart": 605,
+      "charEnd": 606,
+      "display": "度。"
+    },
+    {
+      "index": 441,
+      "text": "因此",
+      "start": 170.325,
+      "end": 170.8625,
+      "charStart": 606,
+      "charEnd": 608,
+      "display": "因此，"
+    },
+    {
+      "index": 442,
+      "text": "计算",
+      "start": 171.2,
+      "end": 171.575,
+      "charStart": 608,
+      "charEnd": 610,
+      "display": "计算"
+    },
+    {
+      "index": 443,
+      "text": "余弦",
+      "start": 171.5875,
+      "end": 171.9875,
+      "charStart": 610,
+      "charEnd": 612,
+      "display": "余弦"
+    },
+    {
+      "index": 444,
+      "text": "时",
+      "start": 171.9875,
+      "end": 172.325,
+      "charStart": 612,
+      "charEnd": 613,
+      "display": "时，"
+    },
+    {
+      "index": 445,
+      "text": "要",
+      "start": 172.5,
+      "end": 172.65,
+      "charStart": 613,
+      "charEnd": 614,
+      "display": "要"
+    },
+    {
+      "index": 446,
+      "text": "对",
+      "start": 172.65,
+      "end": 172.7625,
+      "charStart": 614,
+      "charEnd": 615,
+      "display": "对"
+    },
+    {
+      "index": 447,
+      "text": "数量",
+      "start": 172.775,
+      "end": 173.1375,
+      "charStart": 615,
+      "charEnd": 617,
+      "display": "数量"
+    },
+    {
+      "index": 448,
+      "text": "积取",
+      "start": 173.1625,
+      "end": 173.5125,
+      "charStart": 617,
+      "charEnd": 619,
+      "display": "积取"
+    },
+    {
+      "index": 449,
+      "text": "绝对值",
+      "start": 173.5125,
+      "end": 174.25,
+      "charStart": 619,
+      "charEnd": 622,
+      "display": "绝对值。"
+    },
+    {
+      "index": 450,
+      "text": "用二除",
+      "start": 174.825,
+      "end": 175.5125,
+      "charStart": 622,
+      "charEnd": 625,
+      "display": "用二除"
+    },
+    {
+      "index": 451,
+      "text": "以",
+      "start": 175.525,
+      "end": 175.6875,
+      "charStart": 625,
+      "charEnd": 626,
+      "display": "以"
+    },
+    {
+      "index": 452,
+      "text": "根号",
+      "start": 175.7125,
+      "end": 176.05,
+      "charStart": 626,
+      "charEnd": 628,
+      "display": "根号"
+    },
+    {
+      "index": 453,
+      "text": "六",
+      "start": 176.0625,
+      "end": 176.25,
+      "charStart": 628,
+      "charEnd": 629,
+      "display": "六"
+    },
+    {
+      "index": 454,
+      "text": "与",
+      "start": 176.25,
+      "end": 176.3875,
+      "charStart": 629,
+      "charEnd": 630,
+      "display": "与"
+    },
+    {
+      "index": 455,
+      "text": "根号三",
+      "start": 176.4,
+      "end": 176.9625,
+      "charStart": 630,
+      "charEnd": 633,
+      "display": "根号三"
+    },
+    {
+      "index": 456,
+      "text": "的",
+      "start": 176.9625,
+      "end": 177.0375,
+      "charStart": 633,
+      "charEnd": 634,
+      "display": "的"
+    },
+    {
+      "index": 457,
+      "text": "乘积",
+      "start": 177.05,
+      "end": 177.5625,
+      "charStart": 634,
+      "charEnd": 636,
+      "display": "乘积。"
+    },
+    {
+      "index": 458,
+      "text": "化",
+      "start": 178.1375,
+      "end": 178.3625,
+      "charStart": 636,
+      "charEnd": 637,
+      "display": "化"
+    },
+    {
+      "index": 459,
+      "text": "简",
+      "start": 178.3625,
+      "end": 178.5625,
+      "charStart": 637,
+      "charEnd": 638,
+      "display": "简"
+    },
+    {
+      "index": 460,
+      "text": "得到",
+      "start": 178.575,
+      "end": 178.9875,
+      "charStart": 638,
+      "charEnd": 640,
+      "display": "得到，"
+    },
+    {
+      "index": 461,
+      "text": "根号",
+      "start": 179.225,
+      "end": 179.55,
+      "charStart": 640,
+      "charEnd": 642,
+      "display": "根号"
+    },
+    {
+      "index": 462,
+      "text": "二除",
+      "start": 179.55,
+      "end": 179.875,
+      "charStart": 642,
+      "charEnd": 644,
+      "display": "二除"
+    },
+    {
+      "index": 463,
+      "text": "以",
+      "start": 179.8875,
+      "end": 180.0375,
+      "charStart": 644,
+      "charEnd": 645,
+      "display": "以"
+    },
+    {
+      "index": 464,
+      "text": "三",
+      "start": 180.0375,
+      "end": 180.3625,
+      "charStart": 645,
+      "charEnd": 646,
+      "display": "三。"
+    },
+    {
+      "index": 465,
+      "text": "回顾",
+      "start": 180.925,
+      "end": 181.35,
+      "charStart": 646,
+      "charEnd": 648,
+      "display": "回顾"
+    },
+    {
+      "index": 466,
+      "text": "方法",
+      "start": 181.3625,
+      "end": 181.875,
+      "charStart": 648,
+      "charEnd": 650,
+      "display": "方法。"
+    },
+    {
+      "index": 467,
+      "text": "面面",
+      "start": 182.45,
+      "end": 182.775,
+      "charStart": 650,
+      "charEnd": 652,
+      "display": "面面"
+    },
+    {
+      "index": 468,
+      "text": "垂直",
+      "start": 182.7875,
+      "end": 183.3625,
+      "charStart": 652,
+      "charEnd": 654,
+      "display": "垂直"
+    },
+    {
+      "index": 469,
+      "text": "先",
+      "start": 183.45,
+      "end": 183.675,
+      "charStart": 654,
+      "charEnd": 655,
+      "display": "先"
+    },
+    {
+      "index": 470,
+      "text": "找",
+      "start": 183.675,
+      "end": 183.8375,
+      "charStart": 655,
+      "charEnd": 656,
+      "display": "找"
+    },
+    {
+      "index": 471,
+      "text": "线面",
+      "start": 183.8625,
+      "end": 184.2375,
+      "charStart": 656,
+      "charEnd": 658,
+      "display": "线面"
+    },
+    {
+      "index": 472,
+      "text": "垂直",
+      "start": 184.25,
+      "end": 184.85,
+      "charStart": 658,
+      "charEnd": 660,
+      "display": "垂直。"
+    },
+    {
+      "index": 473,
+      "text": "四",
+      "start": 185.425,
+      "end": 185.675,
+      "charStart": 660,
+      "charEnd": 661,
+      "display": "四"
+    },
+    {
+      "index": 474,
+      "text": "点",
+      "start": 185.675,
+      "end": 185.85,
+      "charStart": 661,
+      "charEnd": 662,
+      "display": "点"
+    },
+    {
+      "index": 475,
+      "text": "共球",
+      "start": 185.8625,
+      "end": 186.3875,
+      "charStart": 662,
+      "charEnd": 664,
+      "display": "共球，"
+    },
+    {
+      "index": 476,
+      "text": "通过",
+      "start": 186.6125,
+      "end": 186.9375,
+      "charStart": 664,
+      "charEnd": 666,
+      "display": "通过"
+    },
+    {
+      "index": 477,
+      "text": "构造",
+      "start": 186.95,
+      "end": 187.3,
+      "charStart": 666,
+      "charEnd": 668,
+      "display": "构造"
+    },
+    {
+      "index": 478,
+      "text": "等距",
+      "start": 187.3125,
+      "end": 187.7,
+      "charStart": 668,
+      "charEnd": 670,
+      "display": "等距"
+    },
+    {
+      "index": 479,
+      "text": "点",
+      "start": 187.7125,
+      "end": 187.9875,
+      "charStart": 670,
+      "charEnd": 671,
+      "display": "点"
+    },
+    {
+      "index": 480,
+      "text": "定位",
+      "start": 188.0875,
+      "end": 188.425,
+      "charStart": 671,
+      "charEnd": 673,
+      "display": "定位"
+    },
+    {
+      "index": 481,
+      "text": "球心",
+      "start": 188.4375,
+      "end": 188.95,
+      "charStart": 673,
+      "charEnd": 675,
+      "display": "球心。"
+    },
+    {
+      "index": 482,
+      "text": "异面",
+      "start": 189.525,
+      "end": 189.875,
+      "charStart": 675,
+      "charEnd": 677,
+      "display": "异面"
+    },
+    {
+      "index": 483,
+      "text": "直线",
+      "start": 189.9,
+      "end": 190.2375,
+      "charStart": 677,
+      "charEnd": 679,
+      "display": "直线"
+    },
+    {
+      "index": 484,
+      "text": "夹角",
+      "start": 190.25,
+      "end": 190.7875,
+      "charStart": 679,
+      "charEnd": 681,
+      "display": "夹角，"
+    },
+    {
+      "index": 485,
+      "text": "再",
+      "start": 191.0375,
+      "end": 191.225,
+      "charStart": 681,
+      "charEnd": 682,
+      "display": "再"
+    },
+    {
+      "index": 486,
+      "text": "用",
+      "start": 191.225,
+      "end": 191.3625,
+      "charStart": 682,
+      "charEnd": 683,
+      "display": "用"
+    },
+    {
+      "index": 487,
+      "text": "空间",
+      "start": 191.375,
+      "end": 191.775,
+      "charStart": 683,
+      "charEnd": 685,
+      "display": "空间"
+    },
+    {
+      "index": 488,
+      "text": "向量",
+      "start": 191.8,
+      "end": 192.1875,
+      "charStart": 685,
+      "charEnd": 687,
+      "display": "向量"
+    },
+    {
+      "index": 489,
+      "text": "计算",
+      "start": 192.2,
+      "end": 192.6375,
+      "charStart": 687,
+      "charEnd": 689,
+      "display": "计算。"
+    },
+    {
+      "index": 490,
+      "text": "注意",
+      "start": 193.2125,
+      "end": 193.5125,
+      "charStart": 689,
+      "charEnd": 691,
+      "display": "注意"
+    },
+    {
+      "index": 491,
+      "text": "数量积",
+      "start": 193.5375,
+      "end": 194.025,
+      "charStart": 691,
+      "charEnd": 694,
+      "display": "数量积"
+    },
+    {
+      "index": 492,
+      "text": "的",
+      "start": 194.025,
+      "end": 194.125,
+      "charStart": 694,
+      "charEnd": 695,
+      "display": "的"
+    },
+    {
+      "index": 493,
+      "text": "绝对值",
+      "start": 194.1375,
+      "end": 194.8125,
+      "charStart": 695,
+      "charEnd": 698,
+      "display": "绝对值，"
+    },
+    {
+      "index": 494,
+      "text": "答案",
+      "start": 195.075,
+      "end": 195.4,
+      "charStart": 698,
+      "charEnd": 700,
+      "display": "答案"
+    },
+    {
+      "index": 495,
+      "text": "是",
+      "start": 195.4125,
+      "end": 195.75,
+      "charStart": 700,
+      "charEnd": 701,
+      "display": "是"
+    },
+    {
+      "index": 496,
+      "text": "根号",
+      "start": 195.8375,
+      "end": 196.1875,
+      "charStart": 701,
+      "charEnd": 703,
+      "display": "根号"
+    },
+    {
+      "index": 497,
+      "text": "二除",
+      "start": 196.2,
+      "end": 196.55,
+      "charStart": 703,
+      "charEnd": 705,
+      "display": "二除"
+    },
+    {
+      "index": 498,
+      "text": "以",
+      "start": 196.575,
+      "end": 196.725,
+      "charStart": 705,
+      "charEnd": 706,
+      "display": "以"
+    },
+    {
+      "index": 499,
+      "text": "三",
+      "start": 196.725,
+      "end": 197.0375,
+      "charStart": 706,
+      "charEnd": 707,
+      "display": "三。"
+    }
+  ]
+}

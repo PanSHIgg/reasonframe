@@ -1,0 +1,22 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { ReviewSchema } from '../shared/schema.js';
+
+const checks = {
+  textClean: true, problemFaithful: true, mathSound: true, reasoningClear: true, notationConsistent: true,
+  scopeRespected: true, visualsConsistent: true, narrationComplete: true, layoutClean: true,
+};
+const review = { approved: true, checks, answer: 'B、D', issues: [] };
+
+test('review approval requires the text and reasoning gates', () => {
+  assert.equal(ReviewSchema.safeParse(review).success, true);
+  for (const key of ['textClean', 'reasoningClear', 'notationConsistent', 'layoutClean'] as const) {
+    const result = ReviewSchema.safeParse({ ...review, checks: { ...checks, [key]: false } });
+    assert.equal(result.success, false, `${key}=false must block approval`);
+  }
+});
+
+test('review issues must be empty for approval', () => {
+  assert.equal(ReviewSchema.safeParse({ ...review, issues: ['[文字] 标题：错字'] }).success, false);
+  assert.equal(ReviewSchema.safeParse({ ...review, approved: false, checks: { ...checks, textClean: false }, issues: ['[文字] 标题：错字'] }).success, true);
+});

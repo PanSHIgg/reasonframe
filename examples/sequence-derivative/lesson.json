@@ -1,0 +1,2937 @@
+{
+  "schemaVersion": 1,
+  "title": "递推数列与错位相减求 f′(−2)",
+  "subtitle": "清分母引入 bₙ = n·aₙ；f′(−2) 拆成错位相减的和 S 与等比和 T",
+  "width": 1920,
+  "height": 1080,
+  "fps": 24,
+  "expectedAnswer": "第(1)问：n·a_n = n + 2，故 {n a_n} 是首项 3、公差 1 的等差数列（而 {a_n} 本身不是等差数列）。第(2)问：f′(−2) = [7 − (3m+7)(−2)^m]/9（m 为正整数）；检验 m=1 时 f′(−2)=3，m=2 时 f′(−2)=−5，m=3 时 f′(−2)=15。",
+  "assumptions": [
+    "第(1)问要求证明的等差数列是 {n a_n}（n 为正整数），首项 3、公差 1；原数列 {a_n} 本身不是等差数列（a_2−a_1=−1，a_3−a_2=−1/3）。",
+    "第(2)问中 m 取任意正整数，闭式结果 f′(−2) = [7 − (3m+7)(−2)^m]/9 对一切 m ≥ 1 成立。",
+    "只使用递推式等价变形、等差数列通项、多项式逐项求导、有限和的错位相减与等比数列求和公式；没有使用无穷级数的收敛或发散作为有限和的依据。",
+    "图片与文字给出的条件一致：a_1 = 3，a_{n+1}/n = a_n/(n+1) + 1/[n(n+1)]，f(x)=a_1x+a_2x^2+⋯+a_mx^m。没有额外条件。",
+    "s7 中 r 只是为书写方便引入的记号，恒取 r = −2；一般结论来自错位相减与合并的推导，m = 1、2、3 的数值仅为抽样核对。",
+    "s3 中紫色两点标注为一般项的示意位置（bₙ 与 bₙ₊₁），蓝色台阶点 b₁、b₂、b₃ 是具体数值，两者已在旁白与图注中区分。"
+  ],
+  "chapters": [
+    "读题与思路",
+    "递推式变形",
+    "新数列与通项",
+    "图形观察",
+    "求导与代入",
+    "错位相减",
+    "合并与检验"
+  ],
+  "model": {
+    "a1": 3,
+    "a2": 2,
+    "a3": 1.6666666666666667,
+    "a4": 1.5,
+    "a5": 1.4,
+    "b1": 3,
+    "b2": 4,
+    "b3": 5,
+    "b5": 7,
+    "d": 1,
+    "m1": 1,
+    "m2": 2,
+    "m3": 3,
+    "F1": 3,
+    "F2": -5,
+    "F3": 15,
+    "S1": 1,
+    "S2": -3,
+    "S3": 9,
+    "T1": 2,
+    "T2": -2,
+    "T3": 6,
+    "G2": -1,
+    "G3": 3,
+    "rowS": [
+      1,
+      -4,
+      12,
+      -32,
+      80
+    ],
+    "rowT": [
+      2,
+      -4,
+      8,
+      -16,
+      32
+    ],
+    "rowU": [
+      3,
+      -8,
+      20,
+      -48,
+      112
+    ],
+    "bs": [
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "as": [
+      3,
+      2,
+      1.6666666666666667,
+      1.5,
+      1.4
+    ],
+    "PA1": [
+      140,
+      140,
+      0
+    ],
+    "PAN": [
+      140,
+      300,
+      0
+    ],
+    "PAN1": [
+      560,
+      300,
+      0
+    ],
+    "PONE": [
+      140,
+      460,
+      0
+    ],
+    "PANT": [
+      300,
+      140,
+      0
+    ],
+    "PG1": [
+      700,
+      140,
+      0
+    ],
+    "PG2": [
+      700,
+      460,
+      0
+    ],
+    "PL1": [
+      170,
+      150,
+      0
+    ],
+    "PL2": [
+      170,
+      280,
+      0
+    ],
+    "PL3": [
+      170,
+      410,
+      0
+    ],
+    "PR1": [
+      700,
+      150,
+      0
+    ],
+    "PR2": [
+      700,
+      280,
+      0
+    ],
+    "PR3": [
+      700,
+      410,
+      0
+    ],
+    "PNDEF": [
+      200,
+      150,
+      0
+    ],
+    "PB1": [
+      200,
+      390,
+      0
+    ],
+    "PB2": [
+      400,
+      330,
+      0
+    ],
+    "PB3": [
+      600,
+      270,
+      0
+    ],
+    "PBN": [
+      770,
+      170,
+      0
+    ],
+    "PAF": [
+      770,
+      440,
+      0
+    ],
+    "PGCUR": [
+      340,
+      240,
+      0
+    ],
+    "PGNEXT": [
+      500,
+      240,
+      0
+    ],
+    "PBX0": [
+      80,
+      560,
+      0
+    ],
+    "PBX1": [
+      430,
+      560,
+      0
+    ],
+    "PBY1": [
+      80,
+      190,
+      0
+    ],
+    "PBB1": [
+      110,
+      410,
+      0
+    ],
+    "PBB2": [
+      180,
+      360,
+      0
+    ],
+    "PBB3": [
+      250,
+      310,
+      0
+    ],
+    "PBB4": [
+      320,
+      260,
+      0
+    ],
+    "PBB5": [
+      390,
+      210,
+      0
+    ],
+    "PAX0": [
+      500,
+      560,
+      0
+    ],
+    "PAX1": [
+      850,
+      560,
+      0
+    ],
+    "PAY1": [
+      500,
+      410,
+      0
+    ],
+    "PAA1": [
+      530,
+      410,
+      0
+    ],
+    "PAA2": [
+      600,
+      460,
+      0
+    ],
+    "PAA3": [
+      670,
+      477,
+      0
+    ],
+    "PAA4": [
+      740,
+      485,
+      0
+    ],
+    "PAA5": [
+      810,
+      490,
+      0
+    ],
+    "PLIM1": [
+      500,
+      510,
+      0
+    ],
+    "PLIM2": [
+      850,
+      510,
+      0
+    ],
+    "PS1": [
+      150,
+      160,
+      0
+    ],
+    "PS2": [
+      150,
+      290,
+      0
+    ],
+    "PS3": [
+      150,
+      420,
+      0
+    ],
+    "PSG": [
+      150,
+      545,
+      0
+    ],
+    "PD1": [
+      560,
+      160,
+      0
+    ],
+    "PD2": [
+      560,
+      290,
+      0
+    ],
+    "PD3": [
+      560,
+      420,
+      0
+    ],
+    "PDG": [
+      560,
+      545,
+      0
+    ],
+    "PNEG": [
+      790,
+      300,
+      0
+    ],
+    "PS1_1": [
+      150,
+      200,
+      0
+    ],
+    "PS1_2": [
+      280,
+      200,
+      0
+    ],
+    "PS1_3": [
+      410,
+      200,
+      0
+    ],
+    "PS1_4": [
+      540,
+      200,
+      0
+    ],
+    "PS1_5": [
+      670,
+      200,
+      0
+    ],
+    "PS1M": [
+      810,
+      200,
+      0
+    ],
+    "PT1_1": [
+      150,
+      330,
+      0
+    ],
+    "PT1_2": [
+      280,
+      330,
+      0
+    ],
+    "PT1_3": [
+      410,
+      330,
+      0
+    ],
+    "PT1_4": [
+      540,
+      330,
+      0
+    ],
+    "PT1_5": [
+      670,
+      330,
+      0
+    ],
+    "PT1M": [
+      810,
+      330,
+      0
+    ],
+    "PU1_1": [
+      150,
+      460,
+      0
+    ],
+    "PU1_2": [
+      280,
+      460,
+      0
+    ],
+    "PU1_3": [
+      410,
+      460,
+      0
+    ],
+    "PU1_4": [
+      540,
+      460,
+      0
+    ],
+    "PU1_5": [
+      670,
+      460,
+      0
+    ],
+    "PU1M": [
+      810,
+      460,
+      0
+    ],
+    "PV11": [
+      110,
+      200,
+      0
+    ],
+    "PV12": [
+      220,
+      200,
+      0
+    ],
+    "PV13": [
+      330,
+      200,
+      0
+    ],
+    "PV14": [
+      440,
+      200,
+      0
+    ],
+    "PV15": [
+      550,
+      200,
+      0
+    ],
+    "PV16": [
+      660,
+      200,
+      0
+    ],
+    "PV22": [
+      220,
+      330,
+      0
+    ],
+    "PV23": [
+      330,
+      330,
+      0
+    ],
+    "PV24": [
+      440,
+      330,
+      0
+    ],
+    "PV25": [
+      550,
+      330,
+      0
+    ],
+    "PV26": [
+      660,
+      330,
+      0
+    ],
+    "PV27": [
+      790,
+      330,
+      0
+    ],
+    "PV31": [
+      110,
+      460,
+      0
+    ],
+    "PV32": [
+      220,
+      460,
+      0
+    ],
+    "PV33": [
+      330,
+      460,
+      0
+    ],
+    "PV34": [
+      440,
+      460,
+      0
+    ],
+    "PV35": [
+      550,
+      460,
+      0
+    ],
+    "PV36": [
+      660,
+      460,
+      0
+    ],
+    "PV37": [
+      790,
+      460,
+      0
+    ],
+    "PVL1": [
+      60,
+      200,
+      0
+    ],
+    "PVL2": [
+      60,
+      330,
+      0
+    ],
+    "PVL3": [
+      60,
+      460,
+      0
+    ],
+    "PSH1": [
+      165,
+      262,
+      0
+    ],
+    "PSH2": [
+      270,
+      262,
+      0
+    ],
+    "PRDEF": [
+      790,
+      110,
+      0
+    ],
+    "PSFORM": [
+      430,
+      570,
+      0
+    ],
+    "PGEOM": [
+      180,
+      220,
+      0
+    ],
+    "PTCL": [
+      640,
+      220,
+      0
+    ],
+    "PCOMB": [
+      400,
+      400,
+      0
+    ],
+    "PFIN": [
+      400,
+      545,
+      0
+    ],
+    "PCK1": [
+      200,
+      180,
+      0
+    ],
+    "PCK2": [
+      450,
+      180,
+      0
+    ],
+    "PCK3": [
+      700,
+      180,
+      0
+    ],
+    "PANS": [
+      450,
+      400,
+      0
+    ],
+    "PSA1": [
+      180,
+      545,
+      0
+    ],
+    "PSA2": [
+      300,
+      545,
+      0
+    ],
+    "PSA3": [
+      420,
+      545,
+      0
+    ]
+  },
+  "entities": {
+    "pt:given": {
+      "label": "a₁ = 3",
+      "color": "#58c4dd",
+      "vertices": [
+        "PA1"
+      ]
+    },
+    "pt:an": {
+      "label": "aₙ / (n+1)",
+      "color": "#ffff00",
+      "vertices": [
+        "PAN"
+      ]
+    },
+    "pt:an1": {
+      "label": "aₙ₊₁ / n",
+      "color": "#ffff00",
+      "vertices": [
+        "PAN1"
+      ]
+    },
+    "pt:one": {
+      "label": "1 / [n(n+1)]",
+      "color": "#c77dff",
+      "vertices": [
+        "PONE"
+      ]
+    },
+    "ln:arrow": {
+      "label": "递推关系",
+      "color": "#83c167",
+      "vertices": [
+        "PAN",
+        "PAN1"
+      ]
+    },
+    "pt:goal1": {
+      "label": "(1) {n aₙ} 是等差数列",
+      "color": "#83c167",
+      "vertices": [
+        "PG1"
+      ]
+    },
+    "pt:goal2": {
+      "label": "(2) 求 f′(−2)",
+      "color": "#83c167",
+      "vertices": [
+        "PG2"
+      ]
+    },
+    "pt:aseq1": {
+      "label": "a₁",
+      "color": "#58c4dd",
+      "vertices": [
+        "PSA1"
+      ]
+    },
+    "pt:aseq2": {
+      "label": "a₂",
+      "color": "#58c4dd",
+      "vertices": [
+        "PSA2"
+      ]
+    },
+    "pt:aseq3": {
+      "label": "a₃",
+      "color": "#58c4dd",
+      "vertices": [
+        "PSA3"
+      ]
+    },
+    "pt:l_an1": {
+      "label": "aₙ₊₁ / n",
+      "color": "#58c4dd",
+      "vertices": [
+        "PL1"
+      ]
+    },
+    "pt:l_an": {
+      "label": "aₙ / (n+1)",
+      "color": "#ffff00",
+      "vertices": [
+        "PL2"
+      ]
+    },
+    "pt:l_one": {
+      "label": "1 / [n(n+1)]",
+      "color": "#c77dff",
+      "vertices": [
+        "PL3"
+      ]
+    },
+    "pt:r_an1": {
+      "label": "(n+1)·aₙ₊₁",
+      "color": "#58c4dd",
+      "vertices": [
+        "PR1"
+      ]
+    },
+    "pt:r_an": {
+      "label": "n·aₙ",
+      "color": "#ffff00",
+      "vertices": [
+        "PR2"
+      ]
+    },
+    "pt:r_one": {
+      "label": "1",
+      "color": "#c77dff",
+      "vertices": [
+        "PR3"
+      ]
+    },
+    "ln:x1": {
+      "label": "× n(n+1)",
+      "color": "#9a9a9a",
+      "vertices": [
+        "PL1",
+        "PR1"
+      ]
+    },
+    "ln:x2": {
+      "label": "× n(n+1)",
+      "color": "#9a9a9a",
+      "vertices": [
+        "PL2",
+        "PR2"
+      ]
+    },
+    "ln:x3": {
+      "label": "× n(n+1)",
+      "color": "#9a9a9a",
+      "vertices": [
+        "PL3",
+        "PR3"
+      ]
+    },
+    "pt:nbdef": {
+      "label": "bₙ = n·aₙ",
+      "color": "#83c167",
+      "vertices": [
+        "PNDEF"
+      ]
+    },
+    "pt:b1": {
+      "label": "b₁ = 3",
+      "color": "#58c4dd",
+      "vertices": [
+        "PB1"
+      ]
+    },
+    "pt:b2": {
+      "label": "b₂ = 4",
+      "color": "#ffff00",
+      "vertices": [
+        "PB2"
+      ]
+    },
+    "pt:b3": {
+      "label": "b₃ = 5",
+      "color": "#83c167",
+      "vertices": [
+        "PB3"
+      ]
+    },
+    "pt:bn": {
+      "label": "bₙ = n + 2",
+      "color": "#c77dff",
+      "vertices": [
+        "PBN"
+      ]
+    },
+    "pt:anf": {
+      "label": "aₙ = (n+2)/n",
+      "color": "#c77dff",
+      "vertices": [
+        "PAF"
+      ]
+    },
+    "pt:bsch_cur": {
+      "label": "bₙ（示意）",
+      "color": "#c77dff",
+      "vertices": [
+        "PGCUR"
+      ]
+    },
+    "pt:bsch_next": {
+      "label": "bₙ₊₁（示意）",
+      "color": "#c77dff",
+      "vertices": [
+        "PGNEXT"
+      ]
+    },
+    "ln:bstep": {
+      "label": "+1",
+      "color": "#83c167",
+      "vertices": [
+        "PGCUR",
+        "PGNEXT"
+      ]
+    },
+    "ln:bstair": {
+      "label": "每一步 +1",
+      "color": "#58c4dd",
+      "vertices": [
+        "PB1",
+        "PB2"
+      ]
+    },
+    "ln:bstair2": {
+      "label": "相邻两项 +1",
+      "color": "#58c4dd",
+      "vertices": [
+        "PB2",
+        "PB3"
+      ]
+    },
+    "ln:bx": {
+      "label": "n",
+      "color": "#9a9a9a",
+      "vertices": [
+        "PBX0",
+        "PBX1"
+      ]
+    },
+    "ln:by": {
+      "label": "bₙ",
+      "color": "#9a9a9a",
+      "vertices": [
+        "PBX0",
+        "PBY1"
+      ]
+    },
+    "pt:pb1": {
+      "label": "3",
+      "color": "#58c4dd",
+      "vertices": [
+        "PBB1"
+      ]
+    },
+    "pt:pb2": {
+      "label": "4",
+      "color": "#58c4dd",
+      "vertices": [
+        "PBB2"
+      ]
+    },
+    "pt:pb3": {
+      "label": "5",
+      "color": "#58c4dd",
+      "vertices": [
+        "PBB3"
+      ]
+    },
+    "pt:pb4": {
+      "label": "6",
+      "color": "#58c4dd",
+      "vertices": [
+        "PBB4"
+      ]
+    },
+    "pt:pb5": {
+      "label": "7",
+      "color": "#58c4dd",
+      "vertices": [
+        "PBB5"
+      ]
+    },
+    "ln:fitb": {
+      "label": "直线，公差 1",
+      "color": "#58c4dd",
+      "vertices": [
+        "PBB1",
+        "PBB5"
+      ]
+    },
+    "ln:ax": {
+      "label": "n",
+      "color": "#9a9a9a",
+      "vertices": [
+        "PAX0",
+        "PAX1"
+      ]
+    },
+    "ln:ay": {
+      "label": "aₙ",
+      "color": "#9a9a9a",
+      "vertices": [
+        "PAX0",
+        "PAY1"
+      ]
+    },
+    "pt:pa1": {
+      "label": "3",
+      "color": "#ffff00",
+      "vertices": [
+        "PAA1"
+      ]
+    },
+    "pt:pa2": {
+      "label": "2",
+      "color": "#ffff00",
+      "vertices": [
+        "PAA2"
+      ]
+    },
+    "pt:pa3": {
+      "label": "5/3",
+      "color": "#ffff00",
+      "vertices": [
+        "PAA3"
+      ]
+    },
+    "pt:pa4": {
+      "label": "3/2",
+      "color": "#ffff00",
+      "vertices": [
+        "PAA4"
+      ]
+    },
+    "pt:pa5": {
+      "label": "7/5",
+      "color": "#ffff00",
+      "vertices": [
+        "PAA5"
+      ]
+    },
+    "ln:lim": {
+      "label": "aₙ 靠近 1",
+      "color": "#c77dff",
+      "vertices": [
+        "PLIM1",
+        "PLIM2"
+      ]
+    },
+    "pt:src1": {
+      "label": "a₁·x",
+      "color": "#ffff00",
+      "vertices": [
+        "PS1"
+      ]
+    },
+    "pt:src2": {
+      "label": "a₂·x²",
+      "color": "#ffff00",
+      "vertices": [
+        "PS2"
+      ]
+    },
+    "pt:src3": {
+      "label": "a₃·x³",
+      "color": "#ffff00",
+      "vertices": [
+        "PS3"
+      ]
+    },
+    "pt:srcg": {
+      "label": "aₖ·xᵏ",
+      "color": "#ffff00",
+      "vertices": [
+        "PSG"
+      ]
+    },
+    "pt:dst1": {
+      "label": "a₁",
+      "color": "#58c4dd",
+      "vertices": [
+        "PD1"
+      ]
+    },
+    "pt:dst2": {
+      "label": "2a₂·x",
+      "color": "#58c4dd",
+      "vertices": [
+        "PD2"
+      ]
+    },
+    "pt:dst3": {
+      "label": "3a₃·x²",
+      "color": "#58c4dd",
+      "vertices": [
+        "PD3"
+      ]
+    },
+    "pt:dstg": {
+      "label": "k·aₖ·xᵏ⁻¹",
+      "color": "#58c4dd",
+      "vertices": [
+        "PDG"
+      ]
+    },
+    "ln:m1": {
+      "label": "求导",
+      "color": "#83c167",
+      "vertices": [
+        "PS1",
+        "PD1"
+      ]
+    },
+    "ln:m2": {
+      "label": "求导",
+      "color": "#83c167",
+      "vertices": [
+        "PS2",
+        "PD2"
+      ]
+    },
+    "ln:m3": {
+      "label": "求导",
+      "color": "#83c167",
+      "vertices": [
+        "PS3",
+        "PD3"
+      ]
+    },
+    "ln:m4": {
+      "label": "求导",
+      "color": "#83c167",
+      "vertices": [
+        "PSG",
+        "PDG"
+      ]
+    },
+    "pt:neg2": {
+      "label": "x = −2",
+      "color": "#c77dff",
+      "vertices": [
+        "PNEG"
+      ]
+    },
+    "cell:s1": {
+      "label": "1",
+      "color": "#58c4dd",
+      "vertices": [
+        "PS1_1"
+      ]
+    },
+    "cell:s2": {
+      "label": "−4",
+      "color": "#58c4dd",
+      "vertices": [
+        "PS1_2"
+      ]
+    },
+    "cell:s3": {
+      "label": "12",
+      "color": "#58c4dd",
+      "vertices": [
+        "PS1_3"
+      ]
+    },
+    "cell:s4": {
+      "label": "−32",
+      "color": "#58c4dd",
+      "vertices": [
+        "PS1_4"
+      ]
+    },
+    "cell:s5": {
+      "label": "80",
+      "color": "#58c4dd",
+      "vertices": [
+        "PS1_5"
+      ]
+    },
+    "cell:sm": {
+      "label": "…",
+      "color": "#58c4dd",
+      "vertices": [
+        "PS1M"
+      ]
+    },
+    "cell:t1": {
+      "label": "2",
+      "color": "#ffff00",
+      "vertices": [
+        "PT1_1"
+      ]
+    },
+    "cell:t2": {
+      "label": "−4",
+      "color": "#ffff00",
+      "vertices": [
+        "PT1_2"
+      ]
+    },
+    "cell:t3": {
+      "label": "8",
+      "color": "#ffff00",
+      "vertices": [
+        "PT1_3"
+      ]
+    },
+    "cell:t4": {
+      "label": "−16",
+      "color": "#ffff00",
+      "vertices": [
+        "PT1_4"
+      ]
+    },
+    "cell:t5": {
+      "label": "32",
+      "color": "#ffff00",
+      "vertices": [
+        "PT1_5"
+      ]
+    },
+    "cell:tm": {
+      "label": "…",
+      "color": "#ffff00",
+      "vertices": [
+        "PT1M"
+      ]
+    },
+    "cell:u1": {
+      "label": "3",
+      "color": "#83c167",
+      "vertices": [
+        "PU1_1"
+      ]
+    },
+    "cell:u2": {
+      "label": "−8",
+      "color": "#83c167",
+      "vertices": [
+        "PU1_2"
+      ]
+    },
+    "cell:u3": {
+      "label": "20",
+      "color": "#83c167",
+      "vertices": [
+        "PU1_3"
+      ]
+    },
+    "cell:u4": {
+      "label": "−48",
+      "color": "#83c167",
+      "vertices": [
+        "PU1_4"
+      ]
+    },
+    "cell:u5": {
+      "label": "112",
+      "color": "#83c167",
+      "vertices": [
+        "PU1_5"
+      ]
+    },
+    "cell:um": {
+      "label": "…",
+      "color": "#83c167",
+      "vertices": [
+        "PU1M"
+      ]
+    },
+    "ln:row1": {
+      "label": "S 的各项",
+      "color": "#58c4dd",
+      "vertices": [
+        "PS1_1",
+        "PS1M"
+      ]
+    },
+    "ln:row2": {
+      "label": "T 的各项",
+      "color": "#ffff00",
+      "vertices": [
+        "PT1_1",
+        "PT1M"
+      ]
+    },
+    "ln:row3": {
+      "label": "两行之和",
+      "color": "#83c167",
+      "vertices": [
+        "PU1_1",
+        "PU1M"
+      ]
+    },
+    "cell:v11": {
+      "label": "1",
+      "color": "#58c4dd",
+      "vertices": [
+        "PV11"
+      ]
+    },
+    "cell:v12": {
+      "label": "2r",
+      "color": "#58c4dd",
+      "vertices": [
+        "PV12"
+      ]
+    },
+    "cell:v13": {
+      "label": "3r²",
+      "color": "#58c4dd",
+      "vertices": [
+        "PV13"
+      ]
+    },
+    "cell:v14": {
+      "label": "4r³",
+      "color": "#58c4dd",
+      "vertices": [
+        "PV14"
+      ]
+    },
+    "cell:v15": {
+      "label": "…",
+      "color": "#58c4dd",
+      "vertices": [
+        "PV15"
+      ]
+    },
+    "cell:v16": {
+      "label": "m rᵐ⁻¹",
+      "color": "#58c4dd",
+      "vertices": [
+        "PV16"
+      ]
+    },
+    "cell:v22": {
+      "label": "r",
+      "color": "#ffff00",
+      "vertices": [
+        "PV22"
+      ]
+    },
+    "cell:v23": {
+      "label": "2r²",
+      "color": "#ffff00",
+      "vertices": [
+        "PV23"
+      ]
+    },
+    "cell:v24": {
+      "label": "3r³",
+      "color": "#ffff00",
+      "vertices": [
+        "PV24"
+      ]
+    },
+    "cell:v25": {
+      "label": "…",
+      "color": "#ffff00",
+      "vertices": [
+        "PV25"
+      ]
+    },
+    "cell:v26": {
+      "label": "(m−1)rᵐ⁻¹",
+      "color": "#ffff00",
+      "vertices": [
+        "PV26"
+      ]
+    },
+    "cell:v27": {
+      "label": "m rᵐ",
+      "color": "#ffff00",
+      "vertices": [
+        "PV27"
+      ]
+    },
+    "cell:v31": {
+      "label": "1",
+      "color": "#83c167",
+      "vertices": [
+        "PV31"
+      ]
+    },
+    "cell:v32": {
+      "label": "r",
+      "color": "#83c167",
+      "vertices": [
+        "PV32"
+      ]
+    },
+    "cell:v33": {
+      "label": "r²",
+      "color": "#83c167",
+      "vertices": [
+        "PV33"
+      ]
+    },
+    "cell:v34": {
+      "label": "r³",
+      "color": "#83c167",
+      "vertices": [
+        "PV34"
+      ]
+    },
+    "cell:v35": {
+      "label": "…",
+      "color": "#83c167",
+      "vertices": [
+        "PV35"
+      ]
+    },
+    "cell:v36": {
+      "label": "rᵐ⁻¹",
+      "color": "#83c167",
+      "vertices": [
+        "PV36"
+      ]
+    },
+    "cell:v37": {
+      "label": "−m rᵐ",
+      "color": "#83c167",
+      "vertices": [
+        "PV37"
+      ]
+    },
+    "ln:v1": {
+      "label": "第一行",
+      "color": "#58c4dd",
+      "vertices": [
+        "PV11",
+        "PV16"
+      ]
+    },
+    "ln:v2": {
+      "label": "第二行",
+      "color": "#ffff00",
+      "vertices": [
+        "PV22",
+        "PV27"
+      ]
+    },
+    "ln:v3": {
+      "label": "第三行",
+      "color": "#83c167",
+      "vertices": [
+        "PV31",
+        "PV37"
+      ]
+    },
+    "arrow:shift": {
+      "label": "右移一格",
+      "color": "#c77dff",
+      "vertices": [
+        "PSH1",
+        "PSH2"
+      ]
+    },
+    "pt:rdef": {
+      "label": "r = −2",
+      "color": "#c77dff",
+      "vertices": [
+        "PRDEF"
+      ]
+    },
+    "pt:sform": {
+      "label": "S = [1 − (3m+1)(−2)ᵐ]/9",
+      "color": "#58c4dd",
+      "vertices": [
+        "PSFORM"
+      ]
+    },
+    "pt:geom": {
+      "label": "Σ(−2)ᵏ⁻¹ = (1 − (−2)ᵐ)/3",
+      "color": "#83c167",
+      "vertices": [
+        "PGEOM"
+      ]
+    },
+    "pt:tclosed": {
+      "label": "T = 2(1 − (−2)ᵐ)/3",
+      "color": "#ffff00",
+      "vertices": [
+        "PTCL"
+      ]
+    },
+    "pt:comb": {
+      "label": "f′(−2) = S + T",
+      "color": "#58c4dd",
+      "vertices": [
+        "PCOMB"
+      ]
+    },
+    "pt:fin": {
+      "label": "f′(−2) = [7 − (3m+7)(−2)ᵐ]/9",
+      "color": "#ffff00",
+      "vertices": [
+        "PFIN"
+      ]
+    },
+    "ln:gt": {
+      "label": "× 2",
+      "color": "#9a9a9a",
+      "vertices": [
+        "PGEOM",
+        "PTCL"
+      ]
+    },
+    "ln:ct": {
+      "label": "相加",
+      "color": "#9a9a9a",
+      "vertices": [
+        "PTCL",
+        "PCOMB"
+      ]
+    },
+    "ln:cf": {
+      "label": "通分",
+      "color": "#9a9a9a",
+      "vertices": [
+        "PCOMB",
+        "PFIN"
+      ]
+    },
+    "chk1": {
+      "label": "m = 1：f′(−2) = 3",
+      "color": "#58c4dd",
+      "vertices": [
+        "PCK1"
+      ]
+    },
+    "chk2": {
+      "label": "m = 2：f′(−2) = −5",
+      "color": "#58c4dd",
+      "vertices": [
+        "PCK2"
+      ]
+    },
+    "chk3": {
+      "label": "m = 3：f′(−2) = 15",
+      "color": "#58c4dd",
+      "vertices": [
+        "PCK3"
+      ]
+    },
+    "pt:ans": {
+      "label": "f′(−2) = [7 − (3m+7)(−2)ᵐ]/9",
+      "color": "#ffff00",
+      "vertices": [
+        "PANS"
+      ]
+    }
+  },
+  "claims": [
+    {
+      "id": "c_given",
+      "description": "题设首项 a_1 = 3",
+      "kind": "given",
+      "left": "a1",
+      "right": "3",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "c_rec",
+      "description": "递推式等价变形后，n=1 时 (n+1)a_{n+1} = n a_n + 1 成立",
+      "kind": "derivation",
+      "left": "2*a2",
+      "right": "1*a1 + 1",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "c_b1",
+      "description": "新数列首项 b_1 = 1·a_1 = 3",
+      "kind": "derivation",
+      "left": "b1",
+      "right": "1*a1",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "c_d",
+      "description": "公差 d 等于 b_2 − b_1 = 1",
+      "kind": "derivation",
+      "left": "b2 - b1",
+      "right": "d",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "c_bn",
+      "description": "b_n = n + 2，取 n=5 时 b_5 = 7",
+      "kind": "derivation",
+      "left": "b5",
+      "right": "5+2",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "c_an",
+      "description": "a_n = (n+2)/n，取 n=5 时 5a_5 = 7",
+      "kind": "derivation",
+      "left": "5*a5",
+      "right": "5+2",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "c_an3",
+      "description": "n=3 时 3a_3 = 5 = 3+2",
+      "kind": "derivation",
+      "left": "3*a3",
+      "right": "3+2",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "c_bseq",
+      "description": "b_5 − b_1 = 4d，即 b_n 是公差 1 的等差数列",
+      "kind": "derivation",
+      "left": "b5 - b1",
+      "right": "4*d",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "c_aseq1",
+      "description": "a_2 − a_1 = −1，说明 {a_n} 本身不是等差数列",
+      "kind": "derivation",
+      "left": "a2 - a1",
+      "right": "-1",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "c_aseq2",
+      "description": "a_3 − a_2 = −1/3，与 −1 不相等，进一步说明 {a_n} 不是等差数列",
+      "kind": "derivation",
+      "left": "a3 - a2",
+      "right": "-1/3",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "c_S2",
+      "description": "m=2 时 S = 1 + 2(−2) = −3",
+      "kind": "derivation",
+      "left": "S2",
+      "right": "1*1 + 2*(-2)",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "c_T2",
+      "description": "m=2 时 T = 2 + 2(−2) = −2",
+      "kind": "derivation",
+      "left": "T2",
+      "right": "2*1 + 2*(-2)",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "c_G2",
+      "description": "m=2 时等比和 Σ(−2)^{k−1} = 1 + (−2) = −1",
+      "kind": "derivation",
+      "left": "G2",
+      "right": "1 + (-2)",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "c_G_formula",
+      "description": "等比和闭式 (1−(−2)^m)/3 在 m=2 时等于 −1",
+      "kind": "derivation",
+      "left": "G2",
+      "right": "(1 - (-2)^2)/3",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "c_T_formula",
+      "description": "T = 2(1−(−2)^m)/3 在 m=2 时等于 −2",
+      "kind": "derivation",
+      "left": "T2",
+      "right": "2*(1 - (-2)^2)/3",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "c_S_formula",
+      "description": "错位相减得 S = [1−(3m+1)(−2)^m]/9，在 m=2 时等于 −3",
+      "kind": "derivation",
+      "left": "S2",
+      "right": "(1 - (3*2 + 1)*(-2)^2)/9",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "c_rows",
+      "description": "示例中两行逐项相加等于第三行",
+      "kind": "derivation",
+      "left": "sum(rowU)",
+      "right": "sum(rowS) + sum(rowT)",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "c_rowS5",
+      "description": "示例第一行（m = 5）各项之和 1−4+12−32+80 = 57",
+      "kind": "derivation",
+      "left": "sum(rowS)",
+      "right": "1 - 4 + 12 - 32 + 80",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "c_rowT5",
+      "description": "示例第二行（m = 5）各项之和 2−4+8−16+32 = 22",
+      "kind": "derivation",
+      "left": "sum(rowT)",
+      "right": "2 - 4 + 8 - 16 + 32",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "c_rowU5",
+      "description": "示例第三行（m = 5）各项之和 3−8+20−48+112 = 79",
+      "kind": "derivation",
+      "left": "sum(rowU)",
+      "right": "3 - 8 + 20 - 48 + 112",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "c_F1",
+      "description": "m=1 时 f(x)=3x，f′(−2)=3",
+      "kind": "answer",
+      "left": "F1",
+      "right": "a1",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "c_F2",
+      "description": "m=2 时 f′(−2) = a_1 + 2a_2(−2) = −5",
+      "kind": "answer",
+      "left": "F2",
+      "right": "a1 + 2*a2*(-2)",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "c_F3",
+      "description": "m=3 时 f′(−2) = a_1 + 2a_2(−2) + 3a_3(−2)² = 15",
+      "kind": "answer",
+      "left": "F3",
+      "right": "a1 + 2*a2*(-2) + 3*a3*(-2)^2",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "c_F_split2",
+      "description": "f′(−2) = S + T 在 m=2 时成立",
+      "kind": "derivation",
+      "left": "F2",
+      "right": "S2 + T2",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "c_F_split3",
+      "description": "f′(−2) = S + T 在 m=3 时成立",
+      "kind": "derivation",
+      "left": "F3",
+      "right": "S3 + T3",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "c_closed1",
+      "description": "闭式结果在 m=1 时给出 3",
+      "kind": "answer",
+      "left": "F1",
+      "right": "(7 - (3*1 + 7)*(-2)^1)/9",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "c_closed2",
+      "description": "闭式结果在 m=2 时给出 −5",
+      "kind": "answer",
+      "left": "F2",
+      "right": "(7 - (3*2 + 7)*(-2)^2)/9",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "c_closed3",
+      "description": "闭式结果在 m=3 时给出 15",
+      "kind": "answer",
+      "left": "F3",
+      "right": "(7 - (3*3 + 7)*(-2)^3)/9",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "c_S5",
+      "description": "m=5 示例行 S 的值等于 57",
+      "kind": "derivation",
+      "left": "sum(rowS)",
+      "right": "57",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "c_T5",
+      "description": "m=5 示例行 T 的值等于 22",
+      "kind": "derivation",
+      "left": "sum(rowT)",
+      "right": "22",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    },
+    {
+      "id": "c_U5",
+      "description": "m=5 示例行 S+T 的值等于 79",
+      "kind": "derivation",
+      "left": "sum(rowU)",
+      "right": "79",
+      "relation": "eq",
+      "tolerance": 1e-09,
+      "absoluteTolerance": 0
+    }
+  ],
+  "scenes": [
+    {
+      "id": "s1",
+      "title": "读题：递推式与两个目标",
+      "chapter": 0,
+      "stage": "setup",
+      "note": "颜色约定：蓝色表示数列项，紫色表示附加项，绿色表示递推方向。",
+      "claimIds": [
+        "c_given"
+      ],
+      "blocks": [
+        {
+          "label": "题设",
+          "math": "a_1=3,\\qquad \\frac{a_{n+1}}{n}=\\frac{a_n}{n+1}+\\frac{1}{n(n+1)}",
+          "beat": 0,
+          "small": true
+        },
+        {
+          "label": "目标：证明 {n aₙ} 为等差数列，并求 f′(−2)",
+          "math": "(1)\\;\\{n a_n\\}\\qquad (2)\\;f'(-2)",
+          "beat": 2
+        }
+      ],
+      "beats": [
+        {
+          "say": "题目给出的是一个由递推关系定义的数列，首项 a 的第 1 项等于 3。",
+          "caption": "首项 a₁ = 3，另有递推关系。"
+        },
+        {
+          "say": "递推关系是：a 的第 n 加一项除以 n，等于 a 的第 n 项除以 n 加 1，再加上 1 除以 n 与 n 加 1 的乘积。",
+          "caption": "递推式：aₙ₊₁/n = aₙ/(n+1) + 1/[n(n+1)]。"
+        },
+        {
+          "say": "第一问要证明新数列，也就是 n 乘 a 的第 n 项组成的数列，是等差数列；第二问要算出多项式在负二处的导数值。",
+          "caption": "两问目标：(1) {n aₙ} 等差；(2) f′(−2)。"
+        },
+        {
+          "say": "先观察递推式：清掉分母，就可能让 n 和 a 的第 n 项组合成一个整体。",
+          "caption": "关键想法：清分母，让 n 乘到 aₙ 上。"
+        }
+      ],
+      "cues": [
+        {
+          "beat": 0,
+          "anchor": "首项 a 的第 1 项等于 3",
+          "objects": [
+            "pt:given"
+          ],
+          "label": "a₁ = 3"
+        },
+        {
+          "beat": 1,
+          "anchor": "递推关系是",
+          "objects": [
+            "ln:arrow"
+          ],
+          "label": "递推方向"
+        },
+        {
+          "beat": 1,
+          "anchor": "a 的第 n 加一项除以 n",
+          "objects": [
+            "pt:an1"
+          ],
+          "label": "aₙ₊₁ / n"
+        },
+        {
+          "beat": 1,
+          "anchor": "a 的第 n 项除以 n 加 1",
+          "objects": [
+            "pt:an"
+          ],
+          "label": "aₙ / (n+1)"
+        },
+        {
+          "beat": 1,
+          "anchor": "1 除以 n 与 n 加 1 的乘积",
+          "objects": [
+            "pt:one"
+          ],
+          "label": "1 / [n(n+1)]"
+        },
+        {
+          "beat": 2,
+          "anchor": "n 乘 a 的第 n 项组成的数列",
+          "objects": [
+            "pt:goal1"
+          ],
+          "label": "第一问"
+        },
+        {
+          "beat": 2,
+          "anchor": "多项式在负二处的导数值",
+          "objects": [
+            "pt:goal2"
+          ],
+          "label": "第二问"
+        },
+        {
+          "beat": 3,
+          "anchor": "n 和 a 的第 n 项组合成一个整体",
+          "objects": [
+            "pt:goal1"
+          ],
+          "label": "构造 n·aₙ"
+        }
+      ],
+      "reveals": [
+        {
+          "beat": 0,
+          "anchor": "题目给出的是一个由递推关系定义的数列"
+        },
+        {
+          "beat": 2,
+          "anchor": "第二问要算出"
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "title": "递推式等价变形：两边同乘 n(n+1)",
+      "chapter": 1,
+      "stage": "transform",
+      "note": "左边两项、右边两项一一对应，乘数相同，分母全部消失。",
+      "claimIds": [
+        "c_given",
+        "c_rec"
+      ],
+      "blocks": [
+        {
+          "label": "左边：同乘 n(n+1)",
+          "math": "\\frac{a_{n+1}}{n}\\cdot n(n+1)=(n+1)a_{n+1}",
+          "beat": 1
+        },
+        {
+          "label": "变形结果",
+          "math": "(n+1)a_{n+1}=n a_n+1",
+          "beat": 3,
+          "accent": true
+        }
+      ],
+      "beats": [
+        {
+          "say": "递推式里同时出现了 n 和 n 加 1 两个分母，那就把两边同乘 n 与 n 加 1 的乘积。",
+          "caption": "两分母 n、n+1 的最小公倍数是 n(n+1)。"
+        },
+        {
+          "say": "这样左边 a 的第 n 加一项除以 n，再乘上 n 与 n 加 1 的乘积，就变成 n 加 1 乘以 a 的第 n 加一项。",
+          "caption": "左边：aₙ₊₁/n × n(n+1) = (n+1)aₙ₊₁。"
+        },
+        {
+          "say": "右边 a 的第 n 项除以 n 加 1，再乘上 n 与 n 加 1 的乘积，变成 n 乘以 a 的第 n 项；最后 1 除以 n 与 n 加 1 的乘积，正好变成 1。",
+          "caption": "右边：aₙ/(n+1)×n(n+1)=n·aₙ，1/[n(n+1)]×n(n+1)=1。"
+        },
+        {
+          "say": "整个式子就变成了，n 加 1 乘以 a 的第 n 加一项，等于 n 乘以 a 的第 n 项，再加 1，分母全部消失。",
+          "caption": "(n+1)aₙ₊₁ = n aₙ + 1。"
+        }
+      ],
+      "cues": [
+        {
+          "beat": 0,
+          "anchor": "把两边同乘 n 与 n 加 1 的乘积",
+          "objects": [
+            "ln:x1",
+            "ln:x2",
+            "ln:x3"
+          ],
+          "label": "× n(n+1)"
+        },
+        {
+          "beat": 1,
+          "anchor": "左边 a 的第 n 加一项除以 n",
+          "objects": [
+            "pt:l_an1"
+          ],
+          "label": "aₙ₊₁ / n"
+        },
+        {
+          "beat": 1,
+          "anchor": "变成 n 加 1 乘以 a 的第 n 加一项",
+          "objects": [
+            "pt:r_an1"
+          ],
+          "label": "(n+1)·aₙ₊₁"
+        },
+        {
+          "beat": 2,
+          "anchor": "右边 a 的第 n 项除以 n 加 1",
+          "objects": [
+            "pt:l_an"
+          ],
+          "label": "aₙ / (n+1)"
+        },
+        {
+          "beat": 2,
+          "anchor": "变成 n 乘以 a 的第 n 项",
+          "objects": [
+            "pt:r_an"
+          ],
+          "label": "n·aₙ"
+        },
+        {
+          "beat": 2,
+          "anchor": "最后 1 除以 n 与 n 加 1 的乘积",
+          "objects": [
+            "pt:l_one"
+          ],
+          "label": "1 / [n(n+1)]"
+        },
+        {
+          "beat": 2,
+          "anchor": "正好变成 1",
+          "objects": [
+            "pt:r_one"
+          ],
+          "label": "1"
+        },
+        {
+          "beat": 3,
+          "anchor": "分母全部消失",
+          "objects": [
+            "pt:r_an1",
+            "pt:r_an",
+            "pt:r_one"
+          ],
+          "label": "变形后的三项"
+        }
+      ],
+      "reveals": [
+        {
+          "beat": 1,
+          "anchor": "左边 a 的第 n 加一项除以 n"
+        },
+        {
+          "beat": 3,
+          "anchor": "整个式子就变成了"
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "title": "引入新数列 bₙ = n·aₙ 并得通项",
+      "chapter": 2,
+      "stage": "newseq",
+      "note": "b₁、b₂、b₃ 是示意节点：取 n=2，bₙ 对应 b₂，bₙ₊₁ 对应 b₃；每一步加 1。",
+      "claimIds": [
+        "c_b1",
+        "c_d",
+        "c_bn",
+        "c_an",
+        "c_bseq"
+      ],
+      "blocks": [
+        {
+          "label": "引入新数列",
+          "math": "b_n=n a_n",
+          "beat": 0
+        },
+        {
+          "label": "新递推关系",
+          "math": "b_{n+1}=b_n+1",
+          "beat": 2,
+          "accent": true
+        },
+        {
+          "label": "通项",
+          "math": "b_n=n+2,\\qquad a_n=\\frac{n+2}{n}=1+\\frac{2}{n}",
+          "beat": 4
+        }
+      ],
+      "beats": [
+        {
+          "say": "现在式子里 n 总是紧挨着 a 的第 n 项，这就是提示：定义新数列 b 的第 n 项，等于 n 乘以 a 的第 n 项。",
+          "caption": "为什么引入新数列：让 n 与 aₙ 绑定。"
+        },
+        {
+          "say": "把新数列代回刚才的式子，左边的 n 加 1 乘以 a 的第 n 加一项，正是 b 的第 n 加一项；右边的 n 乘以 a 的第 n 项，正是 b 的第 n 项。图上这两个紫色的点是示意位置，分别代表一般的第 n 加一项和第 n 项。",
+          "caption": "(n+1)aₙ₊₁ = bₙ₊₁，n·aₙ = bₙ；图中紫点为一般项的示意位置。"
+        },
+        {
+          "say": "于是得到，b 的第 n 加一项等于 b 的第 n 项再加 1，也就是相邻两项的差恒等于 1，这个关系对每个正整数 n 都成立。",
+          "caption": "bₙ₊₁ = bₙ + 1。"
+        },
+        {
+          "say": "这正是等差数列的定义，而且首项 b 的第 1 项等于 3，公差是 1，第一问得证。",
+          "caption": "{n aₙ} 是首项 3、公差 1 的等差数列。"
+        },
+        {
+          "say": "顺带把通项也写出来：b 的第 n 项等于 n 加 2，所以 a 的第 n 项等于 n 加 2 比上 n。",
+          "caption": "aₙ = (n+2)/n = 1 + 2/n。"
+        }
+      ],
+      "cues": [
+        {
+          "beat": 0,
+          "anchor": "定义新数列 b 的第 n 项，等于 n 乘以 a 的第 n 项",
+          "objects": [
+            "pt:nbdef"
+          ],
+          "label": "bₙ = n·aₙ"
+        },
+        {
+          "beat": 1,
+          "anchor": "正是 b 的第 n 加一项",
+          "objects": [
+            "pt:b3"
+          ],
+          "label": "示意：n=2 时 bₙ₊₁=b₃"
+        },
+        {
+          "beat": 1,
+          "anchor": "正是 b 的第 n 项",
+          "objects": [
+            "pt:b2"
+          ],
+          "label": "示意：n=2 时 bₙ=b₂"
+        },
+        {
+          "beat": 2,
+          "anchor": "相邻两项的差恒等于 1",
+          "objects": [
+            "ln:bstep",
+            "ln:bstair",
+            "ln:bstair2"
+          ],
+          "label": "相邻两项 +1"
+        },
+        {
+          "beat": 3,
+          "anchor": "首项 b 的第 1 项等于 3",
+          "objects": [
+            "pt:b1"
+          ],
+          "label": "b₁ = 3"
+        },
+        {
+          "beat": 3,
+          "anchor": "公差是 1",
+          "objects": [
+            "pt:b2",
+            "pt:b3"
+          ],
+          "label": "b₂ = 4 → b₃ = 5"
+        },
+        {
+          "beat": 4,
+          "anchor": "b 的第 n 项等于 n 加 2",
+          "objects": [
+            "pt:bn"
+          ],
+          "label": "bₙ = n + 2"
+        },
+        {
+          "beat": 4,
+          "anchor": "a 的第 n 项等于 n 加 2 比上 n",
+          "objects": [
+            "pt:anf"
+          ],
+          "label": "aₙ = (n+2)/n"
+        }
+      ],
+      "reveals": [
+        {
+          "beat": 0,
+          "anchor": "这就是提示"
+        },
+        {
+          "beat": 2,
+          "anchor": "于是得到"
+        },
+        {
+          "beat": 4,
+          "anchor": "顺带把通项也写出来"
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "title": "点图观察：等差的是 n·aₙ，不是 aₙ",
+      "chapter": 3,
+      "stage": "plots",
+      "note": "左图 bₙ 呈直线上升；右图 aₙ 逐项下降并靠近 1；两幅图纵轴同以 0 为基线、同一比例，刻度与坐标轴一致。",
+      "claimIds": [
+        "c_bseq",
+        "c_aseq1",
+        "c_aseq2",
+        "c_an"
+      ],
+      "blocks": [
+        {
+          "label": "左图：{n aₙ} 的点图",
+          "math": "b_n=n+2:\\quad 3,4,5,6,7,\\dots",
+          "beat": 1
+        },
+        {
+          "label": "右图：{aₙ} 的点图",
+          "math": "a_n=1+\\frac{2}{n}:\\quad 3,2,\\frac53,\\frac32,\\frac75",
+          "beat": 2
+        }
+      ],
+      "beats": [
+        {
+          "say": "我们把 b 的第 n 项等于 n 加 2 画成点图，横轴是 n，纵轴是 b 的第 n 项的值。",
+          "caption": "横轴 n，纵轴 bₙ。"
+        },
+        {
+          "say": "前五项依次是 3、4、5、6、7，连起来正好是一条直线，公差 1 一眼就能看出来。",
+          "caption": "b₁…b₅ = 3,4,5,6,7，公差 1。"
+        },
+        {
+          "say": "右边这张图画的是 a 的第 n 项，它的值是 1 加 2 比上 n，从 3 开始一路下降，第五项是 7 比 5，越来越靠近 1。",
+          "caption": "aₙ = 1 + 2/n：3, 2, 5/3, 3/2, 7/5 …"
+        },
+        {
+          "say": "两个图放在一起看就清楚了：真正等差的是 n 乘 a 的第 n 项，而 a 的第 n 项本身并不是等差数列。",
+          "caption": "别搞混：等差的是 {n aₙ}。"
+        }
+      ],
+      "cues": [
+        {
+          "beat": 0,
+          "anchor": "横轴是 n，纵轴是 b 的第 n 项的值",
+          "objects": [
+            "ln:bx",
+            "ln:by"
+          ],
+          "label": "坐标轴"
+        },
+        {
+          "beat": 1,
+          "anchor": "3、4、5、6、7",
+          "objects": [
+            "pt:pb1",
+            "pt:pb5"
+          ],
+          "label": "b₁ 到 b₅"
+        },
+        {
+          "beat": 1,
+          "anchor": "正好是一条直线",
+          "objects": [
+            "ln:fitb"
+          ],
+          "label": "直线"
+        },
+        {
+          "beat": 2,
+          "anchor": "从 3 开始一路下降",
+          "objects": [
+            "pt:pa1",
+            "pt:pa2"
+          ],
+          "label": "a₁, a₂"
+        },
+        {
+          "beat": 2,
+          "anchor": "第五项是 7 比 5",
+          "objects": [
+            "pt:pa5"
+          ],
+          "label": "a₅ = 7/5"
+        },
+        {
+          "beat": 2,
+          "anchor": "越来越靠近 1",
+          "objects": [
+            "ln:lim"
+          ],
+          "label": "靠近 1"
+        },
+        {
+          "beat": 3,
+          "anchor": "真正等差的是 n 乘 a 的第 n 项",
+          "objects": [
+            "ln:fitb"
+          ],
+          "label": "bₙ 等差"
+        },
+        {
+          "beat": 3,
+          "anchor": "a 的第 n 项本身并不是等差数列",
+          "objects": [
+            "pt:pa2",
+            "pt:pa3",
+            "pt:pa4"
+          ],
+          "label": "a₂, a₃, a₄"
+        }
+      ],
+      "reveals": [
+        {
+          "beat": 1,
+          "anchor": "前五项依次是"
+        },
+        {
+          "beat": 2,
+          "anchor": "右边这张图画的是"
+        }
+      ]
+    },
+    {
+      "id": "s5",
+      "title": "逐项求导：系数 aₖ 如何变成 k·aₖ",
+      "chapter": 4,
+      "stage": "deriv",
+      "note": "每一项 x 的 k 次方求导后，系数乘 k，次数减 1。",
+      "claimIds": [
+        "c_an",
+        "c_an3"
+      ],
+      "blocks": [
+        {
+          "label": "多项式",
+          "math": "f(x)=a_1x+a_2x^2+\\cdots+a_mx^m",
+          "beat": 0
+        },
+        {
+          "label": "逐项求导",
+          "math": "f'(x)=a_1+2a_2x+3a_3x^2+\\cdots+ma_mx^{m-1}",
+          "beat": 2,
+          "small": true
+        },
+        {
+          "label": "代入 x = −2",
+          "math": "f'(-2)=\\sum_{k=1}^{m}(k+2)(-2)^{k-1}",
+          "beat": 3,
+          "small": true
+        }
+      ],
+      "beats": [
+        {
+          "say": "第二问的多项式是 f 等于 a 的第 1 项乘 x，加 a 的第 2 项乘 x 的平方，再加 … 加 a 的第 m 项乘 x 的 m 次方，逐项求导就能得到函数 f 在 x 处的导数。",
+          "caption": "f(x) = a₁x + a₂x² + … + aₘxᵐ。"
+        },
+        {
+          "say": "左边 x 的 k 次方，右边就出现系数 k 乘以 a 的第 k 项，再带上 x 的 k 减 1 次方。",
+          "caption": "aₖxᵏ 的导数是 k·aₖ·xᵏ⁻¹。"
+        },
+        {
+          "say": "所以函数 f 在 x 处的导数，等于 a 的第 1 项，加 2 乘以 a 的第 2 项再乘 x，加 3 乘以 a 的第 3 项再乘 x 的平方，再加 … 加 m 乘以 a 的第 m 项再乘 x 的 m 减 1 次方。",
+          "caption": "f′(x) = a₁ + 2a₂x + 3a₃x² + … + maₘxᵐ⁻¹。"
+        },
+        {
+          "say": "接下来代入 x 等于负二。因为 a 的第 k 项等于 1 加 2 比上 k，所以 k 乘以 a 的第 k 项正好等于 k 加 2。",
+          "caption": "代入 x = −2，且 k·aₖ = k + 2。"
+        }
+      ],
+      "cues": [
+        {
+          "beat": 0,
+          "anchor": "a 的第 1 项乘 x",
+          "objects": [
+            "pt:src1"
+          ],
+          "label": "a₁·x"
+        },
+        {
+          "beat": 0,
+          "anchor": "逐项求导",
+          "objects": [
+            "ln:m1",
+            "ln:m2",
+            "ln:m3",
+            "ln:m4"
+          ],
+          "label": "逐项求导"
+        },
+        {
+          "beat": 1,
+          "anchor": "右边就出现系数 k 乘以 a 的第 k 项",
+          "objects": [
+            "pt:dstg"
+          ],
+          "label": "k·aₖ·xᵏ⁻¹"
+        },
+        {
+          "beat": 2,
+          "anchor": "m 乘以 a 的第 m 项再乘 x 的 m 减 1 次方",
+          "objects": [
+            "pt:dstg"
+          ],
+          "label": "m aₘ xᵐ⁻¹"
+        },
+        {
+          "beat": 3,
+          "anchor": "接下来代入 x 等于负二",
+          "objects": [
+            "pt:neg2"
+          ],
+          "label": "x = −2"
+        },
+        {
+          "beat": 3,
+          "anchor": "正好等于 k 加 2",
+          "objects": [
+            "pt:dstg"
+          ],
+          "label": "k·aₖ = k+2"
+        }
+      ],
+      "reveals": [
+        {
+          "beat": 0,
+          "anchor": "第二问的多项式是"
+        },
+        {
+          "beat": 2,
+          "anchor": "所以函数 f 在 x 处的导数，等于"
+        },
+        {
+          "beat": 3,
+          "anchor": "接下来"
+        }
+      ]
+    },
+    {
+      "id": "s6",
+      "title": "把 f′(−2) 拆成两个和 S 与 T",
+      "chapter": 4,
+      "stage": "split",
+      "note": "蓝色行为 S，黄色行为 T，绿色行为两行之和；页面上的数字是 m = 5 的示例，三条断言逐行核对示例行值 57、22、79，示例与通式在图注中明确区分。",
+      "claimIds": [
+        "c_rows",
+        "c_rowS5",
+        "c_rowT5",
+        "c_rowU5",
+        "c_S2",
+        "c_T2",
+        "c_S5",
+        "c_T5",
+        "c_U5"
+      ],
+      "blocks": [
+        {
+          "label": "展开",
+          "math": "f'(-2)=\\sum_{k=1}^{m}(k+2)(-2)^{k-1}",
+          "beat": 0
+        },
+        {
+          "label": "拆成两个和",
+          "math": "S=\\sum_{k=1}^{m}k(-2)^{k-1},\\qquad T=\\sum_{k=1}^{m}2(-2)^{k-1}",
+          "beat": 1,
+          "accent": true,
+          "small": true
+        },
+        {
+          "label": "示例第一行（m = 5）",
+          "math": "S=1-4+12-32+80",
+          "beat": 3
+        },
+        {
+          "label": "示例第二行（m = 5）",
+          "math": "T=2-4+8-16+32",
+          "beat": 4
+        },
+        {
+          "label": "两行相加（m = 5）",
+          "math": "S+T=3-8+20-48+112",
+          "beat": 5
+        }
+      ],
+      "beats": [
+        {
+          "say": "把每一项展开：k 乘以 a 的第 k 项正好等于 k 加 2，所以函数 f 在负二处的导数，等于从 k 等于 1 到 m 的 k 加 2 乘以负二的 k 减 1 次方之和。",
+          "caption": "f′(−2) = Σ (k+2)(−2)^{k−1}。"
+        },
+        {
+          "say": "把 k 加 2 拆成 k 和 2 两部分，这个和就分成两个：一个叫 S，等于 k 乘以负二的 k 减 1 次方之和；另一个叫 T，等于 2 乘以负二的 k 减 1 次方之和。",
+          "caption": "S = Σ k(−2)^{k−1}，T = Σ 2(−2)^{k−1}。"
+        },
+        {
+          "say": "T 那一行是公比负二的等比数列，求和用公式很快；真正要动脑筋的是 S。",
+          "caption": "T 是等比数列；难点在 S。"
+        },
+        {
+          "say": "先看数值感觉：取 m 等于 5，第一行是 1、负 4、12、负 32、80。",
+          "caption": "示例第一行（m = 5）。"
+        },
+        {
+          "say": "第二行是 2、负 4、8、负 16、32。",
+          "caption": "示例第二行（m = 5）。"
+        },
+        {
+          "say": "两行加起来就是 3、负 8、20、负 48、112。",
+          "caption": "两行之和（m = 5）。"
+        }
+      ],
+      "cues": [
+        {
+          "beat": 0,
+          "anchor": "从 k 等于 1 到 m 的 k 加 2 乘以负二的 k 减 1 次方之和",
+          "objects": [
+            "ln:row3"
+          ],
+          "label": "和"
+        },
+        {
+          "beat": 1,
+          "anchor": "一个叫 S",
+          "objects": [
+            "ln:row1"
+          ],
+          "label": "S 行"
+        },
+        {
+          "beat": 1,
+          "anchor": "另一个叫 T",
+          "objects": [
+            "ln:row2"
+          ],
+          "label": "T 行"
+        },
+        {
+          "beat": 2,
+          "anchor": "公比负二的等比数列",
+          "objects": [
+            "ln:row2"
+          ],
+          "label": "T 是等比数列"
+        },
+        {
+          "beat": 3,
+          "anchor": "第一行是 1、负 4、12、负 32、80",
+          "objects": [
+            "ln:row1"
+          ],
+          "label": "S 的各项"
+        },
+        {
+          "beat": 4,
+          "anchor": "第二行是 2、负 4、8、负 16、32",
+          "objects": [
+            "ln:row2"
+          ],
+          "label": "T 的各项"
+        },
+        {
+          "beat": 5,
+          "anchor": "两行加起来就是 3、负 8、20、负 48、112",
+          "objects": [
+            "ln:row3"
+          ],
+          "label": "两行之和"
+        }
+      ],
+      "reveals": [
+        {
+          "beat": 0,
+          "anchor": "把每一项展开"
+        },
+        {
+          "beat": 1,
+          "anchor": "这个和就分成两个"
+        },
+        {
+          "beat": 3,
+          "anchor": "先看数值感觉"
+        },
+        {
+          "beat": 4,
+          "anchor": "第二行是"
+        },
+        {
+          "beat": 5,
+          "anchor": "两行加起来就是"
+        }
+      ]
+    },
+    {
+      "id": "s7",
+      "title": "错位相减求 S",
+      "chapter": 5,
+      "stage": "subtract",
+      "note": "第二行是 S 乘 r 后整体右移一格（画面中第二行随时间整体右移一格），再逐列相减，每列只剩一个 r 的幂。",
+      "claimIds": [
+        "c_S_formula",
+        "c_G_formula"
+      ],
+      "blocks": [
+        {
+          "label": "第一行",
+          "math": "S=1+2r+3r^2+\\cdots+mr^{m-1}",
+          "beat": 0,
+          "small": true
+        },
+        {
+          "label": "第二行（整体右移一格）",
+          "math": "rS=r+2r^2+\\cdots+(m-1)r^{m-1}+mr^m",
+          "beat": 1,
+          "small": true
+        },
+        {
+          "label": "错位相减：左边化简",
+          "math": "S-rS=(1-r)S=3S",
+          "beat": 2,
+          "small": true
+        },
+        {
+          "label": "错位相减：右边逐列相减",
+          "math": "3S=1+(r+r^2+\\cdots+r^{m-1})-mr^m",
+          "beat": 2,
+          "small": true
+        },
+        {
+          "label": "中间一段是等比和",
+          "math": "r+r^2+\\cdots+r^{m-1}=\\frac{r-r^m}{1-r}",
+          "beat": 3,
+          "small": true
+        },
+        {
+          "label": "S 的闭式",
+          "math": "S=\\frac{1-(3m+1)(-2)^m}{9}",
+          "beat": 4,
+          "small": true
+        }
+      ],
+      "beats": [
+        {
+          "say": "求 S 用错位相减。写成 S 等于 1，加上 2r，加上 3r 的平方，加上 4r 的立方，一直加到 m 乘 r 的 m 减 1 次方，其中 r 就是负二。",
+          "caption": "S = 1 + 2r + 3r² + … + m rᵐ⁻¹，r = −2。"
+        },
+        {
+          "say": "把 S 乘以 r 得到 rS，这一行是 r，加上 2r 的平方，加上 3r 的立方，后面依次到 m 减 1 乘 r 的 m 减 1 次方，最后一项是 m 乘 r 的 m 次方；它比上面那一行整体往右挪了一格。",
+          "caption": "rS = r + 2r² + 3r³ + … + (m−1)rᵐ⁻¹ + m rᵐ，整行右移一格。"
+        },
+        {
+          "say": "两行相减，每一列都只剩一个 r 的幂，左边等于一减 r 再乘 S；因为 r 是负二，一减 r 正好是 3，所以三倍的 S 等于 1 加上 r 加上 r 的平方加上 r 的立方，一直加到 r 的 m 减 1 次方，最后再减去 m 乘 r 的 m 次方。",
+          "caption": "S − rS = (1−r)S = 3S = 1 + (r+r²+…+rᵐ⁻¹) − m rᵐ。"
+        },
+        {
+          "say": "中间那一段 r 加上 r 的平方一直加到 r 的 m 减 1 次方，是等比数列的和，用等比公式得，分子是 r 减去 r 的 m 次方，分母是 1 减 r。",
+          "caption": "r+r²+…+rᵐ⁻¹ = (r − rᵐ)/(1 − r)。"
+        },
+        {
+          "say": "代回 r 等于负二再整理，S 就等于，先把 3m 加 1 这一个整体，与负二的 m 次方相乘，再用 1 减去这个乘积，最后除以 9。",
+          "caption": "S = [1 − (3m+1)(−2)ᵐ]/9。"
+        }
+      ],
+      "cues": [
+        {
+          "beat": 0,
+          "anchor": "1，加上 2r，加上 3r 的平方，加上 4r 的立方",
+          "objects": [
+            "ln:v1"
+          ],
+          "label": "第一行"
+        },
+        {
+          "beat": 0,
+          "anchor": "其中 r 就是负二",
+          "objects": [
+            "pt:rdef"
+          ],
+          "label": "r = −2"
+        },
+        {
+          "beat": 1,
+          "anchor": "r，加上 2r 的平方，加上 3r 的立方",
+          "objects": [
+            "ln:v2"
+          ],
+          "label": "第二行"
+        },
+        {
+          "beat": 1,
+          "anchor": "m 减 1 乘 r 的 m 减 1 次方",
+          "objects": [
+            "cell:v26"
+          ],
+          "label": "(m−1)rᵐ⁻¹"
+        },
+        {
+          "beat": 1,
+          "anchor": "最后一项是 m 乘 r 的 m 次方",
+          "objects": [
+            "cell:v27"
+          ],
+          "label": "m rᵐ"
+        },
+        {
+          "beat": 1,
+          "anchor": "往右挪了一格",
+          "objects": [
+            "arrow:shift"
+          ],
+          "label": "右移一格"
+        },
+        {
+          "beat": 2,
+          "anchor": "左边等于一减 r 再乘 S",
+          "objects": [
+            "ln:v3"
+          ],
+          "label": "第三行"
+        },
+        {
+          "beat": 2,
+          "anchor": "r 加上 r 的平方加上 r 的立方",
+          "objects": [
+            "cell:v32",
+            "cell:v33"
+          ],
+          "label": "r 的各次幂"
+        },
+        {
+          "beat": 2,
+          "anchor": "一直加到 r 的 m 减 1 次方",
+          "objects": [
+            "cell:v36"
+          ],
+          "label": "rᵐ⁻¹"
+        },
+        {
+          "beat": 2,
+          "anchor": "最后再减去 m 乘 r 的 m 次方",
+          "objects": [
+            "cell:v37"
+          ],
+          "label": "−m rᵐ"
+        },
+        {
+          "beat": 3,
+          "anchor": "是等比数列的和",
+          "objects": [
+            "cell:v32",
+            "cell:v33"
+          ],
+          "label": "中间一段"
+        },
+        {
+          "beat": 4,
+          "anchor": "S 就等于",
+          "objects": [
+            "pt:sform"
+          ],
+          "label": "S 的闭式"
+        }
+      ],
+      "reveals": [
+        {
+          "beat": 0,
+          "anchor": "求 S 用错位相减"
+        },
+        {
+          "beat": 1,
+          "anchor": "把 S 乘以 r 得到 rS"
+        },
+        {
+          "beat": 2,
+          "anchor": "两行相减"
+        },
+        {
+          "beat": 2,
+          "anchor": "所以三倍的 S 等于"
+        },
+        {
+          "beat": 3,
+          "anchor": "用等比公式得"
+        },
+        {
+          "beat": 4,
+          "anchor": "代回 r 等于负二再整理"
+        }
+      ]
+    },
+    {
+      "id": "s8",
+      "title": "T 的闭式与最终合并",
+      "chapter": 6,
+      "stage": "combine",
+      "note": "绿色是等比和公式，黄色是 T 的闭式，蓝色是相加，最后通分。",
+      "claimIds": [
+        "c_G_formula",
+        "c_T_formula",
+        "c_closed1",
+        "c_closed2",
+        "c_closed3"
+      ],
+      "blocks": [
+        {
+          "label": "等比数列求和",
+          "math": "\\sum_{k=1}^{m}(-2)^{k-1}=\\frac{1-(-2)^m}{3}",
+          "beat": 0
+        },
+        {
+          "label": "T 的闭式",
+          "math": "T=\\frac{2\\left(1-(-2)^m\\right)}{3}",
+          "beat": 0
+        },
+        {
+          "label": "合并",
+          "math": "f'(-2)=S+T",
+          "beat": 1,
+          "small": false
+        },
+        {
+          "label": "答案",
+          "math": "f'(-2)=\\frac{7-(3m+7)(-2)^m}{9}",
+          "beat": 2,
+          "answer": true
+        }
+      ],
+      "beats": [
+        {
+          "say": "T 那一行也是等比数列：公比负二，首项是 2，共 m 项。所以 T 等于，用 1 减去负二的 m 次方，把得到的差乘 2，再除以 3。",
+          "caption": "T = 2(1 − (−2)ᵐ)/3。"
+        },
+        {
+          "say": "把 S 和 T 加起来，函数 f 在负二处的导数就等于这两个数的和。",
+          "caption": "f′(−2) = S + T。"
+        },
+        {
+          "say": "通分整理，就得到最终结果：函数 f 在负二处的导数等于，先把 3m 加 7 这一个整体，与负二的 m 次方相乘，再用 7 减去这个乘积，最后除以 9。",
+          "caption": "f′(−2) = [7 − (3m+7)(−2)ᵐ]/9。"
+        }
+      ],
+      "cues": [
+        {
+          "beat": 0,
+          "anchor": "公比负二",
+          "objects": [
+            "ln:gt"
+          ],
+          "label": "等比数列"
+        },
+        {
+          "beat": 0,
+          "anchor": "T 等于，用 1 减去负二的 m 次方",
+          "objects": [
+            "pt:tclosed"
+          ],
+          "label": "T 的闭式"
+        },
+        {
+          "beat": 1,
+          "anchor": "函数 f 在负二处的导数就等于这两个数的和",
+          "objects": [
+            "pt:comb"
+          ],
+          "label": "S + T"
+        },
+        {
+          "beat": 2,
+          "anchor": "最终结果",
+          "objects": [
+            "pt:fin"
+          ],
+          "label": "闭式结果"
+        }
+      ],
+      "reveals": [
+        {
+          "beat": 0,
+          "anchor": "T 那一行也是等比数列"
+        },
+        {
+          "beat": 0,
+          "anchor": "共 m 项"
+        },
+        {
+          "beat": 1,
+          "anchor": "把 S 和 T 加起来"
+        },
+        {
+          "beat": 2,
+          "anchor": "通分整理"
+        }
+      ]
+    },
+    {
+      "id": "s9",
+      "title": "小规模检验与结论",
+      "chapter": 6,
+      "stage": "check",
+      "note": "m = 1、2、3 的直接计算只是抽样核对，一般结论来自前面错位相减与合并的推导。",
+      "claimIds": [
+        "c_F1",
+        "c_F2",
+        "c_F3",
+        "c_F_split2",
+        "c_F_split3",
+        "c_closed1",
+        "c_closed2",
+        "c_closed3"
+      ],
+      "blocks": [
+        {
+          "label": "m = 1 检验",
+          "math": "f(x)=3x\\;\\Rightarrow\\;f'(-2)=3",
+          "beat": 0
+        },
+        {
+          "label": "m = 2 检验",
+          "math": "f(x)=3x+2x^2\\;\\Rightarrow\\;f'(-2)=3-8=-5",
+          "beat": 1
+        },
+        {
+          "label": "m = 3 检验",
+          "math": "f'(x)=3+4x+5x^2\\;\\Rightarrow\\;f'(-2)=3-8+20=15",
+          "beat": 2,
+          "small": true
+        },
+        {
+          "label": "结论",
+          "math": "f'(-2)=\\frac{7-(3m+7)(-2)^m}{9}",
+          "beat": 3,
+          "answer": true
+        }
+      ],
+      "beats": [
+        {
+          "say": "最后用小规模数值检验一下。取 m 等于 1，多项式只有 3 乘 x，导数是常数 3，所以函数 f 在负二处的导数等于 3。",
+          "caption": "m = 1：f′(−2) = 3。"
+        },
+        {
+          "say": "取 m 等于 2，多项式是 3 乘 x 加 2 乘 x 的平方，导数是 3 加 4 乘 x，代入负二得 3 减 8 等于 负五。",
+          "caption": "m = 2：f′(−2) = −5。"
+        },
+        {
+          "say": "再取 m 等于 3，导数是 3 加 4 乘 x 加 5 乘 x 的平方，代入负二得 3 减 8 加 20 等于 15。",
+          "caption": "m = 3：f′(−2) = 15。"
+        },
+        {
+          "say": "这三个数值和前面推导得到的闭式结果完全吻合：m 等于 1 得 3，m 等于 2 得负五，m 等于 3 得 15。闭式公式对任意正整数 m 成立，这来自前面错位相减与合并的推导；这三个数值只是抽样核对，用来确认计算没有出错。",
+          "caption": "闭式对任意正整数 m 成立来自推导；m = 1、2、3 只是抽样核对。"
+        }
+      ],
+      "cues": [
+        {
+          "beat": 0,
+          "anchor": "取 m 等于 1",
+          "objects": [
+            "chk1"
+          ],
+          "label": "m = 1"
+        },
+        {
+          "beat": 1,
+          "anchor": "取 m 等于 2",
+          "objects": [
+            "chk2"
+          ],
+          "label": "m = 2"
+        },
+        {
+          "beat": 2,
+          "anchor": "再取 m 等于 3",
+          "objects": [
+            "chk3"
+          ],
+          "label": "m = 3"
+        },
+        {
+          "beat": 3,
+          "anchor": "来自前面错位相减与合并的推导",
+          "objects": [
+            "pt:ans"
+          ],
+          "label": "闭式结果"
+        }
+      ],
+      "reveals": [
+        {
+          "beat": 0,
+          "anchor": "多项式只有 3 乘 x"
+        },
+        {
+          "beat": 1,
+          "anchor": "多项式是 3 乘 x 加 2 乘 x 的平方"
+        },
+        {
+          "beat": 2,
+          "anchor": "导数是 3 加 4 乘 x 加 5 乘 x 的平方"
+        },
+        {
+          "beat": 3,
+          "anchor": "完全吻合"
+        }
+      ]
+    }
+  ]
+}

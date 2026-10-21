@@ -1,0 +1,6 @@
+{
+  "problem": "如图所示的四棱锥 P-ABCD 中，PA 垂直平面 ABCD，BC∥AD，AB⊥AD。（1）证明：平面 PAB⊥平面 PAD。（2）若 PA=AB=√2，AD=√3+1，BC=2，P、B、C、D 在同一个球面上，设球心为 O。（i）证明 O 在平面 ABCD 上；（ii）求直线 AC 与直线 PO 所成角的余弦值。",
+  "scope": { "subject": "math", "grade": "高三", "topics": ["立体几何", "线面垂直", "四点共球", "空间向量"], "allowedMethods": ["综合几何", "空间直角坐标系"], "forbiddenMethods": [] },
+  "supplements": "纯黑背景。先构建空间情景模型，讲到具体直线或平面时高亮对应实体并弱化其余部分。讲稿连贯自然，采用整篇配音和词级字幕。",
+  "options": { "template": "solid-geometry", "fps": 24, "quality": "delivery", "audio": "auto" }
+}
