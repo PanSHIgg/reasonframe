@@ -1,0 +1,23 @@
+{
+  "llm": {
+    "endpoint": "responses",
+    "url": "https://api.openai.com/v1",
+    "apiKey": "",
+    "model": "",
+    "contextWindow": 128000,
+    "maxTokens": 8192,
+    "requestTimeoutMs": 120000,
+    "maxAttempts": 3,
+    "retryDelayMs": 1000,
+    "thinkingLevel": "off"
+  },
+  "agent": {
+    "timeoutMs": 600000,
+    "maxAttempts": 3,
+    "maxToolCalls": 80,
+    "maxTurns": 40,
+    "visualMaxRepairAttempts": 1
+  },
+  "render": { "timeoutMs": 1800000, "workers": 2, "bitrate": "8M" },
+  "tts": { "url": "", "apiKey": "", "voice": "" }
+}
