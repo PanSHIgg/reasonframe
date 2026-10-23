@@ -1,40 +1,94 @@
-# 理象 · ReasonFrame
+# ReasonFrame · 理象
 
-输入数理化题目、学段与知识范围、补充要求，后台用 Pi 编辑讲解稿和 HyperFrames 源码，经过校验、独立审核、TTS、对齐、渲染和成片检查后生成视频。
+> 从一道数理化题目生成经过独立审核的讲解视频。
 
-当前仓库处于两套入口的切换期：
+[![Go 1.26](https://img.shields.io/badge/Go-1.26-00ADD8?logo=go&logoColor=white)](backend/go.mod)
+[![Node 24](https://img.shields.io/badge/Node-24-339933?logo=node.js&logoColor=white)](ai-service/package.json)
+[![Docker Compose](https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white)](deploy/compose.yaml)
+[![Status](https://img.shields.io/badge/status-alpha-orange)](docs/architecture.md)
+[![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)](CONTRIBUTING.md)
 
-- `ai-service/` 是已迁移的 Node/TypeScript AI 执行面，包含原有 Pi、校验、TTS、渲染和样例测试。
-- `backend/` 是新的 Go 控制面，负责 HTTP API、PostgreSQL、Redis/Asynq、MinIO 和 SSE。
-- `deploy/` 提供本地 Compose 和镜像构建；旧的 Express 入口已移除。
+ReasonFrame 输入题目图片或文本、学段与知识范围、补充要求，生成一份可下载的 1080p 讲解视频。系统把“解题与讲稿”和“画面与成片”拆成两个独立作者/审核循环，只有答案审核、视频审核、音频对齐、浏览器检查、HyperFrames 检查和成片验证全部通过后才发布视频。
 
-目标架构、数据模型和迁移计划见 [docs/architecture.md](docs/architecture.md)。
+## 为什么
 
-## 仓库结构
+- **答案和画面分开审。** 先让答案 agent 解题、写讲稿并由独立 reviewer 审核；通过后才让视频 agent 设计画面，再由另一个独立 reviewer 检查实际预览帧。
+- **作者保留上下文，审核者互不污染。** 作者跨返修轮保留会话；每一轮 reviewer 使用全新上下文，只读取当前产物和报告。
+- **不是“生成完就算”。** 公式/数值、讲稿覆盖、词级对齐、高亮对象、布局、动画、编码视频和逐场景 SSIM 都有门禁。
+- **异步、可恢复。** PostgreSQL 是事实源，Redis/Asynq 调度，MinIO 保存检查点、音频、报告和成片；失败重试从已验证阶段继续。
+- **一条命令启动。** Go 控制面、AI 执行面、PostgreSQL、Redis、MinIO 和 worker 由 Compose 编排。
 
-```text
-backend/       Go 控制面：api / worker / reconciler / migrate
-ai-service/    Node AI 执行面：gRPC、Pi、TTS、编译、检查、样例与测试
-deploy/        Compose、镜像、环境示例
-proto/         Go 与 TypeScript 共用的 gRPC 契约
-docs/          架构、工作流、配置、TTS、文档索引
-workspaces/    本地运行产物，不提交
+## 架构
+
+```mermaid
+flowchart LR
+  client[Client] -->|POST /v1/jobs| api[Go API]
+  api --> pg[(PostgreSQL)]
+  api --> redis[(Redis / Asynq)]
+  redis --> worker[Author / Prepare workers]
+  redis --> render[Render worker]
+  worker --> ai[AI service · gRPC]
+  render --> ai
+  ai --> llm[LLM provider]
+  ai --> tts[TTS]
+  ai --> browser[Chromium / HyperFrames]
+  worker --> s3[(MinIO)]
+  render --> s3
+  api --> s3
+  api -->|SSE| client
 ```
 
-Node 工程配置、锁文件、`core/`、`shared/`、模板、提示词、脚本、测试和样例都在 `ai-service/` 内；根目录不再有 `package.json` 或 `server/`。
+| 组件 | 职责 |
+| --- | --- |
+| `backend/` | HTTP API、PostgreSQL 状态机、Asynq 队列、SSE、上传/下载、重试与恢复 |
+| `ai-service/` | Pi agent、答案/视频双循环、TTS、词级对齐、编译、浏览器检查、渲染与成片验证 |
+| `deploy/` | Compose、镜像、环境示例、模型 profile 配置 |
+| `proto/` | Go 与 TypeScript 共用的 gRPC 契约 |
+| `docs/` | 架构、工作流、配置、TTS、实现记录 |
+
+## 工作流
+
+```text
+POST /v1/jobs
+  └─ author
+       ├─ answer author：独立解题 + 讲解稿 + 结构化 claims
+       ├─ 答案 reviewer：全新上下文审核答案、旁白和数值
+       └─ 未通过 → 回到同一 answer author 会话返修
+  └─ prepare
+       ├─ 整篇 TTS / 导入音频 → 词级对齐
+       ├─ video author：lesson + visual.js + style.css
+       ├─ video reviewer：审核实际预览帧、源码、讲稿和检查报告
+       ├─ 未通过 → 回到同一 video author 会话返修
+       └─ 编译 + 浏览器 + HyperFrames 检查
+  └─ render
+       ├─ HyperFrames 渲染 + FFmpeg 转码
+       └─ 解码、音轨、帧数、黑帧、SSIM 验证 → 发布 video
+```
+
+关键约束：
+
+- 视频作者**不能改写**已批准的答案、claims、model 符号和旁白；旁白变化会使旧音频、时间线和视频缓存失效。
+- reviewer 的批准绑定答案/源码/讲稿摘要与 reviewer 提示词摘要；任何绑定变化都会让旧批准失效。
+- 渲染失败不会重跑作者；讲稿返修也不会占用渲染并发。
+- 无法自动恢复的阶段失败会保留已批准检查点和草稿，支持显式重试。
 
 ## 快速开始
 
-### Docker Compose
+### 前置条件
+
+- Docker Engine + Compose v2.24+（`env_file.required`）。
+- 仅在本地构建时需要 Go 1.26、Node.js 24。
+- 一个兼容 OpenAI Chat Completions 的模型端点；真实生成需要 API key。
+
+### 启动
 
 ```bash
 cp deploy/.env.example deploy/.env
-# 编辑 deploy/.env，至少填写 LLM_API_KEY；provider/model 顺序由
-# deploy/llm_config.json 提供（镜像内为 /app/deploy/llm_config.json）。
+# 只填 LLM_API_KEY；provider/model 顺序在 deploy/llm_config.json
 make infra-up
 ```
 
-API 默认监听 `http://127.0.0.1:4310`。`make infra-up` 会先运行迁移，再启动 PostgreSQL、Redis、MinIO、API、worker、render worker、reconciler 和 AI 服务。MinIO 只映射到本机回环地址，产物通过 Go API 下载。
+`make infra-up` 会先执行数据库迁移，再启动 PostgreSQL、Redis、MinIO、API、worker、render worker、reconciler 和 AI 服务。API 默认监听 `http://127.0.0.1:4310`。
 
 ```bash
 curl -X POST http://127.0.0.1:4310/v1/jobs \
@@ -45,20 +99,30 @@ curl http://127.0.0.1:4310/v1/jobs/JOB_ID
 curl -N http://127.0.0.1:4310/v1/jobs/JOB_ID/events
 ```
 
-### 本地运行 AI 服务
+若设置了 `STATIC_API_KEY`，所有 `/v1` 请求加 `Authorization: Bearer <key>`。MinIO 只绑定本机回环地址；产物通过 API 下载：
+
+```bash
+curl -L http://127.0.0.1:4310/v1/jobs/JOB_ID/artifacts/video -o video.mp4
+```
+
+### 本地开发
+
+```bash
+make test            # AI 核心 + AI gRPC/阶段 + Go 单元测试
+make build           # Go 二进制 + AI TypeScript
+make compose-config  # 校验 Compose
+```
+
+单独运行 AI 服务：
 
 ```bash
 cd ai-service
 npm ci
-cp .env.example .env
-# 编辑 ai-service/.env 中的 LLM_*；可选 TTS_*
 npm run build
 npm start
 ```
 
-AI 服务通过 gRPC 接收 Go worker 的任务；单独启动时默认监听 `127.0.0.1:50051`。详细契约见 [ai-service/README.md](ai-service/README.md)。
-
-### Go 控制面
+单独运行 Go 控制面：
 
 ```bash
 cd backend
@@ -70,53 +134,92 @@ go run ./cmd/rf worker --queues render
 go run ./cmd/rf reconciler
 ```
 
-环境变量和部署假设见 [backend/README.md](backend/README.md)。
+## 配置
 
-## 常用命令
+模型 provider、模型顺序、上下文/输出预算和 thinking level 在 `deploy/llm_config.json`。`deploy/.env` 只保存密钥和运行策略；不要把 key 写进配置文件。
 
-```bash
-make test           # AI 核心测试、AI gRPC 测试、Go 测试
-make build          # Go 二进制 + AI TypeScript
-make compose-config # 校验 Compose
-make infra-up       # 启动完整本地栈
-make infra-down     # 停止容器（保留卷）
+```json
+{
+  "providers": {
+    "opencode": {
+      "endpoint": "completions",
+      "url": "https://opencode.ai/inference/go/openai/v1",
+      "apiKeyEnv": "LLM_API_KEY"
+    }
+  },
+  "models": [
+    { "provider": "opencode", "model": "longcat-2.5-preview-free", "thinkingLevel": "xhigh" },
+    { "provider": "opencode", "model": "beam-free", "thinkingLevel": "xhigh" }
+  ]
+}
 ```
 
-## 流水线
+模型请求失败时，后端会在下一次任务 attempt 切换下一个 profile；不会在单次请求中途换模型。完整变量见 [docs/configuration.md](docs/configuration.md)。
 
-```text
-POST /v1/jobs
-  -> Go API 写入 PostgreSQL，入队 Asynq author
-  -> Go worker 调用 AI gRPC RunTask
-  -> author：作者 + 校验 + 独立审核 + 内容返修
-  -> prepare：TTS 或等待音频、词级对齐、编译、浏览器/HyperFrames 检查
-  -> render：渲染、转码、成片验证、发布视频
-  -> Go 写入事件与产物元数据，SSE 从 PostgreSQL 重放
-```
+## API
 
-`prepare` 在未配置 TTS 或 `audio=provided` 时进入 `awaiting_audio`；上传完整 MP3 和词表后继续。视觉/HyperFrames 检查失败可在预算内回到作者返修；讲稿不变时复用已验证音频和视频缓存。
+| 方法 | 路径 | 说明 |
+| --- | --- | --- |
+| `POST` | `/v1/jobs` | 创建任务，支持 `Idempotency-Key`、图片 base64/upload |
+| `GET` | `/v1/jobs/{id}` | 状态、阶段、错误、产物 |
+| `GET` | `/v1/jobs/{id}/events` | SSE，支持 `after`/`Last-Event-ID` |
+| `GET` | `/v1/jobs/{id}/artifacts/{name}` | 下载产物；`video` 只在所有门禁通过后存在 |
+| `POST` | `/v1/jobs/{id}/cancel` | 取消 |
+| `POST` | `/v1/jobs/{id}/retry` | 从可恢复阶段重试 |
+| `POST` | `/v1/jobs/{id}/audio` | 导入完整 MP3 + 词表 |
+| `POST` | `/v1/uploads` | 图片/音频/词表上传 |
+
+契约以 [`backend/api/openapi.yaml`](backend/api/openapi.yaml) 为准；运行时 `/openapi.json` 提供 JSON。
 
 ## 质量门
 
-- 讲稿结构、公式、数值断言和独立审核。
-- 全文词表覆盖、时间顺序、字幕对齐、高亮对象可见性和任意 seek 一致性。
-- 真实浏览器布局、动画、过渡、HyperFrames 检查。
+- 答案结构、公式、数值断言和独立答案审核。
+- 视频预览帧、版式、对象高亮和独立视频审核。
+- 整篇 TTS 的逐字覆盖、词序、时间、字幕和高亮对齐。
+- 真实 Chromium 布局、动画、过渡和 HyperFrames 检查。
 - 成片分辨率、帧率、音轨、完整解码、异常黑帧/静音和逐场景 SSIM。
-- 源码、审核提示词、音频、时间线和视频摘要绑定；旧审核不会因源码改动继续有效。
+- 答案、源码、音频、时间线、审核提示词与视频的摘要绑定。
 
-数值检查和模型审核提供质量证据，不是数学形式化证明。当前已验证的题型和样例见 `ai-service/examples/`。
+数值检查和模型审核是质量证据，不是数学形式化证明。
+
+## 仓库结构
+
+```text
+backend/       Go 控制面：api / worker / reconciler / migrate
+ai-service/    Node AI 执行面：gRPC、Pi、TTS、编译、检查、样例与测试
+deploy/        Compose、镜像、环境示例、模型 profile
+proto/         Go 与 TypeScript 共用 gRPC 契约
+docs/          架构、工作流、配置、TTS、实现记录
+```
+
+## 状态
+
+已完成：
+
+- Go API/worker/reconciler、PostgreSQL/Redis/MinIO、SSE、上传、重试、恢复。
+- 答案/视频双作者与双 reviewer、作者上下文保留、reviewer 隔离。
+- provider/model 有序回退、视频草稿 checkpoint、失败工作区保留。
+- 真实模型端到端出片验证（1080p/24fps，约 5 分 30 秒）。
+
+尚未完成：
+
+- OTel/Prometheus 指标、API 级限流、数据库模式 scopes 强制。
+- 多租户生产加固、对象生命周期/90 天保留、预签名下载。
+- 对模型生成 JavaScript/CSS 的更强沙箱与资源隔离。
+
+## 安全
+
+AI 服务会执行模型生成的 JavaScript/CSS 并启动 Chromium 渲染。不要把该服务直接暴露到公网；生产部署至少应使用独立网络、非 root 用户、只读根文件系统、CPU/内存/磁盘配额和出站网络限制。发现安全问题请按 [SECURITY.md](SECURITY.md) 私下报告。
 
 ## 文档
 
-- [docs/architecture.md](docs/architecture.md)：Go 控制面、AI 执行面、PG/Redis/MinIO、异步任务
-- [docs/workflow.md](docs/workflow.md)：流水线与阶段
-- [ai-service/docs/authoring.md](ai-service/docs/authoring.md)：agent 源码契约
-- [docs/configuration.md](docs/configuration.md)：模型、Agent、TTS、渲染配置
+- [docs/architecture.md](docs/architecture.md)：系统边界、数据模型、状态机
+- [docs/workflow.md](docs/workflow.md)：阶段、审核和恢复
+- [docs/configuration.md](docs/configuration.md)：模型、Agent、TTS、渲染
 - [docs/tts.md](docs/tts.md)：Edge TTS 与外部 TTS 契约
-- [docs/README.md](docs/README.md)：文档索引
+- [ai-service/docs/authoring.md](ai-service/docs/authoring.md)：agent 源码契约
+- [docs/README.md](docs/README.md)：完整文档索引
 
-## 边界
+## 参与贡献
 
-- 当前是多实例控制面骨架，尚未完成真实模型成功样片、OTel/Prometheus、限流、多租户和对象保留策略。
-- AI 服务会执行模型生成的 JavaScript/CSS 并启动 Chromium；生产环境必须按不可信代码隔离，限制网络、CPU、内存和临时磁盘。
-- 旧的 Express HTTP 入口、`JobManager`/`JobStore` 和常驻 TTS server 已删除；生产编排以 Go 控制面和 `ai-service/src/tasks/` 为准，历史记录保留在 `docs/progress-2026-10.md`。
+见 [CONTRIBUTING.md](CONTRIBUTING.md)。提交前请至少运行 `make test` 和 `make compose-config`，并确保不提交 `.env`、模型 key、`workspaces/` 或生成视频。

@@ -122,7 +122,7 @@ AI 地址；`reconciler` 需要 PG/Redis；`migrate` 只需要 PG。
   `ingest_audio -> prepare`。
 - Asynq task ID 为 `{job_id}:{phase}:{attempt}:{auto_repairs}`，payload 只包含
   `job_id`、`phase`、`attempt`、`auto_repairs`、`traceparent`。
-- 超时：author 45m、prepare 30m、render 90m、ingest 10m；基础设施错误交给 Asynq
+- 超时：默认 author 6h、prepare 6h、render 3h、ingest 10m，可用 `TASK_TIMEOUT_*_MS` 覆盖；基础设施错误交给 Asynq
   指数退避，领域失败 ack 后等待用户 retry。
 - worker 先用 `UPDATE ... WHERE status/phase/version` CAS 领取任务，创建 `job_runs`，
   流式写 `job_events` 并在同一事务 `pg_notify('job_events', ...)`。阶段完成时在

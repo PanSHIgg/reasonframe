@@ -271,9 +271,9 @@ cache/render/{cache_key}.quality.json
 | `S3_ENDPOINT` / `S3_BUCKET` / `S3_ACCESS_KEY` / `S3_SECRET_KEY` | 无 | S3/MinIO 必填四项 |
 | `S3_REGION` | `us-east-1` | S3 区域 |
 | `S3_USE_SSL` | 由 endpoint 推断 | `true/false` |
-| `TASK_TIMEOUT_AUTHOR_MS` | 1200000 | 作者阶段 |
-| `TASK_TIMEOUT_PREPARE_MS` | 900000 | 准备阶段 |
-| `TASK_TIMEOUT_RENDER_MS` | 2700000 | 渲染阶段 |
+| `TASK_TIMEOUT_AUTHOR_MS` | 1200000 | 作者阶段；Compose 示例覆盖为 21600000 |
+| `TASK_TIMEOUT_PREPARE_MS` | 900000 | 准备阶段；Compose 示例覆盖为 21600000 |
+| `TASK_TIMEOUT_RENDER_MS` | 2700000 | 渲染阶段；Compose 示例覆盖为 10800000 |
 | `TASK_TIMEOUT_INGEST_AUDIO_MS` | 300000 | 音频导入 |
 | `AI_INTERNAL_TOKEN` | 无 | 仅供后续鉴权扩展使用，当前不强制 |
 

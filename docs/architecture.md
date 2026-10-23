@@ -162,10 +162,10 @@ reasonframe/
 
 | 任务 | Asynq 队列 | 主要动作 | 产物/检查点 | 默认超时 | 自动重试策略 |
 | --- | --- | --- | --- | --- | --- |
-| `author` | `author` | 答案 agent、结构/公式/数值校验、独立答案审核、内容返修 | `answer_sha256`、`source_sha256`、`script_sha256`、answer/answer_review/narration | 20 min | AI 启动前基础设施错误最多 2 次；启动后不自动重跑 |
-| `prepare` | `prepare` | TTS 或等待导入音频、视频 agent + 独立视频审核、重对齐、编译、浏览器/HyperFrames 检查 | `source_sha256`、`timeline_sha256`、视频源码/审核、音频/词表、检查报告 | 15 min | 基础设施错误最多 2 次；视觉失败可按预算返修 |
-| `render` | `render` | 渲染、转码、成片验证、质量报告 | `video_sha256`、video/quality | 45 min | 渲染/上传瞬时错误最多 1 次；验证失败不自动重跑 |
-| `ingest_audio` | `prepare` | 校验上传 MP3 与词表、写入工作区、标记可继续 | `audio_sha256`、`words_sha256` | 5 min | 不自动重试，失败返回用户可修复错误 |
+| `author` | `author` | 答案 agent、结构/公式/数值校验、独立答案审核、内容返修 | `answer_sha256`、`source_sha256`、`script_sha256`、answer/answer_review/narration | 6 h（`TASK_TIMEOUT_AUTHOR_MS`） | 模型不可用可切换到下一个 profile；启动后不自动重跑 |
+| `prepare` | `prepare` | TTS 或等待导入音频、视频 agent + 独立视频审核、重对齐、编译、浏览器/HyperFrames 检查 | `source_sha256`、`timeline_sha256`、视频源码/审核、音频/词表、检查报告 | 6 h（`TASK_TIMEOUT_PREPARE_MS`） | 模型不可用可切换 profile；视觉失败按预算返修 |
+| `render` | `render` | 渲染、转码、成片验证、质量报告 | `video_sha256`、video/quality | 3 h（`TASK_TIMEOUT_RENDER_MS`） | 渲染/上传瞬时错误最多 1 次；验证失败不自动重跑 |
+| `ingest_audio` | `prepare` | 校验上传 MP3 与词表、写入工作区、标记可继续 | `audio_sha256`、`words_sha256` | 10 min（`TASK_TIMEOUT_INGEST_AUDIO_MS`） | 不自动重试，失败返回用户可修复错误 |
 
 拆成三个阶段的原因：
 
@@ -961,4 +961,4 @@ MAX_SCRATCH_BYTES
 - `deploy/`：Compose、后端/AI 镜像、MinIO 初始化、PostgreSQL/Redis、worker 拆分和 Makefile 命令。
 - `proto/`：Go 与 TypeScript 共用的任务/事件/结果契约。
 
-已验证：Go `build/test/vet`，AI `build/test`，现有 Node 46 项测试，Compose 配置校验，以及 PostgreSQL/Redis/MinIO + Go API/worker + AI gRPC 的失败路径联调（无模型时正确返回 `MODEL_NOT_CONFIGURED`）。尚未完成：真实模型成功样片、AI 镜像完整构建、OTel/Prometheus、限流、KMS/多租户和 90 天保留策略。
+已验证：Go `build/test/vet`，AI `build/test`，Compose 配置校验，真实模型端到端出片（1080p/24fps，约 5 分 30 秒），以及 PostgreSQL/Redis/MinIO + Go API/worker + AI gRPC 的失败/恢复路径。尚未完成：OTel/Prometheus、API 级限流、数据库模式 scopes 强制、KMS/多租户和 90 天对象保留策略。

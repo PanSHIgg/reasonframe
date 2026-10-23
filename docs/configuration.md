@@ -93,10 +93,10 @@ OpenCode 端点自动携带理象自身的 User-Agent 和 `x-opencode-session`�
 
 | 环境变量 | JSON 字段 | 默认值 | 用途 |
 | --- | --- | --- | --- |
-| `REASONFRAME_AGENT_TIMEOUT_MS` | `agent.timeoutMs` | 600000 | 一次作者、审核及内容返修的总时限，1000～3600000 毫秒 |
+| `REASONFRAME_AGENT_TIMEOUT_MS` | `agent.timeoutMs` | 3600000 | 一次答案/视频作者、审核及内容返修的总时限，1000～21600000 毫秒 |
 | `REASONFRAME_AGENT_MAX_ATTEMPTS` | `agent.maxAttempts` | 3 | 内容生成、校验与审核最多轮数，含初次，1～10 |
 | `REASONFRAME_AGENT_MAX_TOOL_CALLS` | `agent.maxToolCalls` | 80 | 每个独立会话的实际工具执行上限，1～1000 |
-| `REASONFRAME_AGENT_MAX_TURNS` | `agent.maxTurns` | 40 | 每个独立会话的模型请求总上限，1～1000，包含重试 |
+| `REASONFRAME_AGENT_MAX_TURNS` | `agent.maxTurns` | 40 | 每个独立会话的模型请求总上限，1～1000，包含重试；Compose 示例为 80 |
 | `REASONFRAME_VISUAL_MAX_REPAIR_ATTEMPTS` | `agent.visualMaxRepairAttempts` | 1 | 浏览器或 HyperFrames 检查失败后的额外自动返修次数，0～10 |
 
 `LLM_MAX_ATTEMPTS=3` 代表一次响应最多请求 3 次；`REASONFRAME_AGENT_MAX_ATTEMPTS=3` 代表初次生成加最多 2 次内容返修。这两个参数分别应对网络问题和内容问题。
@@ -113,5 +113,9 @@ OpenCode 端点自动携带理象自身的 User-Agent 和 `x-opencode-session`�
 | `REASONFRAME_RENDER_WORKERS` | `render.workers` | 2，范围 1～8 |
 | `REASONFRAME_RENDER_BITRATE` | `render.bitrate` | 8M，固定视频码率，支持如 6M、8000k |
 | `REASONFRAME_RENDER_TIMEOUT_MS` | `render.timeoutMs` | 1800000 毫秒，范围 1000～7200000 |
+| `TASK_TIMEOUT_AUTHOR_MS` | AI author 阶段硬上限 | 1200000 毫秒（Compose 示例 21600000） |
+| `TASK_TIMEOUT_PREPARE_MS` | AI prepare 阶段硬上限 | 900000 毫秒（Compose 示例 21600000） |
+| `TASK_TIMEOUT_RENDER_MS` | AI render 阶段硬上限 | 2700000 毫秒（Compose 示例 10800000） |
+| `TASK_TIMEOUT_INGEST_AUDIO_MS` | AI ingest 阶段硬上限 | 300000 毫秒 |
 
 模型连接信息只影响 LLM；全文 TTS 仍为一次请求，不应用 LLM 的重试参数。所有数值在服务启动时校验，无效范围、非整数预算、未知 JSON 配置字段或输出上限不小于上下文容量都会拒绝启动。

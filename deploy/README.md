@@ -112,7 +112,7 @@ make infra-down     # keeps named volumes; add -v manually to wipe local data
 
 `deploy/ai-service.Dockerfile` is built from the repository root and includes:
 
-- Node.js 24 and the root `package-lock.json` dependencies.
+- Node.js 24 and the `ai-service/package-lock.json` dependencies.
 - FFmpeg/ffprobe, Debian Chromium, and CJK/emoji fonts.
 - A `/opt/venv` virtualenv with `requirements-tts.txt` (`edge-tts`).
 - `deploy/llm_config.json` at `/app/deploy/llm_config.json` (provider/model order).
