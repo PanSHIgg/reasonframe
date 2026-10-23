@@ -1,117 +1,102 @@
 # 理象工作流程
 
-本文档描述当前代码（`core/jobs.ts`、`core/pi.ts`、`core/quality.ts`、`core/audio.ts`）的实际流程。终端里可以直接看下面的“纯文本流程”，支持 Mermaid 的 Markdown 预览器会渲染后面的图。
+本文档描述当前 Go 控制面与 `ai-service/` 执行面的实际流程。旧的 Express 单进程入口和 `JobManager`/`JobStore` 已移除，生产任务由 Go worker 编排。
 
-## 纯文本流程
+## 总流程
 
 ```text
 POST /v1/jobs
-  -> 创建工作区（模板、schema、AUTHORING）
-  -> 作者 Agent 工具循环
-       -> validate_lesson
-       -> 独立 Reviewer 工具循环
-       -> submit_review（approved + textClean + reasoningClear + layoutClean）
-       -> source approved
-  -> 已有 timeline/音频且摘要一致？
-       是 -> compile
-       否 -> audio=provided / TTS 未配置？
-              是 -> awaiting_audio（上传 MP3 + 词表）
-              否 -> 整篇 TTS（Edge CLI 或 HTTP）
-       -> saveAudio + align
-       -> compile
-  -> inspectVisuals + HyperFrames check（并行）
-  -> 渲染 1080p + 固定码率转码
-  -> ffprobe / 帧数 / 音频 / SSIM 验证
-  -> lesson.mp4 + quality.json
+  -> Go API 校验输入，图片写入 MinIO，任务写入 PostgreSQL
+  -> 入队 Asynq author
+  -> Go worker 领取任务，调用 AI gRPC RunTask(AUTHOR)
+       -> 答案 agent 解题，写 answer.json（答案、claims、model、solution、旁白）
+       -> 独立答案 reviewer（每轮全新上下文）审核答案/推理/讲稿
+       -> 上传已批准答案、讲稿、审核与检查报告
+  -> 入队 prepare
+       -> 整篇 TTS，或进入 awaiting_audio 等待 MP3 + 词表
+       -> ingest_audio 校验词表与音频
+       -> 视频 agent 把已批准答案/旁白转成 lesson.json + visual.js + style.css
+       -> 真实编译/预览帧 + 独立视频 reviewer（每轮全新上下文）
+       -> 词级对齐重算、编译、浏览器/HyperFrames 检查
+  -> 入队 render
+       -> 渲染、转码、成片验证、发布 video artifact
+  -> 状态/事件写 PostgreSQL，SSE 按 event id 重放
   -> completed
 ```
 
-## 任务主流程
-
 ```mermaid
-flowchart TD
-  A["POST /v1/jobs<br/>题目 + 图片 + 范围"] --> B["创建工作区<br/>模板 / schema / AUTHORING"]
-  B --> C{"已有已审核 sourceSha256？"}
-
-  C -- "否：新任务" --> D["作者 Agent 工具循环"]
-  C -- "是：重试 / 续跑" --> E["assertApproved<br/>校验源码摘要 + review.json"]
-
-  D --> F{"validate_lesson<br/>结构 / 公式 / 数值通过？"}
-  F -- "否" --> D
-  F -- "是" --> G["独立 Reviewer 工具循环<br/>读源码 / 报告 / 实际截图"]
-  G --> H{"submit_review<br/>approved + 全部检查？"}
-  H -- "否：带问题反馈" --> D
-  H -- "是" --> I["source approved<br/>保存 sourceSha256 / scriptSha256"]
-  I --> E
-
-  E --> J{"timeline.json 与音频摘要<br/>可复用？"}
-  J -- "是" --> N["compile<br/>生成 render/index.html"]
-  J -- "否" --> K{"audio=provided<br/>或 TTS 未配置？"}
-
-  K -- "是" --> L["awaiting_audio<br/>POST 完整 MP3 + 词表"]
-  K -- "否" --> M["整篇 TTS<br/>Edge CLI 一次合成 / 可选 HTTP"]
-  L --> O["saveAudio + align<br/>词级时间表"]
-  M --> O
-  O --> N
-
-  N --> P["并行质量门<br/>inspectVisuals + HyperFrames check"]
-  P --> Q{"全部通过？"}
-  Q -- "否" --> R["failed<br/>保留报告，显式重试 / 返修"]
-  Q -- "是" --> S["渲染<br/>1080p HyperFrames + 固定码率转码"]
-  S --> T["成片验证<br/>ffprobe / 帧数 / 音频 / SSIM"]
-  T --> U{"通过？"}
-  U -- "否" --> R
-  U -- "是" --> V["lesson.mp4 + quality.json<br/>completed"]
+flowchart LR
+  A[POST /v1/jobs] --> B[PostgreSQL + MinIO]
+  B --> C[Asynq author]
+  C --> D[AI gRPC AUTHOR]
+  D --> E[Asynq prepare]
+  E --> F{需要音频?}
+  F -- 是 --> G[awaiting_audio]
+  G --> H[ingest_audio]
+  H --> E
+  F -- 否/TTS --> I[对齐 + 编译 + 检查]
+  I --> J[Asynq render]
+  J --> K[AI gRPC RENDER]
+  K --> L[completed + video]
+  D -. SSE 事件 .-> M[(job_events)]
+  E -. SSE 事件 .-> M
+  J -. SSE 事件 .-> M
 ```
 
-## 作者 / 审核内部循环
+## 阶段
+
+| 阶段 | 执行方 | 主要动作 | 产物/检查点 |
+| --- | --- | --- | --- |
+| `queued` | Go | 入队 author 或当前恢复阶段 | job 记录、created 事件 |
+| `author` | AI `src/tasks/author.ts` | 答案 agent 写 `answer.json`；结构/公式/数值校验；独立答案审核；内容返修 | 已批准答案、讲稿、答案审核/结构/数学报告，`answer_sha256`、`script_sha256`、AUTHOR `source_sha256` |
+| `prepare` | AI `src/tasks/prepare.ts` | 复用或整篇 TTS；视频 agent 生成 `lesson.json`/`visual.js`/`style.css`；真实预览帧与独立视频审核；重对齐、编译、视觉与 HyperFrames 检查 | 视频源码、视频审核、音频、词表、时间线、字幕、检查报告，`source_sha256`、`audio_sha256`、`timeline_sha256` |
+| `awaiting_audio` | Go/AI | 无 TTS 或 `audio=provided` 时等待上传；上传后执行 `ingest_audio` | MP3、词表、对齐报告 |
+| `render` | AI `src/tasks/render.ts` | 重编译并核对 build 摘要；复用已验证视频或重新渲染；成片验证 | `lesson.mp4`、`quality.json`、`video_sha256` |
+| `completed` | Go | 发布可下载产物，写终态事件 | 最终任务状态 |
+
+## 答案 / 视频内部循环
 
 ```mermaid
 flowchart LR
-  A["作者 Agent"] --> B["读写 lesson.json<br/>visual.js / style.css<br/>list_frames / read_frames"]
-  B --> C["validate_lesson"]
-  C -- "错误" --> A
-  C -- "通过" --> D["可选 synthesize_narration<br/>整篇配音 + words + timeline"]
-  D --> E["validate_preview<br/>真实浏览器检查"]
-
-  E --> F["Reviewer Agent<br/>独立解题，不看作者结论"]
-  F --> G["读源码 / 结构 / 数学 / visual / HyperFrames 报告<br/>read_frames 看截图"]
-  G --> H["validate_preview"]
-  H --> I["submit_review<br/>全部检查 + 可执行问题"]
-  I -- "拒绝：可修复问题" --> A
-  I -- "批准" --> J["进入 source approved"]
+  A[答案 Agent 会话] --> B[写 answer.json]
+  B --> C[validate_answer]
+  C -- 错误 --> A
+  C -- 通过 --> D[全新答案 Reviewer]
+  D --> E[只读 answer / request / 报告]
+  E --> F[submit_answer_review]
+  F -- 拒绝 --> A
+  F -- 批准 --> G[answer approved]
+  G --> H[PREPARE: TTS / awaiting_audio]
+  H --> I[视频 Agent 会话]
+  I --> J[写 lesson / visual / style]
+  J --> K[重对齐 + 编译 + 真实预览帧]
+  K -- 检查失败 --> I
+  K --> L[全新视频 Reviewer]
+  L --> M[看实际帧 / 源码 / 报告]
+  M --> N[submit_video_review]
+  N -- 拒绝 --> I
+  N -- 批准 --> O[video source approved]
 ```
 
-## 阶段与产物
+- 答案作者和视频作者的 Pi 会话分别在各自的返修轮次之间保留，审核反馈作为新用户消息追加。
+- 每次 reviewer 调用都创建新的 Pi 会话，只携带当前阶段的只读工具和产物，不共享作者对话。
+- 答案审核只审核答案、推理、文字和旁白；视频审核必须核对已批准答案，并查看真实渲染预览帧。
+- 视频作者不能改写已批准答案或旁白；若视频审核确认答案本身有问题，返修回到答案阶段。
+- 审核报告绑定答案/源码/讲稿摘要与 reviewer 提示词摘要；任一摘要变化后旧批准失效。
 
-| 阶段 | 主要动作 | 主要产物/报告 |
-| --- | --- | --- |
-| `queued` | 排队 | `job.json` |
-| `authoring` | 按 `scope.subject` 加载基础提示词 + 科目参考，作者读写源码、讲稿、模型 | `lesson.json`、`src/visual.js`、`src/style.css` |
-| `verifying` | `validateWorkspace`：schema、结构、数学断言 | `reports/structure.json`、`reports/math.json` |
-| `reviewing` | 独立 reviewer 使用同科目参考，先文字、再逻辑、再易懂性、最后版式；读文件/看帧并提交审核 | `reports/review.json`、`reports/review-N.json` |
-| `synthesizing` | 整篇 TTS（或复用已有音频） | `render/assets/audio/narration.mp3`、`words.json` |
-| `awaiting_audio` | 等待外部 MP3 + 词表上传 | 等待 `POST /v1/jobs/:id/audio` |
-| `aligning` | 词级时间表对齐并绑定音频摘要 | `timeline.json`、`reports/alignment.json` |
-| `building` | 编译 HyperFrames 项目 | `render/index.html`、`assets/*` |
-| `checking` | 浏览器视觉检查 + HyperFrames 检查 | `reports/visual.json`、`reports/hyperframes.json`、`reports/frames/*` |
-| `rendering` | HyperFrames 1080p 渲染 + 固定码率转码 | `pending.mp4`（完成后变为 `lesson.mp4`） |
-| `validating` | 成片规格、音频、SSIM 验证 | `reports/video.json` |
-| `completed` | 生成最终质量记录 | `lesson.mp4`、`reports/quality.json` |
+## 自动返修
 
-失败时会进入 `failed`，报告保留；`cancelled` 会中止当前模型/TTS/渲染进程。
+- 内容问题分别在答案循环和视频循环内部按 `REASONFRAME_AGENT_MAX_ATTEMPTS` 返修；两个作者会话在各自循环内保留。
+- 视觉或 HyperFrames 检查失败且仍有 `auto_repairs` 预算时，Go 把任务退回 author，写入 `repair.queued`；AI 恢复上一版答案/源码和检查报告后重新答案/视频循环，再重新 prepare。
+- `VIDEO_CHECK_FAILED` 可在 render 阶段重试一次；仍失败则任务失败。
+- 讲稿不变时复用已验证音频；源码/时间线/编译器/质量检查器摘要都匹配时才复用已验证视频。
 
-## 当前质量门
+## 质量门
 
-- **内容门**：schema、结构、数学断言、独立审核；源码改动后摘要失效，必须重新审核。
-- **视觉门**：字幕/高亮 cue、文字互相重叠、标签压住自己的点、越界裁切、乱码/控制字符、KaTeX 错误、主题背景、任意 seek 确定性。
-- **HyperFrames 门**：真实浏览器检查 + 转场检查。
-- **成片门**：1920×1080、帧率/总帧数、音频非静音、无异常黑帧、编码帧与参考帧 SSIM ≥ 0.97。
-- **审核门**：`approved=true`，且 `textClean`、`reasoningClear`、`layoutClean` 等全部检查为 true；reviewer 必须先逐字校对文字，再检查逐项讲解逻辑和易懂性，最后查看实际截图。审核报告还绑定 reviewer 提示词摘要，提示词变更后旧批准失效。存在错字、逻辑跳跃、提前给结论、重叠/乱码/裁切都不能通过。
+- **内容**：schema、结构、公式、数值断言、独立审核；审核必须逐字校对文字，再检查逻辑、易懂性和版式。
+- **视觉**：字幕/高亮 cue、文字重叠、标签遮挡、越界、KaTeX 错误、主题背景、任意 seek 确定性。
+- **HyperFrames**：真实浏览器检查、动画与过渡采样。
+- **成片**：1920×1080、帧率/帧数、音轨、完整解码、异常黑帧/静音、逐场景 SSIM ≥ 0.97。
+- **绑定**：源码、审核提示词、音频、时间线、构建清单和视频摘要必须一起匹配。
 
-## 当前默认配置
-
-- 视觉：默认浅色纸面主题（`#F7F5EE` 纸面、`#20201C` 正文）。
-- 配音：`TTS_PROVIDER=edge`，按需启动一次性 Python Edge TTS 进程，无常驻 4311 服务；也可用 `http` + `TTS_URL`。
-- 渲染：HyperFrames 1080p，渲染后按 `REASONFRAME_RENDER_BITRATE`（默认 `8M`）做固定码率转码。
-- 模型：按 `.env` 当前配置的 LLM 参数执行；作者和审核使用独立会话。
+数值检查和模型审核是质量证据，不是数学形式化证明。当前已验证样例见 `ai-service/examples/`。

@@ -7,11 +7,12 @@
 安装一次 Python 依赖：
 
 ```bash
+cd ai-service
 uv venv .venv
 uv pip install --python .venv/bin/python -r requirements-tts.txt
 ```
 
-在 `.env` 中配置：
+在 `ai-service/.env` 中配置：
 
 ```dotenv
 TTS_PROVIDER=edge
@@ -20,9 +21,9 @@ TTS_VOICE=zh-CN-XiaoxiaoNeural
 # TTS_PYTHON=/absolute/path/to/.venv/bin/python
 ```
 
-主服务和作者 agent 都直接调用 `scripts/edge-tts-cli.py`，每次完整讲稿启动一个 Python 进程，不需要启动 4311 端口或健康检查。整篇讲稿仍然只合成一次，Edge 的词边界直接写入 `words.json`；缓存命中不会重新请求。固定版本的 Edge SDK 默认按 4096 字节拆文本，适配器改为发送一个完整 SSML 消息，并把包含请求头的 UTF-8 消息限制在 60000 字节以内；超过时在请求前拒绝。缓存位于 `.reasonframe/tts-cache/`。
+AI 服务在答案审核通过后的 `PREPARE` 阶段直接调用 `ai-service/scripts/edge-tts-cli.py`，每次完整讲稿启动一个 Python 进程，不需要启动 4311 端口或健康检查。整篇讲稿仍然只合成一次，Edge 的词边界直接写入 `words.json`；缓存命中不会重新请求。固定版本的 Edge SDK 默认按 4096 字节拆文本，适配器改为发送一个完整 SSML 消息，并把包含请求头的 UTF-8 消息限制在 60000 字节以内；超过时在请求前拒绝。缓存位于 `ai-service/.reasonframe/tts-cache/`。
 
-作者 agent 有 `synthesize_narration` 工具：讲稿定稿且 `validate_lesson` 通过后调用一次，生成 `narration.mp3`、`words.json` 和 `timeline.json`；之后可用 `validate_preview` 刷新浏览器报告。审核通过后服务按讲稿摘要复用这份音频；旁白变化时必须重新调用，不能对未变化文本重复请求 TTS。
+答案 agent 只写已审核的整篇旁白，不直接请求 TTS。`AUTHOR` 通过后，`PREPARE` 按 `script_sha256` 合成一次 `narration.mp3`、`words.json` 和初步 `timeline.json`；视频作者生成 lesson 后服务按最终 scene blocks/cues 重新对齐，视频作者和审核者可用 `validate_preview` 刷新浏览器报告。旁白变化时旧音频自动失效，不能对未变化文本重复请求 TTS。
 
 ## 可选 HTTP TTS 适配器
 

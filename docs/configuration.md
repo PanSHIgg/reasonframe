@@ -1,22 +1,60 @@
 # 模型与 Agent 配置
 
-优先级为环境变量（包括 `.env`）> JSON 配置文件 > 内置默认值。配置在启动时读取，修改后重启服务。`GET /v1/config` 返回实际模型、Agent 和渲染预算，始终省略 API Key。
+LLM 的 provider/model 顺序来自 `deploy/llm_config.json`（AI 镜像内为 `/app/deploy/llm_config.json`）。`ai-service` 默认读取自身根目录上一级的该文件；`LLM_CONFIG_PATH` 可覆盖（相对路径从 `ai-service` 根目录解析）。只有文件不存在时才使用旧式纯环境变量配置：环境变量 > `reasonframe.config.json` > 内置默认值。配置文件存在但无效时服务拒绝启动；显式设置 `LLM_CONFIG_PATH` 但文件不存在也拒绝启动。配置在启动时读取，修改后重启服务。AI 服务内部持有有序的 typed profile 列表；`GET /v1/config` 返回后端已知的主模型、Agent 和渲染预算，始终省略 API Key。
+
+## LLM 配置文件
+
+```json
+{
+  "providers": {
+    "opencode": {
+      "endpoint": "completions",
+      "url": "https://opencode.ai/inference/go/openai/v1",
+      "apiKeyEnv": "LLM_API_KEY"
+    }
+  },
+  "models": [
+    { "provider": "opencode", "model": "longcat-2.5-preview-free", "contextWindow": 1000000, "maxTokens": 131072, "thinkingLevel": "xhigh" },
+    { "provider": "opencode", "model": "beam-free", "contextWindow": 1048576, "maxTokens": 131072, "thinkingLevel": "xhigh" },
+    { "provider": "opencode", "model": "minimax-m3.1-flash", "contextWindow": 1000000, "maxTokens": 131072, "thinkingLevel": "xhigh" }
+  ]
+}
+```
+
+| 字段 | 必填 | 用途 |
+| --- | --- | --- |
+| `providers.<name>.endpoint` | 是 | `responses`、`completions` 或 `messages` |
+| `providers.<name>.url` | 是 | 基础 URL 或标准完整端点，校验规则与旧式 `LLM_URL` 相同 |
+| `providers.<name>.apiKeyEnv` | 否 | 提供密钥的环境变量名，默认 `LLM_API_KEY`；文件本身绝不能包含密钥 |
+| `models[].provider` | 是 | 必须引用 `providers` 中的名称 |
+| `models[].model` | 是 | 传给供应商的模型名称 |
+| `models[].contextWindow` | 否 | 模型上下文容量，8192～2000000 token；省略时用 `reasonframe.config.json` 或默认值 |
+| `models[].maxTokens` | 否 | 单次最大输出，1024～524288 token，必须小于该模型上下文容量 |
+| `models[].thinkingLevel` | 否 | `off/minimal/low/medium/high/xhigh` |
+
+优先级与回退规则：
+
+1. `models` 数组顺序就是 profile 顺序，attempt 0 使用第一个，attempt 1 使用第二个，之后循环。只有下一次任务重试才会切换 profile；单次请求内部的 Pi/SDK 重试仍使用同一 profile，绝不在请求中途切换。
+2. `providers[].apiKeyEnv` 指向的变量提供密钥。某个 provider 缺少密钥时其 model 不进入可用 profile；全部缺失时模型未配置，但服务仍可启动。
+3. 文件存在时忽略 `LLM_ENDPOINT`、`LLM_URL`、`LLM_CONTEXT_WINDOW`、`LLM_MAX_TOKENS`、`LLM_THINKING_LEVEL`；这些变量只在文件不存在时构成旧式配置。`LLM_REQUEST_TIMEOUT_MS`、`LLM_MAX_ATTEMPTS`、`LLM_RETRY_DELAY_MS`、`LLM_TEMPERATURE` 是运行时策略，始终生效。
+4. 可选 `LLM_MODEL` 仅用于调试：若与文件中的模型同名，会将该 profile 移到首位；否则替换主 profile 的模型名称并保留原 provider 与预算。
 
 ## 模型请求
 
-| 环境变量 | JSON 字段 | 默认值 | 用途 |
-| --- | --- | --- | --- |
-| `LLM_ENDPOINT` | `llm.endpoint` | 无 | `responses`、`completions` 或 `messages` |
-| `LLM_URL` | `llm.url` | 无 | 基础 URL 或标准完整端点 |
-| `LLM_API_KEY` | `llm.apiKey` | 无 | API Key |
-| `LLM_MODEL` | `llm.model` | 无 | 模型名称 |
-| `LLM_CONTEXT_WINDOW` | `llm.contextWindow` | 128000 | 模型上下文容量，8192～2000000 token |
-| `LLM_MAX_TOKENS` | `llm.maxTokens` | 8192 | 每次请求的最大输出，1024～524288 token，必须小于上下文容量 |
-| `LLM_REQUEST_TIMEOUT_MS` | `llm.requestTimeoutMs` | 120000 | SDK HTTP 请求超时，100～3600000 毫秒 |
-| `LLM_MAX_ATTEMPTS` | `llm.maxAttempts` | 3 | 单次模型响应最多尝试次数，含第一次，1～10 |
-| `LLM_RETRY_DELAY_MS` | `llm.retryDelayMs` | 1000 | 指数退避的初始等待，0～60000 毫秒 |
-| `LLM_THINKING_LEVEL` | `llm.thinkingLevel` | off | `off/minimal/low/medium/high/xhigh` |
-| `LLM_TEMPERATURE` | `llm.temperature` | 不传 | 留空沿用模型默认值；Messages 为 0～1，其他端点为 0～2 |
+| 环境变量 | JSON 字段 | 生效方式 | 默认值 | 用途 |
+| --- | --- | --- | --- | --- |
+| `LLM_CONFIG_PATH` | 无 | 文件路径 | `../deploy/llm_config.json` | 覆盖 LLM 配置文件位置 |
+| `LLM_API_KEY` | 无 | 密钥 | 无 | 默认 provider 密钥；也可由 `apiKeyEnv` 指向其他变量 |
+| `LLM_MODEL` | 无 | 调试覆盖 | 无 | 覆盖主模型 |
+| `LLM_ENDPOINT` | `llm.endpoint` | 仅文件不存在 | 无 | `responses`、`completions` 或 `messages` |
+| `LLM_URL` | `llm.url` | 仅文件不存在 | 无 | 基础 URL 或标准完整端点 |
+| `LLM_CONTEXT_WINDOW` | `llm.contextWindow` | 仅文件不存在 | 128000 | 模型上下文容量，8192～2000000 token |
+| `LLM_MAX_TOKENS` | `llm.maxTokens` | 仅文件不存在 | 8192 | 每次请求的最大输出，1024～524288 token，必须小于上下文容量 |
+| `LLM_REQUEST_TIMEOUT_MS` | `llm.requestTimeoutMs` | 始终 | 120000 | SDK HTTP 请求超时，100～3600000 毫秒 |
+| `LLM_MAX_ATTEMPTS` | `llm.maxAttempts` | 始终 | 3 | 单次模型响应最多尝试次数，含第一次，1～10 |
+| `LLM_RETRY_DELAY_MS` | `llm.retryDelayMs` | 始终 | 1000 | 指数退避的初始等待，0～60000 毫秒 |
+| `LLM_THINKING_LEVEL` | `llm.thinkingLevel` | 仅文件不存在 | off | `off/minimal/low/medium/high/xhigh` |
+| `LLM_TEMPERATURE` | `llm.temperature` | 始终 | 不传 | 留空沿用模型默认值；Messages 为 0～1，其他端点为 0～2 |
 
 上下文容量是模型实际限制的声明，不会扩大供应商的限制。最大输出会直接传入每次 API 请求，不只用于模型注册。思考等级通过 Pi 的对应协议适配器传递；必须选择模型支持的等级。思考 token 与输出 token 的具体计费、预算规则由供应商决定。并非所有模型支持 temperature，未设置时不发送该参数；Anthropic 启用思考时由 SDK 按协议处理 temperature。
 
@@ -32,25 +70,24 @@
 | `TTS_URL` | `tts.url` | 无 | HTTP provider 的完整适配地址 |
 | `TTS_API_KEY` | `tts.apiKey` | 无 | HTTP provider 的可选 Bearer key |
 
-`TTS_PROVIDER=edge` 时不需要启动 4311 端口；作者 agent 的 `synthesize_narration` 工具和任务审核后的自动合成共用 `scripts/edge-tts-cli.py`。`TTS_PROVIDER=http` 时必须提供 `TTS_URL`，请求/返回契约见 [tts.md](tts.md)。两个 provider 都只发送完整讲稿一次，不接受分句或本地拼接。
+`TTS_PROVIDER=edge` 时不需要启动 4311 端口；答案审核通过后的 `PREPARE` 整篇合成和视频阶段的重对齐共用 `ai-service/scripts/edge-tts-cli.py`。`TTS_PROVIDER=http` 时必须提供 `TTS_URL`，请求/返回契约见 [tts.md](tts.md)。两个 provider 都只发送完整讲稿一次，不接受分句或本地拼接。
 
 
-OpenCode 端点自动携带理象自身的 User-Agent 和 `x-opencode-session`。会话 ID 与真实 Pi 会话一致，同一会话的工具循环与重试保持不变，作者和独立审核使用不同 ID，满足 Go 的路由要求。`npm run check:model` 使用实际配置测试现有样例的代码编辑、校验与结构化审核，报告和会话保存在 `.reasonframe/model-check-*/`；审核是否批准内容单独记录。
+OpenCode 端点自动携带理象自身的 User-Agent 和 `x-opencode-session`。会话 ID 与真实 Pi 会话一致，同一会话的工具循环与重试保持不变，作者和独立审核使用不同 ID，满足 Go 的路由要求。`cd ai-service && npm run check:model` 使用实际配置测试现有样例的代码编辑、校验与结构化审核，报告和会话保存在 `.reasonframe/model-check-*/`；审核是否批准内容单独记录。
 
-2026-10-20 的真实联调中，`minimax-m3.1-flash-free` 的一次几何审核输出了 8192 个思考 token 后被截断；临时提高到 32768 后完成了审核。当前本地 `.env` 已按 MiniMax M3.1 Flash 官方上限配置：
+2026-10-20 的真实联调中，`minimax-m3.1-flash` 的一次几何审核输出了 8192 个思考 token 后被截断；临时提高到 32768 后完成了审核。`deploy/llm_config.json` 将 MiniMax 作为第三级保底 profile，当前配置为：
 
-```dotenv
-LLM_CONTEXT_WINDOW=1000000
-LLM_MAX_TOKENS=524288
+```json
+{ "model": "minimax-m3.1-flash", "contextWindow": 1000000, "maxTokens": 131072, "thinkingLevel": "xhigh" }
 ```
 
 规格来源：[MiniMax 官方模型与上下文表](https://platform.minimax.io/docs/api-reference/text-anthropic-api#supported-models)和[官方 Chat Completions 参数](https://platform.minimax.io/docs/api-reference/text-chat-openai)。官方上下文精确值为 1,000,000 token；输出预算推荐 131,072，上限 524,288，包含思考 token。上下文由输入、会话历史和生成内容共用；最大输出是单次上限，不要求每次生成到这个长度。
 
-`LLM_TEMPERATURE` 留空沿用官方固定值 1，`top_p` 沿用官方固定值 0.95，无需额外传参。M3.1 Flash 始终思考，不支持关闭，默认 `reasoning_effort=max`；当前 `LLM_THINKING_LEVEL=off` 使 Pi 不发送通用思考等级参数，由供应商使用默认深度，不代表关闭该模型的思考。
+`LLM_TEMPERATURE` 留空沿用官方固定值 1，`top_p` 沿用官方固定值 0.95，无需额外传参。M3.1 Flash 始终思考，不支持关闭，默认 `reasoning_effort=max`；当前 profile 使用 `thinkingLevel=xhigh`，Pi 会发送通用思考等级参数，实际深度由供应商解释，不代表可以关闭该模型的思考。
 
-[OpenCode Go 的 models.dev 目录](https://models.dev/api.json)记录输出为 512,000，与 MiniMax 官方文档有差异。2026-10-20 使用当前 Go 端点及 `minimax-m3.1-flash-free`，携带 `max_tokens=524288` 的简短实测请求返回 HTTP 200 和 `OK`。此检查确认参数被接受，没有实际生成 512K 长输出或填满 1M 上下文。请求超时、重试和 Agent 预算仍采用项目设置，属于应用运行策略。
+[OpenCode Go 的 models.dev 目录](https://models.dev/api.json)记录输出为 512,000，与 MiniMax 官方文档有差异。2026-10-20 使用当前 Go 端点及 `minimax-m3.1-flash`，携带 `max_tokens=524288` 的简短实测请求返回 HTTP 200 和 `OK`。此检查确认参数被接受，没有实际生成 512K 长输出或填满 1M 上下文。请求超时、重试和 Agent 预算仍采用项目设置，属于应用运行策略。
 
-模型请求重试由 Pi 会话执行，供应商 SDK 内层自动重试为 0，避免两层重试相乘。只对 Pi 识别的暂时性错误重试，例如限流、服务端错误、网络故障和请求超时；鉴权失败不重试。等待按 `retryDelayMs × 2^(已重试次数-1)` 增长，取消任务可以打断等待。SSE 的 `agent.retry` 事件包含下一次尝试序号、最多尝试次数和等待时间。成功完成一个模型响应后，下一轮工具循环重新获得单响应的尝试预算。
+模型请求重试由 Pi 会话执行，供应商 SDK 内层自动重试为 0，避免两层重试相乘。只对 Pi 识别的暂时性错误重试，例如限流、服务端错误、网络故障和请求超时；鉴权失败不重试。等待按 `retryDelayMs × 2^(已重试次数-1)` 增长，取消任务可以打断等待。SSE 的 `agent.retry` 事件包含下一次尝试序号、最多尝试次数和等待时间。成功完成一个模型响应后，下一轮工具循环重新获得单响应的尝试预算。多 profile 回退不改变上述单请求重试：同一 attempt 内始终使用同一 profile，只有后端发起下一次任务 attempt 时才按顺序切换。
 
 ## Agent 与画面返修
 
@@ -72,7 +109,7 @@ LLM_MAX_TOKENS=524288
 
 | 环境变量 | JSON 字段 | 默认值 |
 | --- | --- | --- |
-| `REASONFRAME_CONCURRENCY` | `server.concurrency` | 1，范围 1～8 |
+| `AI_MAX_TASKS` | AI 服务并发任务数 | 2，范围 1～64 |
 | `REASONFRAME_RENDER_WORKERS` | `render.workers` | 2，范围 1～8 |
 | `REASONFRAME_RENDER_BITRATE` | `render.bitrate` | 8M，固定视频码率，支持如 6M、8000k |
 | `REASONFRAME_RENDER_TIMEOUT_MS` | `render.timeoutMs` | 1800000 毫秒，范围 1000～7200000 |

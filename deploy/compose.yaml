@@ -1,0 +1,351 @@
+name: reasonframe
+
+x-backend-env: &backend-env
+  DATABASE_URL: ${DATABASE_URL:-postgres://${POSTGRES_USER:-reasonframe}:${POSTGRES_PASSWORD:-reasonframe}@postgres:5432/${POSTGRES_DB:-reasonframe}?sslmode=disable}
+  REDIS_URL: ${REDIS_URL:-redis://redis:6379/0}
+  S3_ENDPOINT: ${S3_ENDPOINT:-http://minio:9000}
+  S3_REGION: ${S3_REGION:-us-east-1}
+  S3_BUCKET: ${S3_BUCKET:-reasonframe}
+  S3_ACCESS_KEY: ${S3_ACCESS_KEY:-minioadmin}
+  S3_SECRET_KEY: ${S3_SECRET_KEY:-minioadmin}
+  S3_USE_SSL: ${S3_USE_SSL:-false}
+  AI_AUTHOR_ADDR: ${AI_AUTHOR_ADDR:-ai-service:50051}
+  AI_PREPARE_ADDR: ${AI_PREPARE_ADDR:-ai-service:50051}
+  AI_RENDER_ADDR: ${AI_RENDER_ADDR:-ai-service:50051}
+  AI_INTERNAL_TOKEN: ${AI_INTERNAL_TOKEN:-}
+  INTERNAL_TOKEN: ${INTERNAL_TOKEN:-}
+  AUTH_MODE: ${AUTH_MODE:-static}
+  STATIC_API_KEY: ${STATIC_API_KEY:-}
+  PUBLIC_BASE_URL: ${PUBLIC_BASE_URL:-http://localhost:4310}
+  SIGNED_URL_TTL: ${SIGNED_URL_TTL:-15m}
+  MAX_IMAGE_BYTES: ${MAX_IMAGE_BYTES:-8388608}
+  MAX_AUDIO_BYTES: ${MAX_AUDIO_BYTES:-62914560}
+  ACCOUNT_MAX_ACTIVE_JOBS: ${ACCOUNT_MAX_ACTIVE_JOBS:-2}
+  ACCOUNT_MAX_QUEUED_JOBS: ${ACCOUNT_MAX_QUEUED_JOBS:-10}
+  WORKER_CONCURRENCY_AUTHOR: ${WORKER_CONCURRENCY_AUTHOR:-2}
+  WORKER_CONCURRENCY_PREPARE: ${WORKER_CONCURRENCY_PREPARE:-1}
+  WORKER_CONCURRENCY_RENDER: ${WORKER_CONCURRENCY_RENDER:-1}
+  RECONCILE_INTERVAL: ${RECONCILE_INTERVAL:-30s}
+  OTEL_EXPORTER_OTLP_ENDPOINT: ${OTEL_EXPORTER_OTLP_ENDPOINT:-}
+  LLM_ENDPOINT: ${LLM_ENDPOINT:-responses}
+  LLM_URL: ${LLM_URL:-https://api.openai.com/v1}
+  LLM_API_KEY: ${LLM_API_KEY:-}
+  LLM_MODEL: ${LLM_MODEL:-}
+  MIGRATIONS_DIR: /app/migrations
+  HOST: 0.0.0.0
+  PORT: "4310"
+
+x-ai-env: &ai-env
+  NODE_ENV: ${NODE_ENV:-production}
+  GRPC_LISTEN_ADDR: ${GRPC_LISTEN_ADDR:-0.0.0.0:50051}
+  AI_CAPABILITIES: ${AI_CAPABILITIES:-author,prepare,render,ingest_audio}
+  AI_INTERNAL_TOKEN: ${AI_INTERNAL_TOKEN:-}
+  MAX_SCRATCH_BYTES: ${MAX_SCRATCH_BYTES:-4294967296}
+  TASK_TIMEOUT_AUTHOR_MS: ${TASK_TIMEOUT_AUTHOR_MS:-21600000}
+  TASK_TIMEOUT_PREPARE_MS: ${TASK_TIMEOUT_PREPARE_MS:-21600000}
+  TASK_TIMEOUT_RENDER_MS: ${TASK_TIMEOUT_RENDER_MS:-10800000}
+  S3_ENDPOINT: ${S3_ENDPOINT:-http://minio:9000}
+  S3_REGION: ${S3_REGION:-us-east-1}
+  S3_BUCKET: ${S3_BUCKET:-reasonframe}
+  S3_ACCESS_KEY: ${S3_ACCESS_KEY:-minioadmin}
+  S3_SECRET_KEY: ${S3_SECRET_KEY:-minioadmin}
+  S3_USE_SSL: ${S3_USE_SSL:-false}
+  LLM_CONFIG_PATH: ${LLM_CONFIG_PATH:-}
+  LLM_ENDPOINT: ${LLM_ENDPOINT:-responses}
+  LLM_URL: ${LLM_URL:-https://api.openai.com/v1}
+  LLM_API_KEY: ${LLM_API_KEY:-}
+  LLM_MODEL: ${LLM_MODEL:-}
+  LLM_CONTEXT_WINDOW: ${LLM_CONTEXT_WINDOW:-128000}
+  LLM_MAX_TOKENS: ${LLM_MAX_TOKENS:-8192}
+  LLM_REQUEST_TIMEOUT_MS: ${LLM_REQUEST_TIMEOUT_MS:-120000}
+  LLM_MAX_ATTEMPTS: ${LLM_MAX_ATTEMPTS:-3}
+  LLM_RETRY_DELAY_MS: ${LLM_RETRY_DELAY_MS:-1000}
+  LLM_THINKING_LEVEL: ${LLM_THINKING_LEVEL:-off}
+  LLM_TEMPERATURE: ${LLM_TEMPERATURE:-}
+  REASONFRAME_AGENT_TIMEOUT_MS: ${REASONFRAME_AGENT_TIMEOUT_MS:-10800000}
+  REASONFRAME_AGENT_MAX_ATTEMPTS: ${REASONFRAME_AGENT_MAX_ATTEMPTS:-3}
+  REASONFRAME_AGENT_MAX_TOOL_CALLS: ${REASONFRAME_AGENT_MAX_TOOL_CALLS:-80}
+  REASONFRAME_AGENT_MAX_TURNS: ${REASONFRAME_AGENT_MAX_TURNS:-40}
+  REASONFRAME_VISUAL_MAX_REPAIR_ATTEMPTS: ${REASONFRAME_VISUAL_MAX_REPAIR_ATTEMPTS:-1}
+  REASONFRAME_RENDER_WORKERS: ${REASONFRAME_RENDER_WORKERS:-2}
+  REASONFRAME_RENDER_BITRATE: ${REASONFRAME_RENDER_BITRATE:-8M}
+  REASONFRAME_RENDER_TIMEOUT_MS: ${REASONFRAME_RENDER_TIMEOUT_MS:-1800000}
+  AI_KEEP_SCRATCH: ${AI_KEEP_SCRATCH:-true}
+  TTS_PROVIDER: ${TTS_PROVIDER:-edge}
+  TTS_VOICE: ${TTS_VOICE:-zh-CN-XiaoxiaoNeural}
+  TTS_URL: ${TTS_URL:-}
+  TTS_API_KEY: ${TTS_API_KEY:-}
+
+x-backend-build: &backend-build
+  context: ..
+  dockerfile: deploy/backend.Dockerfile
+
+x-ai-build: &ai-build
+  context: ..
+  dockerfile: deploy/ai-service.Dockerfile
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-reasonframe}
+      POSTGRES_USER: ${POSTGRES_USER:-reasonframe}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-reasonframe}
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$$POSTGRES_USER\" -d \"$$POSTGRES_DB\""]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+    networks:
+      - reasonframe
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes", "--appendfsync", "everysec"]
+    ports:
+      - "127.0.0.1:${REDIS_PORT:-6379}:6379"
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    networks:
+      - reasonframe
+
+  minio:
+    image: minio/minio:RELEASE.2025-09-07T16-13-09Z
+    restart: unless-stopped
+    command: ["server", "/data", "--console-address", ":9001"]
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minioadmin}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-minioadmin}
+      MINIO_BROWSER_REDIRECT_URL: ${MINIO_BROWSER_REDIRECT_URL:-http://localhost:9001}
+    # Local development mapping only. MinIO stays private; clients download
+    # artifacts through the Go API, which streams them from this bucket.
+    ports:
+      - "127.0.0.1:${MINIO_API_PORT:-9000}:9000"
+      - "127.0.0.1:${MINIO_CONSOLE_PORT:-9001}:9001"
+    volumes:
+      - minio-data:/data
+    healthcheck:
+      test: ["CMD", "mc", "ready", "local"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+    networks:
+      - reasonframe
+
+  minio-init:
+    image: minio/mc:RELEASE.2025-08-13T08-35-41Z
+    restart: "no"
+    depends_on:
+      minio:
+        condition: service_healthy
+    environment:
+      S3_BUCKET: ${S3_BUCKET:-reasonframe}
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minioadmin}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-minioadmin}
+    entrypoint: >
+      /bin/sh -c "
+      mc alias set local http://minio:9000 \"$$MINIO_ROOT_USER\" \"$$MINIO_ROOT_PASSWORD\" &&
+      mc mb --ignore-existing local/$$S3_BUCKET &&
+      mc anonymous set none local/$$S3_BUCKET &&
+      echo \"bucket $$S3_BUCKET is ready and private\"
+      "
+    networks:
+      - reasonframe
+
+  migrate:
+    image: reasonframe/backend:dev
+    build: *backend-build
+    restart: "no"
+    command: ["migrate"]
+    env_file:
+      - path: .env
+        required: false
+    environment: *backend-env
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - reasonframe
+
+  api:
+    image: reasonframe/backend:dev
+    build: *backend-build
+    restart: unless-stopped
+    command: ["api"]
+    env_file:
+      - path: .env
+        required: false
+    environment: *backend-env
+    ports:
+      - "127.0.0.1:${API_PORT:-4310}:4310"
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+      minio-init:
+        condition: service_completed_successfully
+      ai-service:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:4310/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 20s
+    stop_grace_period: 30s
+    networks:
+      - reasonframe
+
+  worker:
+    image: reasonframe/backend:dev
+    build: *backend-build
+    restart: unless-stopped
+    command: ["worker", "--queues", "author,prepare"]
+    init: true
+    env_file:
+      - path: .env
+        required: false
+    environment: *backend-env
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+      minio-init:
+        condition: service_completed_successfully
+      ai-service:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "ps | grep -q '[r]f worker'"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+    stop_grace_period: 60s
+    networks:
+      - reasonframe
+
+  reconciler:
+    image: reasonframe/backend:dev
+    build: *backend-build
+    restart: unless-stopped
+    command: ["reconciler"]
+    init: true
+    env_file:
+      - path: .env
+        required: false
+    environment: *backend-env
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+      minio-init:
+        condition: service_completed_successfully
+    stop_grace_period: 30s
+    networks:
+      - reasonframe
+
+  worker-render:
+    image: reasonframe/backend:dev
+    build: *backend-build
+    restart: unless-stopped
+    command: ["worker", "--queues", "render"]
+    init: true
+    env_file:
+      - path: .env
+        required: false
+    environment: *backend-env
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+      minio-init:
+        condition: service_completed_successfully
+      ai-service:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "ps | grep -q '[r]f worker'"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+    stop_grace_period: 120s
+    networks:
+      - reasonframe
+
+  ai-service:
+    image: reasonframe/ai-service:dev
+    build: *ai-build
+    restart: unless-stopped
+    init: true
+    env_file:
+      - path: .env
+        required: false
+    environment: *ai-env
+    shm_size: "1gb"
+    depends_on:
+      minio:
+        condition: service_healthy
+      minio-init:
+        condition: service_completed_successfully
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - >-
+          const net=require('net');
+          const p=Number((process.env.GRPC_LISTEN_ADDR||':50051').split(':').pop());
+          const s=net.connect(p,'127.0.0.1');
+          s.on('connect',()=>{s.end();process.exit(0)});
+          s.on('error',()=>process.exit(1));
+          setTimeout(()=>process.exit(1),2000);
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 60s
+    stop_grace_period: 60s
+    networks:
+      - reasonframe
+
+volumes:
+  postgres-data:
+  redis-data:
+  minio-data:
+
+networks:
+  reasonframe:
+    name: reasonframe
+    driver: bridge
