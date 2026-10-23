@@ -1,0 +1,285 @@
+openapi: 3.1.0
+info:
+  title: 理象 ReasonFrame
+  version: 0.1.0
+  description: Pi + HyperFrames asynchronous teaching video service. No web workbench.
+servers:
+  - url: /
+security:
+  - bearerAuth: []
+paths:
+  /health:
+    get:
+      summary: Liveness and model configuration status
+      security: []
+      responses:
+        '200':
+          description: Service and model configuration status
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [ok, service]
+                properties:
+                  ok: { type: boolean }
+                  service: { type: string }
+                  modelConfigured: { type: boolean }
+  /health/ready:
+    get:
+      summary: Dependency readiness (PostgreSQL, Redis, MinIO, AI)
+      security: []
+      responses:
+        '200': { description: All dependencies are reachable }
+        '503': { description: At least one dependency is unavailable }
+  /openapi.json:
+    get:
+      summary: This document
+      responses:
+        '200': { description: OpenAPI JSON }
+  /v1/config:
+    get:
+      summary: Redacted configuration
+      responses:
+        '200':
+          description: Endpoint, URL, model, TTS availability; no credentials
+  /v1/jobs:
+    get:
+      summary: List recent jobs
+      parameters:
+        - { name: limit, in: query, required: false, schema: { type: integer, minimum: 1, maximum: 100, default: 100 } }
+        - { name: cursor, in: query, required: false, schema: { type: string } }
+      responses:
+        '200': { description: Jobs ordered by creation time descending }
+    post:
+      summary: Queue a video generation job
+      parameters:
+        - { name: Idempotency-Key, in: header, required: false, schema: { type: string, maxLength: 200 } }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/JobInput' }
+      responses:
+        '202':
+          description: Job accepted
+          headers:
+            Location:
+              schema: { type: string }
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Job' }
+        '409': { description: Idempotency key reused with a different request }
+        '422': { description: Invalid input }
+        '429': { description: Account quota exceeded }
+        '503': { description: Dependency or AI service unavailable }
+  /v1/jobs/{id}:
+    parameters: [{ $ref: '#/components/parameters/JobId' }]
+    get:
+      summary: Get job status, stage, error, artifacts
+      responses:
+        '200':
+          description: Job
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Job' }
+        '404': { description: Job not found }
+  /v1/jobs/{id}/events:
+    parameters: [{ $ref: '#/components/parameters/JobId' }]
+    get:
+      summary: SSE with durable event IDs; supports Last-Event-ID or ?after=
+      parameters:
+        - { name: after, in: query, required: false, schema: { type: integer, minimum: 0 } }
+      responses:
+        '200':
+          description: Event stream
+          content:
+            text/event-stream:
+              schema: { type: string }
+  /v1/jobs/{id}/narration:
+    parameters: [{ $ref: '#/components/parameters/JobId' }]
+    get:
+      summary: Get the exact whole narration and scriptSha256
+      responses:
+        '200': { description: '{text, scriptSha256}' }
+        '409': { description: Authoring/review incomplete }
+  /v1/jobs/{id}/audio:
+    parameters: [{ $ref: '#/components/parameters/JobId' }]
+    post:
+      summary: Import one complete MP3 plus exact word timestamps, then resume
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/AudioInput' }
+      responses:
+        '202': { description: Audio accepted for ingest }
+        '409': { description: Not awaiting audio }
+        '422': { description: Stale audio or invalid word table }
+  /v1/jobs/{id}/cancel:
+    parameters: [{ $ref: '#/components/parameters/JobId' }]
+    post:
+      summary: Cancel queued/running/awaiting job
+      responses:
+        '200': { description: Cancelled job }
+        '409': { description: Already terminal }
+  /v1/jobs/{id}/retry:
+    parameters: [{ $ref: '#/components/parameters/JobId' }]
+    post:
+      summary: Retry failed/cancelled job, reusing verified checkpoints
+      responses:
+        '202': { description: Retried job }
+        '409': { description: Not stopped or state conflict }
+  /v1/jobs/{id}/artifacts/{name}:
+    parameters:
+      - { $ref: '#/components/parameters/JobId' }
+      - { name: name, in: path, required: true, schema: { type: string } }
+    get:
+      summary: Download a listed artifact; video is published only after every gate passes
+      responses:
+        '200': { description: Artifact bytes }
+        '206': { description: Partial content }
+        '404': { description: Missing/not published }
+    head:
+      summary: Inspect an artifact without downloading it
+      responses:
+        '200': { description: Artifact headers }
+        '404': { description: Missing/not published }
+  /v1/uploads:
+    post:
+      summary: Upload an image, MP3, or word table
+      parameters:
+        - { name: kind, in: query, required: false, schema: { type: string, enum: [image, audio, words] } }
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                kind: { type: string, enum: [image, audio, words] }
+                file: { type: string, format: binary }
+          application/octet-stream:
+            schema: { type: string, format: binary }
+      responses:
+        '201':
+          description: Upload stored
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Upload' }
+        '413': { description: Upload too large }
+        '422': { description: Invalid kind, content type, or bytes }
+components:
+  securitySchemes:
+    bearerAuth: { type: http, scheme: bearer }
+  parameters:
+    JobId:
+      name: id
+      in: path
+      required: true
+      schema: { type: string, format: uuid }
+  schemas:
+    ImageInput:
+      type: object
+      additionalProperties: false
+      properties:
+        mimeType: { type: string, enum: [image/png, image/jpeg, image/webp] }
+        base64: { type: string, minLength: 16, maxLength: 12000000 }
+        uploadId: { type: string, format: uuid }
+    Scope:
+      type: object
+      additionalProperties: false
+      required: [subject, grade]
+      properties:
+        subject: { type: string, enum: [math, physics, chemistry] }
+        grade: { type: string, minLength: 1, maxLength: 80 }
+        topics: { type: array, maxItems: 40, items: { type: string, maxLength: 120 }, default: [] }
+        allowedMethods: { type: array, maxItems: 30, items: { type: string, maxLength: 160 }, default: [] }
+        forbiddenMethods: { type: array, maxItems: 30, items: { type: string, maxLength: 160 }, default: [] }
+    Options:
+      type: object
+      additionalProperties: false
+      properties:
+        template: { type: string, enum: [auto, solid-geometry, blank], default: auto }
+        fps: { type: integer, enum: [24, 30], default: 24 }
+        quality: { type: string, enum: [draft, looks, delivery], default: looks }
+        audio: { type: string, enum: [auto, provided], default: auto }
+    JobInput:
+      type: object
+      additionalProperties: false
+      required: [problem, scope]
+      properties:
+        problem: { type: string, minLength: 3, maxLength: 24000 }
+        images: { type: array, maxItems: 4, items: { $ref: '#/components/schemas/ImageInput' }, default: [] }
+        scope: { $ref: '#/components/schemas/Scope' }
+        supplements: { type: string, maxLength: 12000, default: '' }
+        options: { $ref: '#/components/schemas/Options' }
+    WordTable:
+      type: object
+      required: [schemaVersion, timeUnit, words]
+      properties:
+        schemaVersion: { type: integer, const: 1 }
+        timeUnit: { type: string, enum: [seconds, milliseconds, 100ns] }
+        scriptSha256: { type: string, pattern: '^[a-f0-9]{64}$' }
+        words:
+          type: array
+          minItems: 1
+          maxItems: 50000
+          items:
+            type: object
+            properties:
+              text: { type: string, maxLength: 300 }
+              start: { type: number, minimum: 0 }
+              end: { type: number, exclusiveMinimum: 0 }
+              duration: { type: number, exclusiveMinimum: 0 }
+            required: [text, start]
+    AudioInput:
+      type: object
+      properties:
+        scriptSha256: { type: string, pattern: '^[a-f0-9]{64}$' }
+        audioBase64: { type: string, minLength: 100, maxLength: 60000000 }
+        words: { $ref: '#/components/schemas/WordTable' }
+        audioUploadId: { type: string, format: uuid }
+        wordsUploadId: { type: string, format: uuid }
+    Artifact:
+      type: object
+      required: [name, mimeType, url]
+      properties:
+        name: { type: string }
+        mimeType: { type: string }
+        url: { type: string }
+    JobError:
+      type: object
+      required: [code, message]
+      properties:
+        code: { type: string }
+        message: { type: string }
+    Job:
+      type: object
+      required: [id, status, stage]
+      properties:
+        id: { type: string, format: uuid }
+        status: { type: string, enum: [queued, running, awaiting_audio, completed, failed, cancelled] }
+        phase: { type: string, enum: [author, prepare, render, done] }
+        stage: { type: string }
+        createdAt: { type: string, format: date-time }
+        updatedAt: { type: string, format: date-time }
+        input: { type: object }
+        attempt: { type: integer }
+        autoRepairs: { type: integer }
+        eventSequence: { type: integer }
+        artifacts: { type: array, items: { $ref: '#/components/schemas/Artifact' } }
+        scriptSha256: { type: string }
+        sourceSha256: { type: string }
+        error: { $ref: '#/components/schemas/JobError' }
+        eventsUrl: { type: string }
+        narrationUrl: { type: string }
+    Upload:
+      type: object
+      required: [id, kind, mimeType, sizeBytes, sha256]
+      properties:
+        id: { type: string, format: uuid }
+        kind: { type: string, enum: [image, audio, words] }
+        mimeType: { type: string }
+        sizeBytes: { type: integer }
+        sha256: { type: string }
+        expiresAt: { type: string, format: date-time }

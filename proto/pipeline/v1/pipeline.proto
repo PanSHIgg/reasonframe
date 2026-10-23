@@ -1,0 +1,92 @@
+syntax = "proto3";
+
+package reasonframe.pipeline.v1;
+
+option go_package = "github.com/reasonframe/reasonframe/backend/internal/ai/pipelinev1";
+
+service PipelineService {
+  rpc RunTask(RunTaskRequest) returns (stream TaskEvent);
+  rpc Cancel(CancelRequest) returns (CancelResponse);
+  rpc Health(HealthRequest) returns (HealthResponse);
+}
+
+enum TaskType {
+  TASK_TYPE_UNSPECIFIED = 0;
+  AUTHOR = 1;
+  PREPARE = 2;
+  RENDER = 3;
+  INGEST_AUDIO = 4;
+}
+
+message RunTaskRequest {
+  string task_id = 1;
+  string job_id = 2;
+  TaskType type = 3;
+  int32 attempt = 4;
+  int32 auto_repairs = 5;
+  bytes spec_json = 6;
+  bytes checkpoint_json = 7;
+  bytes trace_json = 8;
+  int64 deadline_unix_ms = 9;
+}
+
+message TaskEvent {
+  int64 seq = 1;
+  string type = 2;
+  string stage = 3;
+  bytes data_json = 4;
+  int64 at_unix_ms = 5;
+  TaskResult result = 6;
+}
+
+message TaskResult {
+  string status = 1;
+  string error_code = 2;
+  string error_message = 3;
+  bool repairable = 4;
+  bytes checkpoint_json = 5;
+  repeated ArtifactRef artifacts = 6;
+  Usage usage = 7;
+}
+
+message ArtifactRef {
+  string name = 1;
+  string object_key = 2;
+  string mime_type = 3;
+  int64 size_bytes = 4;
+  string sha256 = 5;
+}
+
+message Usage {
+  string provider = 1;
+  string model = 2;
+  int64 input_tokens = 3;
+  int64 output_tokens = 4;
+  int64 audio_chars = 5;
+  double render_seconds = 6;
+  int64 cost_micros = 7;
+}
+
+message CancelRequest {
+  string task_id = 1;
+  string job_id = 2;
+  string reason = 3;
+}
+
+message CancelResponse {
+  bool cancelled = 1;
+}
+
+message HealthRequest {}
+
+message HealthResponse {
+  bool ok = 1;
+  bool model_configured = 2;
+  bool tts_configured = 3;
+  bool ffmpeg_ready = 4;
+  bool chromium_ready = 5;
+  bool minio_ready = 6;
+  int32 active_tasks = 7;
+  int32 max_tasks = 8;
+  repeated string capabilities = 9;
+}
